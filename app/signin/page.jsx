@@ -21,7 +21,7 @@ const LoginIn = () => {
   };
   return (
     <>
-      <div>
+      <div className={classes.container}>
         <div>
           <Image
             className="mx-auto h-10 w-auto"
@@ -30,17 +30,19 @@ const LoginIn = () => {
             src="/images/dsceLogo.png"
             alt="Your Company"
           />
-          <h2>Sign In</h2>
+          
         </div>
 
         <div>
+        <h2 className={classes.heading}>Sign In</h2>
           <form onSubmit={LoginUser}>
             <div>
-              <label>Email address</label>
+              {/* <label className={classes.label}>Email address</label> */}
               <div className="mt-2">
-                <input
+                <input className={classes.input}
                   id="email"
                   name="email"
+                  placeholder="Email"
                   type="email"
                   value={data.email}
                   onChange={(e) => setData({ ...data, email: e.target.value })}
@@ -51,13 +53,14 @@ const LoginIn = () => {
 
             <div>
               <div>
-                <label>Password</label>
+                {/* <label className={classes.label}>Password</label> */}
               </div>
               <div className="mt-2">
-                <input
+                <input className={classes.input}
                   id="password"
                   name="password"
                   type="password"
+                  placeholder="Password"
                   value={data.password}
                   onChange={(e) =>
                     setData({ ...data, password: e.target.value })
@@ -68,7 +71,7 @@ const LoginIn = () => {
             </div>
 
             <div>
-              <button type="submit">Sign in</button>
+              <button className={classes.btn} type="submit">Sign in</button>
             </div>
           </form>
         </div>
