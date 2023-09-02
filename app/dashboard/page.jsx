@@ -6,7 +6,10 @@ const Dashboard = async () => {
   if (typeof window !== "undefined") return null;
 
   console.log("server page   ", session);
-  if (session) {
+  const email = session?.user?.email;
+  const checkAdmin = email === "manasa3@gmail.com";
+
+  if (session && !checkAdmin) {
     return <h1>Hi {session?.user.name}</h1>;
   }
 

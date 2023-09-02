@@ -11,13 +11,19 @@ export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
-      
+
       async authorize(credentials) {
         if (credentials.email === "" || credentials.password === "") {
           return null;
         }
 
         //if the admin exists
+        const admin = await prisma.admin.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
+        console.log(admin);
 
         //if the user exists
         const user = await prisma.user.findUnique({
@@ -25,20 +31,38 @@ export const authOptions = {
             email: credentials.email,
           },
         });
-
-        if (!user) {
-          return null;
+        if (admin) {
+          const match = credentials.password === admin.password;
+          console.log(match);
+          if (!match) {
+            return null;
+          }
+          return admin;
+        } else if (user) {
+          const match = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+          if (!match) {
+            return null;
+          }
+          return user;
         }
+        return null;
 
-        //check if password matches
-        const match = await bcrypt.compare(credentials.password, user.password);
+        // if (!user) {
+        //   return null;
+        // }
 
-        if (!match) {
-          return null;
-        }
+        // //check if password matches
+        // const match = await bcrypt.compare(credentials.password, user.password);
 
-        //return user object if everything is ok
-        return user;
+        // if (!match) {
+        //   return null;
+        // }
+
+        // //return user object if everything is ok
+        // return user;
       },
     }),
   ],
