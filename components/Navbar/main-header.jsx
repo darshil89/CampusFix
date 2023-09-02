@@ -4,14 +4,11 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import classes from "./main-header.module.css";
 import Image from "next/image";
-import { useState } from "react";
+
 function MainHeader() {
-  const [checkAdmin, setCheckAdmin] = useState(false);
   const { data: session, status } = useSession();
   const email = session?.user?.email;
-  if (email === "manasa3@gmail.com") {
-    setCheckAdmin(true);
-  }
+  const checkAdmin = email === "manasa3@gmail.com";
 
   return (
     <header className={classes.header}>
@@ -21,9 +18,16 @@ function MainHeader() {
       </div>
 
       <div className={classes.lists}>
-        {checkAdmin && <Link href="/adminPortal">Admin Portal</Link>}
+        {checkAdmin && (
+          <>
+            <Link href="/adminPortal">Admin Portal</Link>
+            <button className={classes.btn} onClick={() => signOut()}>
+              Sign Out
+            </button>
+          </>
+        )}
 
-        {!checkAdmin && !session && <Link href="/admin">Admin</Link>}
+        {!session && <Link href="/admin">Admin</Link>}
 
         {!session && (
           <>
@@ -32,7 +36,7 @@ function MainHeader() {
             <Link href="/signin">Sign In</Link>
           </>
         )}
-        {session && (
+        {session && !checkAdmin && (
           <>
             <Link href="/dashboard">Dashboard</Link>
             <button className={classes.btn} onClick={() => signOut()}>

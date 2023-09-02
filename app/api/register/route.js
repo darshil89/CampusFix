@@ -14,12 +14,17 @@ export async function POST(request) {
     }
     //connect to db
     await connectToDb();
+
+   
+    
     //check if user exists
     const exist = await prisma.user.findUnique({
       where: {
         email,
       },
     });
+
+    
     if (exist) {
       return NextResponse.json(
         { message: "User already exists" },
