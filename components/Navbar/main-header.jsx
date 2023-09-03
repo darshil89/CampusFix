@@ -18,6 +18,7 @@ function MainHeader() {
       </div>
 
       <div className={classes.lists}>
+        <Link href="/">Home</Link>
         {checkAdmin && (
           <>
             <Link href="/dashboard">Admin Portal</Link>
@@ -40,8 +41,8 @@ function MainHeader() {
         )}
         {session && !checkAdmin && (
           <>
-            <Link href="problemStatement"> Problem </Link>
             <Link href="/dashboard">Dashboard</Link>
+            <Link href="problemStatement"> Problem </Link>
             <button className={classes.btn} onClick={() => signOut()}>
               Sign Out
             </button>
