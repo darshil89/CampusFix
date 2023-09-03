@@ -15,8 +15,6 @@ export async function POST(request) {
     //connect to db
     await connectToDb();
 
-   
-    
     //check if user exists
     const exist = await prisma.user.findUnique({
       where: {
@@ -24,7 +22,6 @@ export async function POST(request) {
       },
     });
 
-    
     if (exist) {
       return NextResponse.json(
         { message: "User already exists" },
@@ -42,6 +39,7 @@ export async function POST(request) {
       },
       include: {
         problems: true,
+        _count: true,
       },
     });
     //return user

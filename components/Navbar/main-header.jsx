@@ -20,7 +20,7 @@ function MainHeader() {
       <div className={classes.lists}>
         {checkAdmin && (
           <>
-            <Link href="/adminPortal">Admin Portal</Link>
+            <Link href="/dashboard">Admin Portal</Link>
             <Link href="/allUsers">Users</Link>
             <Link href="/allProblems">Problems</Link>
             <button className={classes.btn} onClick={() => signOut()}>
@@ -29,7 +29,7 @@ function MainHeader() {
           </>
         )}
 
-        {!session && <Link href="/admin">Admin</Link>}
+        {/* {!session && <Link href="/admin">Admin</Link>} */}
 
         {!session && (
           <>

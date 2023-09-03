@@ -1,0 +1,121 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #333;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.textarea {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.select {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.label {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.option {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+.box1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #333;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+.box2 {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #333;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.submit {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.submit:hover {
+  background-color: #3e8e41;
+}

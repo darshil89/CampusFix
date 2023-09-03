@@ -9,11 +9,13 @@ const Dashboard = async () => {
   const email = session?.user?.email;
   const checkAdmin = email === "manasa3@gmail.com";
 
-  if (session && !checkAdmin) {
-    return <h1>Hi {session?.user.name}</h1>;
+  if (!checkAdmin && session) {
+    return <h1>Hi user {session?.user.name}</h1>;
+  } else if (checkAdmin && session) {
+    return <h1>Hi admin {session?.user.name}</h1>;
+  } else {
+    redirect("/signin");
   }
-
-  redirect("/signin");
 };
 
 export async function getServerSideProps(context) {
