@@ -21,6 +21,8 @@ function MainHeader() {
         {checkAdmin && (
           <>
             <Link href="/adminPortal">Admin Portal</Link>
+            <Link href="/allUsers">Users</Link>
+            <Link href="/allProblems">Problems</Link>
             <button className={classes.btn} onClick={() => signOut()}>
               Sign Out
             </button>
@@ -38,6 +40,7 @@ function MainHeader() {
         )}
         {session && !checkAdmin && (
           <>
+            <Link href="problemStatement"> Problem </Link>
             <Link href="/dashboard">Dashboard</Link>
             <button className={classes.btn} onClick={() => signOut()}>
               Sign Out

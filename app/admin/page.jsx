@@ -21,7 +21,7 @@ const Admin = () => {
   };
   return (
     <>
-      <div>
+      <div className={classes.container}>
         <div>
           <Image
             className="mx-auto h-10 w-auto"
@@ -30,15 +30,17 @@ const Admin = () => {
             src="/images/dsceLogo.png"
             alt="Your Company"
           />
-          <h2>Admin Login</h2>
         </div>
 
         <div>
+          <h2 className={classes.heading}>Admin Login</h2>
           <form onSubmit={LoginUser}>
             <div>
-              <label>Email address</label>
+              
               <div className="mt-2">
                 <input
+                  placeholder="Email"
+                  className={classes.input}
                   id="email"
                   name="email"
                   type="email"
@@ -50,11 +52,11 @@ const Admin = () => {
             </div>
 
             <div>
-              <div>
-                <label>Password</label>
-              </div>
+              <div></div>
               <div className="mt-2">
                 <input
+                  placeholder="Password"
+                  className={classes.input}
                   id="password"
                   name="password"
                   type="password"
@@ -68,7 +70,9 @@ const Admin = () => {
             </div>
 
             <div>
-              <button type="submit">Log In</button>
+              <button className={classes.btn} type="submit">
+                Log In
+              </button>
             </div>
           </form>
         </div>
