@@ -10,7 +10,7 @@ const Problem = async () => {
   const email = session?.user?.email;
   const checkAdmin = email === "manasa3@gmail.com";
 
-  if (session && !checkAdmin) {
+  if (session && checkAdmin) {
     return (
       <>
         <h1>Hi {session?.user.name} , feel free to share your problem</h1>
