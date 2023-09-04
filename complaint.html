@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complaints page</title>
+    <link rel="stylesheet" href="complaint.css">
+    <script src="complaint.js"></script>
+</head>
+<body>
+    
+    <form>
+        <h1>Raise ticket Here!</h1>
+        <label>Name:</label>
+        <input type="text" placeholder="Enter name" id="name">
+
+        <label>Select category of problem:</label>
+        <select id="select">
+            <option value="Select">Select</option>
+            <option value="Carpentary">Carpentary</option>
+            <option value="Plumbing">Plumbing</option>
+            <option value="Electrician">Electrician</option>
+            <option value="Logistics">Logistics</option>
+            <option value="other">other</option>
+        </select><br>
+        <label>Enter building number:</label>
+        <input type="number" placeholder="Building number" id="number">
+
+        <label>Enter room number:</label>
+        <input type="number" placeholder="Room number" id="room">
+
+        <label>Problem description:</label>
+       <textarea name="description" id="description" cols="40" rows="10"></textarea>
+
+        <input type="button" value="Submit" id="btn" onclick="verify()">
+
+
+    </form>
+</body>
+</html>
