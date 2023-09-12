@@ -2,8 +2,14 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Problem from "@/components/Problems/Problem";
+
 const getallProblems = async () => {
-  const response = await fetch("http://localhost:3000/api/problems");
+  const response = await fetch("http://localhost:3000/api/problems",{
+    next: {
+      revalidate: 1,
+    }
+  })
+  
   const data = await response.json();
   return data;
 };

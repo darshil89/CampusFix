@@ -22,6 +22,7 @@ const allUsers = () => {
       console.log("error = ", error.message);
     }
   }, []);
+
   if (session) {
     if (loading) {
       return <SyncLoader className="text-center mt-10" color="#2e3634" />
@@ -30,11 +31,12 @@ const allUsers = () => {
       return <h1>No data</h1>;
     }
 
-    console.log("data = ", data.users);
+    console.log("data = ", data);
     return (
       <>
+        <h1 className="text-center">All Users</h1>
         <br />
-        {data.users.map((user) => {
+        {data.users?.map((user) => {
           return <Users key={user.email} name={user.name} email={user.email} />;
         })}
       </>
