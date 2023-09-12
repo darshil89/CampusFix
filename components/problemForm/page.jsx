@@ -6,7 +6,7 @@ export default function Problems(props) {
   const id = props.id;
   const [data, setData] = useState({
     title: "",
-    description: "",
+    content: "",
     buildingNumber: "",
     floorNumber: "",
     roomNumber: "",
@@ -28,7 +28,7 @@ export default function Problems(props) {
       toast.success("Problem Submitted");
       setData({
         title: "",
-        description: "",
+        content: "",
         buildingNumber: "",
         floorNumber: "",
         roomNumber: "",
@@ -63,14 +63,14 @@ export default function Problems(props) {
         </select>
       </div>
       <div className={classes.box2}>
-        {/* <label className={classes.label}>Description</label> */}
+        {/* <label className={classes.label}>content</label> */}
         <textarea
           className={classes.textarea}
           type="text"
-          placeholder="Description"
-          value={data.description}
+          placeholder="content"
+          value={data.content}
           onChange={(e) => {
-            setData({ ...data, description: e.target.value });
+            setData({ ...data, content: e.target.value });
           }}
         />
       </div>

@@ -17,17 +17,21 @@ export const POST = async (request) => {
   try {
     await connectToDb();
     const body = await request.json();
-    // console.log("api body", body);
-    // console.log("api body", body.id);
+    console.log("api body", body);
+
+    console.log("api title", body.data.title);
+
+    const { title, content, buildingNumber, roomNumber, floorNumber } =
+      body.data;
 
     const problem = await prisma.problem.create({
       data: {
-        title: body.data.title,
-        content: body.data.description,
-        buildingNumber: body.data.buildingNumber,
-        roomNumber: body.data.roomNumber,
-        floorNumber: body.data.floorNumber,
-        userId: body.id,
+        title,
+        content,
+        buildingNumber,
+        roomNumber,
+        floorNumber,
+        userId,
       },
     });
 
