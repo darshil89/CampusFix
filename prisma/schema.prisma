@@ -24,9 +24,9 @@ model Problem {
   updatedAt      DateTime @updatedAt
   title          String
   content        String
-  buildingNumber Int
-  roomNumber     Int
-  floorNumber    Int
+  buildingNumber String
+  roomNumber     String
+  floorNumber    String
   userId         String   @db.ObjectId
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

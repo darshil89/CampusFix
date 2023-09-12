@@ -15,7 +15,12 @@ export default function Problems(props) {
   const SubmitHandler = async (e) => {
     e.preventDefault();
     console.log(data);
-    toast.info("On Going");
+    if (data.title === null || data.title === "") {
+      toast.error("Please Select Problem Type");
+      return;
+    }
+    toast.info("on going", { autoClose: 2500 });
+
     const res = await fetch("/api/problems", {
       method: "POST",
       headers: {
@@ -23,19 +28,21 @@ export default function Problems(props) {
       },
       body: JSON.stringify({ data, id }),
     });
+
     const result = await res.json();
-    if (result.status === "success") {
-      toast.success("Problem Submitted");
-      setData({
-        title: "",
-        content: "",
-        buildingNumber: "",
-        floorNumber: "",
-        roomNumber: "",
-      });
-    } else {
-      toast.error("Problem Not Submitted");
+    if (result.error) {
+      toast.error(result.error);
+      return;
     }
+    toast.success("Problem Added", { autoClose: 4000 });
+    console.log("result  =  ", result);
+    setData({
+      title: "",
+      content: "",
+      buildingNumber: "",
+      floorNumber: "",
+      roomNumber: "",
+    });
   };
   return (
     <form className={classes.form} onSubmit={SubmitHandler}>
@@ -51,6 +58,9 @@ export default function Problems(props) {
             setData({ ...data, title: e.target.value });
           }}
         >
+          <option className={classes.option} value="null">
+            Select Problem{" "}
+          </option>
           <option className={classes.option} value="Electrical">
             Electrical
           </option>
@@ -59,6 +69,9 @@ export default function Problems(props) {
           </option>
           <option className={classes.option} value="Plumber">
             Plumber
+          </option>
+          <option className={classes.option} value="other">
+            other
           </option>
         </select>
       </div>
