@@ -70,10 +70,10 @@ export const authOptions = {
 
   callbacks: {
     async jwt({ token, user, session }) {
-      console.log("jwt callback", { token, user, session });
-      console.log(
-        "--------------------------------------------------------------------------------------------"
-      );
+      // console.log("jwt callback", { token, user, session });
+      // console.log(
+      //   "--------------------------------------------------------------------------------------------"
+      // );
       //passing user.id  to the token
       if (user) {
         return {
@@ -85,10 +85,10 @@ export const authOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      console.log("session callback", { session, token, user });
-      console.log(
-        "--------------------------------------------------------------------------------------------"
-      );
+      // console.log("session callback", { session, token, user });
+      // console.log(
+      //   "--------------------------------------------------------------------------------------------"
+      // );
       //passing user.id  to the session
       if (token) {
         return {
