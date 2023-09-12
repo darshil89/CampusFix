@@ -26,15 +26,15 @@ export const POST = async (request) => {
 
     const problem = await prisma.problem.create({
       data: {
-        title,
-        content,
-        buildingNumber,
-        roomNumber,
-        floorNumber,
-        userId,
+        title: body.title,
+        content: body.content,
+        buildingNumber: body.buildingNumber,
+        roomNumber: body.roomNumber,
+        floorNumber: body.floorNumber,
+        userId: body.userId,
       },
     });
-
+    // console.log("api problem", problem);
     return NextResponse.json(problem, { status: 201 });
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 });
