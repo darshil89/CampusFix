@@ -14,11 +14,7 @@ export default function Problems(props) {
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(data);
-    if (data.title === null || data.title === "") {
-      toast.error("Please Select Problem Type");
-      return;
-    }
+
     toast.info("on going", { autoClose: 2500 });
 
     const res = await fetch("/api/problems", {
@@ -30,6 +26,7 @@ export default function Problems(props) {
     });
 
     const result = await res.json();
+    console.log("result  =  ", result);
     if (result.error) {
       toast.error(result.error);
       return;
