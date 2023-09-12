@@ -1,11 +1,17 @@
 "use client";
 import { useRouter } from "next/navigation";
 import classes from "./login.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
+import { toast } from "react-toastify";
+
 const LoginIn = () => {
+  useEffect(() => {
+    toast.success("Welcome to DSCE");
+  }, []);
+
   const { data: session, status } = useSession();
   const router = useRouter();
   const [data, setData] = useState({
@@ -15,10 +21,19 @@ const LoginIn = () => {
 
   const LoginUser = async (e) => {
     e.preventDefault();
+    toast.info("Logging in", { autoClose: 5000 });
+
     const res = await signIn("credentials", {
       ...data,
       redirect: false,
     });
+    console.log("res = ", res);
+    if (res.error) {
+      toast.error("Invalid Credentials");
+    } else {
+      toast.success("Login Successful");
+    }
+
     router.push("/dashboard");
   };
   if (!session) {
@@ -86,8 +101,6 @@ const LoginIn = () => {
         </div>
       </>
     );
-  }else{
-    router.push("/dashboard");
   }
 };
 

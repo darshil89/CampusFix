@@ -4,11 +4,20 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import classes from "./main-header.module.css";
 import Image from "next/image";
-
+import { toast } from "react-toastify";
 function MainHeader() {
   const { data: session, status } = useSession();
   const email = session?.user?.email;
   const checkAdmin = email === "manasa3@gmail.com";
+  const handleSignOut = () => {
+    toast.info("Logout Successfull", {
+      autoClose: 4000,
+    });
+   setTimeout(() => {
+    
+     signOut();
+   }, 3000);
+  };
 
   return (
     <header className={classes.header}>
@@ -43,7 +52,7 @@ function MainHeader() {
           <>
             <Link href="/dashboard">Dashboard</Link>
             <Link href="problemStatement"> Problem </Link>
-            <button className={classes.btn} onClick={() => signOut()}>
+            <button className={classes.btn} onClick={handleSignOut}>
               Sign Out
             </button>
           </>
