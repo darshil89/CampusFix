@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import classes from "./problem.module.css";
+import { toast } from "react-toastify";
 export default function Problems(props) {
   const id = props.id;
   const [data, setData] = useState({
@@ -14,13 +15,27 @@ export default function Problems(props) {
   const SubmitHandler = async (e) => {
     e.preventDefault();
     console.log(data);
-    // const res = await fetch("/api/problems", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ data, id }),
-    // });
+    toast.info("On Going");
+    const res = await fetch("/api/problems", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ data, id }),
+    });
+    const result = await res.json();
+    if (result.status === "success") {
+      toast.success("Problem Submitted");
+      setData({
+        title: "",
+        description: "",
+        buildingNumber: "",
+        floorNumber: "",
+        roomNumber: "",
+      });
+    } else {
+      toast.error("Problem Not Submitted");
+    }
   };
   return (
     <form className={classes.form} onSubmit={SubmitHandler}>
