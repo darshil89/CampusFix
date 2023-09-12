@@ -15,12 +15,16 @@ export const GET = async () => {
 export const POST = async (request) => {
   try {
     await connectToDb();
-    const { title, content, userId } = await request.json();
+    const { title, content, buildingNumber, roomNumber, floorNumber, userId } =
+      await request.json();
 
     const problem = await prisma.problem.create({
       data: {
         title,
         content,
+        buildingNumber,
+        roomNumber,
+        floorNumber,
         userId,
       },
     });

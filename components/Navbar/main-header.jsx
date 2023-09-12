@@ -6,7 +6,9 @@ import classes from "./main-header.module.css";
 import Image from "next/image";
 import { toast } from "react-toastify";
 function MainHeader() {
+  
   const { data: session, status } = useSession();
+  console.log("nav bar wala session ", session);
   const email = session?.user?.email;
   const checkAdmin = email === "manasa3@gmail.com";
   const handleSignOut = () => {
@@ -33,7 +35,7 @@ function MainHeader() {
             <Link href="/dashboard">Admin Portal</Link>
             <Link href="/allUsers">Users</Link>
             <Link href="/allProblems">Problems</Link>
-            <button className={classes.btn} onClick={() => signOut()}>
+            <button className={classes.btn} onClick={handleSignOut}>
               Sign Out
             </button>
           </>

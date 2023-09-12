@@ -46,6 +46,7 @@ export const authOptions = {
           if (!match) {
             return null;
           }
+          console.log("auth user log ", user);
           return user;
         }
         return null;
@@ -66,6 +67,43 @@ export const authOptions = {
       },
     }),
   ],
+
+  callbacks: {
+    async jwt({ token, user, session }) {
+      console.log("jwt callback", { token, user, session });
+      console.log(
+        "--------------------------------------------------------------------------------------------"
+      );
+      //passing user.id  to the token
+      if (user) {
+        return {
+          ...token,
+          id: user.id,
+        };
+      }
+      
+      return token;
+    },
+    async session({ session, token, user }) {
+      console.log("session callback", { session, token, user });
+      console.log(
+        "--------------------------------------------------------------------------------------------"
+      );
+      //passing user.id  to the session
+      if (token) {
+        return {
+          ...session,
+          user: {
+            ...session.user,
+            id: token.id,
+            name: token.name,
+          },
+        };
+      }
+      return session;
+    },
+  },
+
   session: {
     strategy: "jwt",
   },

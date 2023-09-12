@@ -7,9 +7,10 @@ const Dashboard = async () => {
 
   
   const email = session?.user?.email;
+  
   const checkAdmin = email === "manasa3@gmail.com";
-  console.log("checkAdmin", checkAdmin);
-  console.log("session", session);
+  // console.log("checkAdmin", checkAdmin);
+   console.log("session dashboard", session);
 
   if (!checkAdmin && session) {
     return <h1 className="text-center text-5xl" >Hi user {session?.user.name}</h1>;

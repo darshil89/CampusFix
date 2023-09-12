@@ -8,13 +8,15 @@ const Problem = async () => {
 
   console.log("server page   ", session);
   const email = session?.user?.email;
+  const id = session?.user?.id;
   const checkAdmin = email === "manasa3@gmail.com";
+  console.log("id hu me ",id);
 
   if (session && !checkAdmin) {
     return (
       <>
         <h1>Hi {session?.user.name} , feel free to share your problem</h1>
-        <Problems />
+        <Problems id={id} />
       </>
     );
   }
