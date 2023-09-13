@@ -8,6 +8,7 @@ const Problem = (props) => {
   const content = props.content;
   const problemId = props.problemId;
   const userId = props.userId;
+  const name = props.name;
   console.log("problemId = ", problemId);
   console.log("userId = ", userId);
   console.log("title = ", title);
@@ -25,10 +26,13 @@ const Problem = (props) => {
               <p className="mt-1 truncate text-xs leading-5 text-gray-500">
                 {content}
               </p>
+              <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                by-{name}
+              </p>
             </div>
           </div>
           <Link
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-3 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-4  rounded"
             href={`/allProblems/${problemId}`}
           >
             View

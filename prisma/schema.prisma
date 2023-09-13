@@ -11,8 +11,8 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
   email    String    @unique
   password String
   problems Problem[]
@@ -27,6 +27,7 @@ model Problem {
   buildingNumber String
   roomNumber     String
   floorNumber    String
+  name           String
   userId         String   @db.ObjectId
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

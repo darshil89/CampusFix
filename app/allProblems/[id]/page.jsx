@@ -21,7 +21,7 @@ async function getUser(id) {
       notFound: true,
     };
   }
-  console.log(" user k res = ", res);
+  // console.log(" user k res = ", res);
   const user = await res.json();
   return user;
 }

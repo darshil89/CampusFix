@@ -25,9 +25,9 @@ function MainHeader() {
     <header className={classes.header}>
       <div className={classes.logo}>
         <Image src="/images/logo.svg" 
-        className="ml-12"
+        className="ml-32"
         alt="logo" width={100} height={100} />
-        <Link href="/" className="ml-3">DSCE</Link>
+        <Link href="/" className="ml-6">DSCE</Link>
       </div>
 
       <div className={classes.lists}>

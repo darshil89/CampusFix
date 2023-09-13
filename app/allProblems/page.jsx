@@ -6,8 +6,9 @@ import Link from "next/link";
 
 const getallProblems = async () => {
   const response = await fetch("http://localhost:3000/api/problems", {
+    method: "GET",
     next: {
-      cache: "no-cache",
+      revalidate: 1,
     },
   });
   const data = await response.json();
@@ -29,6 +30,7 @@ export default async function allProblems() {
         {problems.map((problem) => {
           return (
             <Problem
+              name={problem.name}
               key={problem.id}
               title={problem.title}
               content={problem.content}

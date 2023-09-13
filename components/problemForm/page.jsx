@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 export default function Problems(props) {
   const id = props.id;
+  const name = props.name;
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -17,14 +18,14 @@ export default function Problems(props) {
     e.preventDefault();
     
 
-    toast.info("on going", { autoClose: 2500 });
+    toast.info("on going", { autoClose: 5000 });
 
     const res = await fetch("/api/problems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data, id }),
+      body: JSON.stringify({ data, id , name }),
     });
 
     const result = await res.json();
