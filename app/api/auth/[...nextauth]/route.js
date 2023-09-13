@@ -51,20 +51,6 @@ export const authOptions = {
           return user;
         }
         return null;
-
-        // if (!user) {
-        //   return null;
-        // }
-
-        // //check if password matches
-        // const match = await bcrypt.compare(credentials.password, user.password);
-
-        // if (!match) {
-        //   return null;
-        // }
-
-        // //return user object if everything is ok
-        // return user;
       },
     }),
   ],

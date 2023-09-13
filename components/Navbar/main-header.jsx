@@ -12,13 +12,13 @@ function MainHeader() {
   const email = session?.user?.email;
   const checkAdmin = email === "manasa3@gmail.com";
   const handleSignOut = () => {
-    toast.info("Logout Successfull", {
+    toast.info("Logging out", {
       autoClose: 4000,
     });
    setTimeout(() => {
     
      signOut();
-   }, 3000);
+   }, 2000);
   };
 
   return (
