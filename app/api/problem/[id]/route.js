@@ -2,13 +2,21 @@ import prisma from "@/prisma";
 import { NextResponse } from "next/server";
 import { connectToDb } from "@/utils";
 
-export const GET = async (request) => {
+export async function GET(req) {
+  const requ = String(req.url)
+  const id = requ.replace("http://localhost:3000/api/problem/","")
+  
+
+  // const {
+  //   query: { id },
+  // } = req;
+
+  // console.log("backend wala id = ", id);
   try {
-    const { id } = request.params;
     await connectToDb();
     const problem = await prisma.problem.findUnique({
       where: {
-        id: Number(id),
+        id: id,
       },
     });
 
@@ -18,7 +26,7 @@ export const GET = async (request) => {
   } finally {
     await prisma.$disconnect();
   }
-};
+}
 
 export const DELETE = async (request) => {
   try {

@@ -32,7 +32,7 @@ function MainHeader() {
         <Link href="/">Home</Link>
         {checkAdmin && (
           <>
-            <Link href="/dashboard">Admin Portal</Link>
+            <Link href="/dashboard">Dashboard</Link>
             <Link href="/allUsers">Users</Link>
             <Link href="/allProblems">Problems</Link>
             <button className={classes.btn} onClick={handleSignOut}>

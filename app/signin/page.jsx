@@ -21,7 +21,7 @@ const LoginIn = () => {
 
   const LoginUser = async (e) => {
     e.preventDefault();
-    toast.info("Logging in", { autoClose: 5000 });
+    toast.info("Logging in", { autoClose: 7000 });
 
     const res = await signIn("credentials", {
       ...data,
