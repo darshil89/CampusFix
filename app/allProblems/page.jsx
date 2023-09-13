@@ -14,7 +14,6 @@ const getallProblems = async () => {
   return data;
 };
 
-
 export default async function allProblems() {
   const problems = await getallProblems();
 
