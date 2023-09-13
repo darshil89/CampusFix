@@ -1,10 +1,16 @@
 "use client";
 import { AiOutlineUser } from "react-icons/ai";
+import Link from "next/link";
 const Problem = (props) => {
+  console.log("props = ", props);
   const title = props.title;
   const content = props.content;
-  const problemId = props.id;
+  const problemId = props.problemId;
   const userId = props.userId;
+  console.log("problemId = ", problemId);
+  console.log("userId = ", userId);
+  console.log("title = ", title);
+  console.log("content = ", content);
   return (
     <>
       <ul role="list" className="divide-y divide-gray-100 w-1/2 ml-60">
@@ -20,7 +26,14 @@ const Problem = (props) => {
               </p>
             </div>
           </div>
+          <Link
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-3 rounded"
+            href={`/allProblems/${problemId}`}
+          >
+            View
+          </Link>
         </li>
+        <div></div>
       </ul>
     </>
   );

@@ -2,13 +2,15 @@ import prisma from "@/prisma";
 import { NextResponse } from "next/server";
 import { connectToDb } from "@/utils";
 
-export const GET = async (request) => {
+export const GET = async (req) => {
+  const requ = String(req.url);
+  const id = requ.replace("http://localhost:3000/api/user/", "");
+
   try {
-    const { id } = request.params;
     await connectToDb();
     const user = await prisma.user.findUnique({
       where: {
-        id: Number(id),
+        id: id,
       },
     });
 
@@ -17,5 +19,3 @@ export const GET = async (request) => {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 };
-
-

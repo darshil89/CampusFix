@@ -14,6 +14,7 @@ const getallProblems = async () => {
   return data;
 };
 
+
 export default async function allProblems() {
   const problems = await getallProblems();
 
@@ -26,21 +27,18 @@ export default async function allProblems() {
   else
     return (
       <>
-        (
         {problems.map((problem) => {
+           
           return (
-            <Link href={`/allProblems/${problem.id}`}>
-              <Problem
-                key={problem.id}
-                title={problem.title}
-                content={problem.content}
-                userId={problem.userId}
-                problemId={problem.id}
-              />
-            </Link>
+            <Problem
+              key={problem.id}
+              title={problem.title}
+              content={problem.content}
+              userId={problem.userId}
+              problemId={problem.id}
+            />
           );
         })}
-        )
       </>
     );
 }
