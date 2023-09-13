@@ -30,6 +30,7 @@ export const authOptions = {
           where: {
             email: credentials.email,
           },
+          include: { problems: true },
         });
         if (admin) {
           const match = credentials.password === admin.password;
@@ -76,9 +77,11 @@ export const authOptions = {
       // );
       //passing user.id  to the token
       if (user) {
+        console.log(user);
         return {
           ...token,
           id: user.id,
+          problems: user.problems,
         };
       }
 
@@ -97,6 +100,7 @@ export const authOptions = {
             ...session.user,
             id: token.id,
             name: token.name,
+            problems: token.problems,
           },
         };
       }
