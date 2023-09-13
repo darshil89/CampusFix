@@ -24,8 +24,10 @@ function MainHeader() {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Image src="/images/dsceLogo.png" alt="logo" width={200} height={100} />
-        <Link href="/">DSCE</Link>
+        <Image src="/images/logo.svg" 
+        className="ml-12"
+        alt="logo" width={100} height={100} />
+        <Link href="/" className="ml-3">DSCE</Link>
       </div>
 
       <div className={classes.lists}>
