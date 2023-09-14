@@ -19,12 +19,12 @@ export const POST = async (request) => {
     const { title, content, buildingNumber, floorNumber, roomNumber } =
       body.data;
 
-      if(title === "" || title === null){
-        return NextResponse.json(
-          { error: "Please fill in the title" },
-          { status: 400 }
-        );
-      }
+    if (title === "" || title === null) {
+      return NextResponse.json(
+        { error: "Please fill in the title" },
+        { status: 400 }
+      );
+    }
 
     if (!title || !content || !buildingNumber || !floorNumber || !roomNumber) {
       return NextResponse.json(
@@ -40,7 +40,7 @@ export const POST = async (request) => {
       );
     }
 
-    if (Number(floorNumber) >10 ) {
+    if (Number(floorNumber) > 10) {
       return NextResponse.json(
         { error: "Please enter a valid floor number" },
         { status: 400 }
@@ -62,6 +62,7 @@ export const POST = async (request) => {
         floorNumber,
         roomNumber,
         userId: body.id,
+        name: body.name,
       },
     });
 

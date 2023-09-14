@@ -12,20 +12,22 @@ function MainHeader() {
   const email = session?.user?.email;
   const checkAdmin = email === "manasa3@gmail.com";
   const handleSignOut = () => {
-    toast.info("Logout Successfull", {
+    toast.info("Logging out", {
       autoClose: 4000,
     });
    setTimeout(() => {
     
      signOut();
-   }, 3000);
+   }, 2000);
   };
 
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Image src="/images/dsceLogo.png" alt="logo" width={200} height={100} />
-        <Link href="/">DSCE</Link>
+        <Image src="/images/logo.svg" 
+        className="ml-32"
+        alt="logo" width={100} height={100} />
+        <Link href="/" className="ml-6">DSCE</Link>
       </div>
 
       <div className={classes.lists}>

@@ -10,13 +10,12 @@ const Problem = async () => {
   const email = session?.user?.email;
   const id = session?.user?.id;
   const checkAdmin = email === "manasa3@gmail.com";
-  console.log("id hu me ",id);
+  const name = session?.user?.name;
 
   if (session && !checkAdmin) {
     return (
       <>
-        <h1>Hi {session?.user.name} , feel free to share your problem</h1>
-        <Problems id={id} />
+        <Problems id={id} name={name} />
       </>
     );
   }

@@ -18,7 +18,7 @@ const Dashboard = async () => {
     return (
       <>
         <h1 className="text-center text-5xl">Hi user {session?.user.name}</h1>
-        {session?.user.problems.map((item) => (
+        {session?.user.problems?.map((item) => (
           <div key={item.id}>
             <h2>{item.title}</h2>
             <p>ID: {item.id}</p>

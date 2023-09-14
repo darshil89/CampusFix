@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const getallProblems = async () => {
   const response = await fetch("http://localhost:3000/api/problems", {
+    method: "GET",
     next: {
       revalidate: 1,
     },
@@ -27,9 +28,9 @@ export default async function allProblems() {
     return (
       <>
         {problems.map((problem) => {
-           
           return (
             <Problem
+              name={problem.name}
               key={problem.id}
               title={problem.title}
               content={problem.content}
