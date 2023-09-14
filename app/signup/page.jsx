@@ -38,16 +38,7 @@ const SignUp = () => {
     return (
       <>
         <div className={classes.container}>
-          <div>
-            <Image
-              className="mx-auto h-10 w-auto"
-              width={200}
-              height={100}
-              src="/images/dsceLogo.png"
-              alt="Your Company"
-            />
-          </div>
-
+          
           <div>
             <h2 className={classes.heading}>Register</h2>
             <form onSubmit={registerUser}>

@@ -8,9 +8,7 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 
 const LoginIn = () => {
-  useEffect(() => {
-    toast.success("Welcome to DSCE");
-  }, []);
+  
 
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -40,16 +38,6 @@ const LoginIn = () => {
     return (
       <>
         <div className={classes.container}>
-          <div>
-            <Image
-              className="mx-auto h-10 w-auto"
-              width={200}
-              height={100}
-              src="/images/dsceLogo.png"
-              alt="Your Company"
-            />
-          </div>
-
           <div>
             <h2 className={classes.heading}>Sign In</h2>
             <form onSubmit={LoginUser}>
