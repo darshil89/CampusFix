@@ -16,7 +16,6 @@ export default function Problems(props) {
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
-    
 
     toast.info("on going", { autoClose: 5000 });
 
@@ -25,7 +24,7 @@ export default function Problems(props) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data, id , name }),
+      body: JSON.stringify({ data, id, name }),
     });
 
     const result = await res.json();
@@ -80,7 +79,7 @@ export default function Problems(props) {
         <textarea
           className={classes.textarea}
           type="text"
-          placeholder="content"
+          placeholder="Content"
           value={data.content}
           onChange={(e) => {
             setData({ ...data, content: e.target.value });

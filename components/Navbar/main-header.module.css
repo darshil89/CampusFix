@@ -7,11 +7,13 @@
 
   height: 7rem;
 
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to bottom right,
     #3da1edb9,
     rgb(255, 255, 255)
-  );
+  ); */
+
+  background-color:#3da1edb9 ;
 }
 
 .logo {
@@ -44,7 +46,7 @@
   margin-left: 2%;
   margin-right: 2%;
   text-decoration: none;
-  color: #000000b1;
+  color: rgba(255, 255, 255);
 }
 
 .btn {
