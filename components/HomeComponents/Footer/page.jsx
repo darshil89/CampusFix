@@ -1,12 +1,13 @@
 import React from "react";
-
+import Image from "next/image";
+import Link from "next/link";
 const Footer = () => {
   return (
     <>
       <>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Arsha Bootstrap Template - Index</title>
+
         <meta content="" name="description" />
         <meta content="" name="keywords" />
         {/* Favicons */}
@@ -47,16 +48,29 @@ const Footer = () => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-3 col-md-6 footer-contact">
-                  <h3>Arsha</h3>
+                  <div className="d-flex justify-content-between">
+                    <div className="flex-glow-1">
+                      <Image
+                        src="/images/logo.svg"
+                        alt="logo"
+                        width={60}
+                        height={60}
+                      />
+                    </div>
+                    <div className="flex-glow-1 mt-1 ml-1.5">
+                      <h4>Dayananda Sagar Colledge of Engineering</h4>
+                    </div>
+                  </div>
                   <p>
-                    A108 Adam Street <br />
-                    New York, NY 535022
+                    DAYANANDA SAGAR COLLEGE OF ENGINEERING,
                     <br />
-                    United States <br />
+                    SHAVIGE MALLESHWARA HILLS,
                     <br />
-                    <strong>Phone:</strong> +1 5589 55488 55
+                    KUMARSWAMY LAYOUT, BANGALORE - 560 111 <br />
                     <br />
-                    <strong>Email:</strong> info@example.com
+                    <strong>Phone:</strong> 9741882324, 9741889394, 9741214448
+                    <br />
+                    <strong>Email:</strong> admissions@dayanandasagar.edu
                     <br />
                   </p>
                 </div>
@@ -64,48 +78,35 @@ const Footer = () => {
                   <h4>Useful Links</h4>
                   <ul>
                     <li>
-                      <i className="bx bx-chevron-right" /> <a href="#">Home</a>
+                      <i className="bx bx-chevron-right" />{" "}
+                      <Link href="/">Home</Link>
                     </li>
                     <li>
                       <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">About us</a>
+                      <Link href="/dashboard">Dashboard</Link>``
                     </li>
                     <li>
                       <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Services</a>
-                    </li>
-                    <li>
-                      <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Terms of service</a>
-                    </li>
-                    <li>
-                      <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Privacy policy</a>
+                      <Link href="https://www.dsce.edu.in/about/leadership/principal-message">
+                        Principal Message
+                      </Link>
                     </li>
                   </ul>
                 </div>
                 <div className="col-lg-3 col-md-6 footer-links">
-                  <h4>Our Services</h4>
+                  <h4>Developer Team</h4>
                   <ul>
                     <li>
                       <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Web Design</a>
+                      <a href="#">Darshil Mahraur</a>
                     </li>
                     <li>
                       <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Web Development</a>
+                      <a href="#">Gautam Shorewala</a>
                     </li>
                     <li>
                       <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Product Management</a>
-                    </li>
-                    <li>
-                      <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Marketing</a>
-                    </li>
-                    <li>
-                      <i className="bx bx-chevron-right" />{" "}
-                      <a href="#">Graphic Design</a>
+                      <a href="#">Niruth Anand</a>
                     </li>
                   </ul>
                 </div>
@@ -140,7 +141,7 @@ const Footer = () => {
             <div className="copyright">
               © Copyright{" "}
               <strong>
-                <span>Arsha</span>
+                <span>DSCE</span>
               </strong>
               . All Rights Reserved
             </div>
