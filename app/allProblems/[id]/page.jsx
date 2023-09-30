@@ -1,49 +1,60 @@
-async function getProblem(id) {
-  const res = await fetch(`http://localhost:3000/api/problem/${id}`, {
-    cache: "no-cache",
-  });
-  if (!res.ok) {
-    return {
-      notFound: true,
+"use client";
+
+import { useEffect, useState } from "react";
+import { SyncLoader } from "react-spinners";
+export default function Problem({ params: { id } }) {
+  const [problem, setProblem] = useState(null);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch problem data
+        const problemRes = await fetch(
+          `http://localhost:3000/api/problem/${id}`,
+          {
+            cache: "no-cache",
+          }
+        );
+
+        if (!problemRes.ok) {
+          throw new Error("Problem not found");
+        }
+
+        const problemData = await problemRes.json();
+        setProblem(problemData);
+
+        // Fetch user data
+        const userRes = await fetch(
+          `http://localhost:3000/api/user/${problemData.problem.userId}`,
+          {
+            cache: "no-cache",
+          }
+        );
+
+        if (!userRes.ok) {
+          throw new Error("User not found");
+        }
+
+        const userData = await userRes.json();
+        setUser(userData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
+
+    fetchData();
+  }, [id]);
+
+  if (!problem || !user) {
+    return <SyncLoader className="text-center mt-10" color="#2e3634" />;
   }
-  const problem = await res.json();
-  return problem;
-}
 
-async function getUser(id) {
-  console.log("getUser id  = ", id);
-  const res = await fetch(`http://localhost:3000/api/user/${id}`, {
-    cache: "no-cache",
-  });
-  if (!res.ok) {
-    return {
-      notFound: true,
-    };
-  }
-  // console.log(" user k res = ", res);
-  const user = await res.json();
-  return user;
-}
+  const { title, content, floorNumber, roomNumber, buildingNumber, createdAt } =
+    problem.problem;
 
-export default async function Problem({ params: { id } }) {
-  console.log("id allProblem k 2nd function = ", id);
-  const { problem } = await getProblem(id);
+  const { name, email } = user.user;
 
-  const { user } = await getUser(problem.userId);
-  console.log("user = ", user);
-  console.log("problem of DP = ", problem);
-  const {
-    title,
-    content,
-    userId,
-    floorNumber,
-    roomNumber,
-    buildingNumber,
-    createdAt,
-  } = problem;
-
-  const { name, email } = user;
   return (
     <>
       <div className="text-xl">Problem</div>
