@@ -1,19 +1,49 @@
 const Card = () => {
   return (
     <>
-      <div className="card" style={{ width: "18rem" }}>
-        <img src="..." className="card-img-top" alt="..."></img>
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
-          </a>
+      {/* Problem and Solution Section */}
+      <section className="bg-primary py-16 px-8">
+        <div className="container mx-auto text-center">
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Left Side: Problem Statement with Image */}
+            <div
+              id="problem"
+              className="flex flex-col justify-center items-start"
+            >
+              <h1 className="text-4xl font-bold mb-8 text-white">
+                The Problem?
+              </h1>
+              <p className="text-lg text-left text-white">{problemStatement}</p>
+            </div>
+            <div className="md:flex md:justify-end md:items-center">
+              <img
+                src={Problem}
+                alt="Solution"
+                className="max-w-base md:w-3/4"
+              />
+            </div>
+
+            {/* Right Side: Proposed Solution with Image */}
+
+            <div id="solution" className="md:flex md:items-center">
+              <img
+                src={Solution}
+                alt="Solution"
+                className="max-w-base md:w-3/4"
+              />
+            </div>
+
+            <div className="flex flex-col justify-center items-end">
+              <h2 className="text-4xl font-bold mb-8 text-right text-white">
+                The Solution!
+              </h2>
+              <p className="text-lg text-right text-white">
+                {proposedSolution}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
