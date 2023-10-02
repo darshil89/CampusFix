@@ -15,7 +15,7 @@ export default function Problem({ params: { id } }) {
       try {
         // Fetch problem data
         const problemRes = await fetch(
-          `http://localhost:3000/api/problem/${id}`,
+          `/api/problem/${id}`,
           {
             cache: "no-cache",
           }
