@@ -3,15 +3,16 @@ import { NextResponse } from "next/server";
 import { connectToDb } from "@/utils";
 
 export async function GET(req) {
+  console.log("req of problem backend = ", req)
   const requ = String(req.url)
   const id = requ.replace("http://localhost:3000/api/problem/","")
   
 
   // const {
-  //   query: { id },
+  //   query: { ids },
   // } = req;
 
-  // console.log("backend wala id = ", id);
+  // console.log("backend wala id = ", ids);
   try {
     await connectToDb();
     const problem = await prisma.problem.findUnique({

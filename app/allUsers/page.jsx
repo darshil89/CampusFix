@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Users from "@/components/Users/Users";
 import { useState, useEffect } from "react";
 import { SyncLoader } from "react-spinners";
-const allUsers = () => {
+const AllUsers = () => {
   const { data: session, status } = useSession();
 
   const [data, setData] = useState([]);
@@ -50,4 +50,4 @@ const allUsers = () => {
   }
 };
 
-export default allUsers;
+export default AllUsers;

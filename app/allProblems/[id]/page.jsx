@@ -8,6 +8,7 @@ export default function Problem({ params: { id } }) {
   const [user, setUser] = useState(null);
   const { data: session, status } = useSession();
   const router = useRouter();
+  console.log("id of particular problem= ", id)
 
   useEffect(() => {
     const fetchData = async () => {

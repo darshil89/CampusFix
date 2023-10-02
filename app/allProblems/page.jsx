@@ -15,10 +15,10 @@ const getallProblems = async () => {
   return data;
 };
 
-export default async function allProblems() {
+export default async function AllProblems() {
   const problems = await getallProblems();
 
-  console.log("problems = ", problems);
+  // console.log("problems = ", problems);
 
   const session = await getServerSession(authOptions);
 
