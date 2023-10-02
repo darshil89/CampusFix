@@ -11,8 +11,8 @@ const Dashboard = async () => {
 
   const checkAdmin = email === "manasa3@gmail.com";
   // console.log("checkAdmin", checkAdmin);
-  console.log("session dashboard", session);
-  console.log("id of user in main dashboard", session?.user.id);
+  // console.log("session dashboard", session);
+  // console.log("id of user in main dashboard", session?.user.id);
 
   if (!checkAdmin && session) {
     return (

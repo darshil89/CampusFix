@@ -8,7 +8,7 @@ const getallProblems = async () => {
   const response = await fetch("http://localhost:3000/api/problems", {
     method: "GET",
     next: {
-      revalidate: 1,
+      revalidate: 0,
     },
   });
   const data = await response.json();
@@ -21,6 +21,7 @@ export default async function allProblems() {
   console.log("problems = ", problems);
 
   const session = await getServerSession(authOptions);
+
   if (typeof window !== "undefined") return null;
 
   if (!session) redirect("/signin");
