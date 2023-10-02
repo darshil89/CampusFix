@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 import { connectToDb } from "@/utils";
 
 export async function GET(req) {
-  console.log("req of problem backend = ", req)
-  const requ = String(req.url)
-  const id = requ.replace("http://localhost:3000/api/problem/","")
-  
+  console.log("req of problem backend = ", req.nextUrl);
+  console.log("req.url of problem backend = ", req.nextUrl.pathname);
+  const requ = String(req.url);
+  const id = requ.replace("http://localhost:3000/api/problem/", "");
 
   // const {
   //   query: { ids },
