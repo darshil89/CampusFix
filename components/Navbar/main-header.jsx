@@ -6,7 +6,6 @@ import classes from "./main-header.module.css";
 import Image from "next/image";
 import { toast } from "react-toastify";
 function MainHeader() {
-  
   const { data: session, status } = useSession();
   console.log("nav bar wala session ", session);
   const email = session?.user?.email;
@@ -15,19 +14,24 @@ function MainHeader() {
     toast.info("Logging out", {
       autoClose: 4000,
     });
-   setTimeout(() => {
-    
-     signOut();
-   }, 2000);
+    setTimeout(() => {
+      signOut();
+    }, 2000);
   };
 
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Image src="/images/logo.svg" 
-        className="ml-32"
-        alt="logo" width={100} height={100} />
-        <Link href="/" className="ml-6">DSCE</Link>
+        <Image
+          src="/images/logo.svg"
+          className="ml-32"
+          alt="logo"
+          width={100}
+          height={100}
+        />
+        <Link href="/" className="ml-6">
+          DSCE
+        </Link>
       </div>
 
       <div className={classes.lists}>
@@ -56,6 +60,7 @@ function MainHeader() {
           <>
             <Link href="/dashboard">Dashboard</Link>
             <Link href="problemStatement"> Problem </Link>
+            <Link href="/feedback">Feedback</Link>
             <button className={classes.btn} onClick={handleSignOut}>
               Sign Out
             </button>
