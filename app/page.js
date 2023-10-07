@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import Carousel from "@/components/HomeComponents/Carousel/page";
 import Card from "@/components/HomeComponents/Card/page";
-import Footer from "@/components/HomeComponents/Footer/page";
+// import Footer from "@/components/HomeComponents/Footer/page";
 import { toast } from "react-toastify";
 export default function Home() {
   useEffect(() => {
@@ -25,7 +25,6 @@ export default function Home() {
         referrerPolicy="no-referrer-when-downgrade"
         className="w-full mb-10"
       ></iframe>
-      <Footer />
     </>
   );
 }
