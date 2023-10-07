@@ -2,27 +2,43 @@
 import { useState } from "react";
 import classes from "./feedback.module.css";
 import { toast } from "react-toastify";
-import { useSession } from "next-auth/react";
 export default function Feedback(props) {
   const id = props.id;
   const name = props.name;
+  const [problems, setProblems] = useState([]);
   const [data, setData] = useState({
-    title: "",
+    problemId: "",
     description: "",
     check: "",
   });
+
+  const getProblem = async () => {
+    const res = await fetch(`http://localhost:3000/api/user/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await res.json();
+    setProblems(result.user.problems);
+    if (result.error) {
+      toast.error(result.error);
+      return;
+    }
+  };
+  getProblem();
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
 
     toast.info("on going", { autoClose: 5000 });
 
-    const res = await fetch("/api/problems", {
+    const res = await fetch("/api/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data, id, name }),
+      body: JSON.stringify({ data, id }),
     });
 
     const result = await res.json();
@@ -31,10 +47,10 @@ export default function Feedback(props) {
       toast.error(result.error);
       return;
     }
-    toast.success("Problem Added", { autoClose: 4000 });
+    toast.success("feedback Added", { autoClose: 4000 });
     console.log("result  =  ", result);
     setData({
-      title: "",
+      problemId: "",
       content: "",
       buildingNumber: "",
       floorNumber: "",
@@ -46,30 +62,28 @@ export default function Feedback(props) {
       <div className={classes.box1}>
         <label className={classes.label}> Select Problem</label>
         <select
-          id="title"
-          name="title"
+          id="problemId"
+          name="problemId"
           className={classes.select}
           placeholder="Problem name"
-          value={data.title}
+          value={data.problemId}
           onChange={(e) => {
-            setData({ ...data, title: e.target.value });
+            setData({ ...data, problemId: e.target.value });
           }}
         >
           <option className={classes.option} value="null">
             Problem Name{" "}
           </option>
-          <option className={classes.option} value="Electrical">
-            Electrical
-          </option>
-          <option className={classes.option} value="Carpentary">
-            Carpentary
-          </option>
-          <option className={classes.option} value="Plumber">
-            Plumber
-          </option>
-          <option className={classes.option} value="other">
-            other
-          </option>
+
+          {problems.map((problems) => (
+            <option
+              className={classes.option}
+              key={problems.id} // Use a unique identifier as the key
+              value={problems.id} // Use a unique identifier as the value
+            >
+              {problems.content} {/* Display the 'content' property */}
+            </option>
+          ))}
         </select>
       </div>
       <div className={classes.box2}>
@@ -89,8 +103,8 @@ export default function Feedback(props) {
         {/* <label className={classes.label}>Location</label> */}
         <label className={classes.label}> Status</label>
         <select
-          id="title"
-          name="title"
+          id="problemId"
+          name="problemId"
           className={classes.select}
           placeholder="Status"
           value={data.check}

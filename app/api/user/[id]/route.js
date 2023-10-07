@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import { connectToDb } from "@/utils";
 
 export const GET = async (req) => {
-  
   const requ = String(req.url);
   const id = requ.replace("http://localhost:3000/api/user/", "");
 
@@ -12,6 +11,9 @@ export const GET = async (req) => {
     const user = await prisma.user.findUnique({
       where: {
         id: id,
+      },
+      include: {
+        problems: true,
       },
     });
 
