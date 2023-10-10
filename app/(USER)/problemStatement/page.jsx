@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import Feedback from "@/components/feedbackForm/page";
+import Problems from "@/components/problemForm/page";
 const Problem = async () => {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
@@ -15,7 +15,7 @@ const Problem = async () => {
   if (session && !checkAdmin) {
     return (
       <>
-        <Feedback id={id} name={name} />
+        <Problems id={id} name={name} />
       </>
     );
   }
