@@ -3,6 +3,7 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import UserDashboard from "@/components/dashboard/userDashboard";
 import AdminDashboard from "@/components/dashboard/adminDashboard";
+import CopyButton from "@/components/copyButton/page";
 const Dashboard = async () => {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
@@ -21,7 +22,10 @@ const Dashboard = async () => {
         {session?.user.problems?.map((item) => (
           <div key={item.id}>
             <h2>{item.title}</h2>
-            <p>ID: {item.id}</p>
+            <div className="flex flex-row ">
+              <p>ID: {item.id}</p>
+              <CopyButton textToCopy={item.id} />
+            </div>
             <p>Created At: {item.createdAt}</p>
             <p>Updated At: {item.updatedAt}</p>
             <p>Content: {item.content}</p>

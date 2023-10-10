@@ -4,29 +4,11 @@ import classes from "./feedback.module.css";
 import { toast } from "react-toastify";
 export default function Feedback(props) {
   const id = props.id;
-  const name = props.name;
-  const [problems, setProblems] = useState([]);
   const [data, setData] = useState({
     problemId: "",
     description: "",
     check: "",
   });
-
-  const getProblem = async () => {
-    const res = await fetch(`http://localhost:3000/api/user/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const result = await res.json();
-    setProblems(result.user.problems);
-    if (result.error) {
-      toast.error(result.error);
-      return;
-    }
-  };
-  getProblem();
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
@@ -51,40 +33,24 @@ export default function Feedback(props) {
     console.log("result  =  ", result);
     setData({
       problemId: "",
-      content: "",
-      buildingNumber: "",
-      floorNumber: "",
-      roomNumber: "",
+      description: "",
+      check: "",
     });
   };
   return (
     <form className={classes.form} onSubmit={SubmitHandler}>
       <div className={classes.box1}>
-        <label className={classes.label}> Select Problem</label>
-        <select
+        <label className={classes.label}> Problem Id</label>
+        <input
           id="problemId"
           name="problemId"
           className={classes.select}
-          placeholder="Problem name"
+          placeholder="Problem Id"
           value={data.problemId}
           onChange={(e) => {
             setData({ ...data, problemId: e.target.value });
           }}
-        >
-          <option className={classes.option} value="null">
-            Problem Name{" "}
-          </option>
-
-          {problems.map((problems) => (
-            <option
-              className={classes.option}
-              key={problems.id} // Use a unique identifier as the key
-              value={problems.id} // Use a unique identifier as the value
-            >
-              {problems.content} {/* Display the 'content' property */}
-            </option>
-          ))}
-        </select>
+        />
       </div>
       <div className={classes.box2}>
         {/* <label className={classes.label}>content</label> */}
