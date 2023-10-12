@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Problem from "@/components/Problems/Problem";
-import Link from "next/link";
+
 
 const getallProblems = async () => {
   const response = await fetch("http://localhost:3000/api/problems", {

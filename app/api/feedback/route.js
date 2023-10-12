@@ -30,3 +30,13 @@ export const POST = async (request) => {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 };
+
+export const GET = async () => {
+  try {
+    await connectToDb();
+    const feedbacks = await prisma.feedback.findMany();
+    return NextResponse.json(feedbacks, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 402 });
+  }
+};

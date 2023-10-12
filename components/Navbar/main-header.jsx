@@ -5,9 +5,10 @@ import { signOut } from "next-auth/react";
 import classes from "./main-header.module.css";
 import Image from "next/image";
 import { toast } from "react-toastify";
+
 function MainHeader() {
   const { data: session, status } = useSession();
-  console.log("nav bar wala session ", session);
+  // console.log("nav bar wala session ", session);
   const email = session?.user?.email;
   const checkAdmin = email === "manasa3@gmail.com";
   const handleSignOut = () => {
@@ -41,6 +42,7 @@ function MainHeader() {
             <Link href="/dashboard">Dashboard</Link>
             <Link href="/allUsers">Users</Link>
             <Link href="/allProblems">Problems</Link>
+            <Link href="/AdminFeedback">Feedback</Link>
             <button className={classes.btn} onClick={handleSignOut}>
               Sign Out
             </button>

@@ -11,21 +11,21 @@ datasource db {
 }
 
 model User {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  name     String
-  email    String    @unique
-  password String
-  problems Problem[]
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String     @unique
+  password  String
+  problems  Problem[]
   feedbacks Feedback[]
 }
 
-model Feedback{
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  problemId      String   @db.ObjectId
-  description    String
-  check          String
-  userId         String   @db.ObjectId
-  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)         
+model Feedback {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  problemId   String @db.ObjectId
+  description String
+  check       String
+  userId      String @db.ObjectId
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Problem {
