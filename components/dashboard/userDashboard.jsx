@@ -13,10 +13,10 @@ const getAllProblem = async () => {
 
 export default async function UserDashboard() {
   const problems = await getAllProblem();
-  console.log("problems = ", problems);
+  // console.log("problems = ", problems);
   return (
     <>
-      <h1 className="text-lg">User</h1>
+      <h1 className="text-2xl font-bold">User</h1>
       {problems.map((item) => {
         return (
           <div key={item.id}>

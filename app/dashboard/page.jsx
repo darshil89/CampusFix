@@ -16,22 +16,7 @@ const Dashboard = async () => {
     return (
       <>
         <h1 className="text-center text-5xl">Hi user {session?.user.name}</h1>
-        {/* {session?.user.problems?.map((item) => (
-          <div key={item.id}>
-            <h2>{item.title}</h2>
-            <div className="flex flex-row ">
-              <p>ID: {item.id}</p>
-              <CopyButton textToCopy={item.id} />
-            </div>
-            <p>Created At: {item.createdAt}</p>
-            <p>Updated At: {item.updatedAt}</p>
-            <p>Content: {item.content}</p>
-            <p>Building Number: {item.buildingNumber}</p>
-            <p>Room Number: {item.roomNumber}</p>
-            <p>Floor Number: {item.floorNumber}</p>
-            <p>User ID: {item.userId}</p>
-          </div>
-        ))} */}
+       
 
         <UserDashboard />
       </>
