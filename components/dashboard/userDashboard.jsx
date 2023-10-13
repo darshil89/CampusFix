@@ -1,8 +1,10 @@
 import CopyButton from "../copyButton/page";
 
-const getAllProblem = async () => {
-  const res = await fetch("http://localhost:3000/api/problems", {
-    method: "GET",
+const getAllProblem = async (props) => {
+  // console.log("props = ", props);s
+  const res = await fetch("http://localhost:3000/api/userProblem", {
+    method: "POST",
+    body: JSON.stringify({ props }),
     next: {
       revalidate: 0,
     },
@@ -11,12 +13,13 @@ const getAllProblem = async () => {
   return data;
 };
 
-export default async function UserDashboard() {
-  const problems = await getAllProblem();
+export default async function UserDashboard(props) {
+  const email = props.email;
+  const problems = await getAllProblem(email);
   // console.log("problems = ", problems);
   return (
     <>
-      <h1 className="text-2xl font-bold">User</h1>
+      <h1 className="text-2xl text-bold">User</h1>
       {problems.map((item) => {
         return (
           <div key={item.id}>
@@ -32,6 +35,7 @@ export default async function UserDashboard() {
             <p>Room Number: {item.roomNumber}</p>
             <p>Floor Number: {item.floorNumber}</p>
             <p>User ID: {item.userId}</p>
+            <p>Ststus :{item.status}</p>
             <br />
             <br />
           </div>

@@ -18,7 +18,7 @@ const Dashboard = async () => {
         <h1 className="text-center text-5xl">Hi user {session?.user.name}</h1>
        
 
-        <UserDashboard />
+        <UserDashboard email={session?.user.email}/>
       </>
     );
   } else if (checkAdmin && session) {

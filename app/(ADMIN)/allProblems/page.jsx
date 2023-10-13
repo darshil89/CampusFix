@@ -38,6 +38,7 @@ export default async function AllProblems() {
               content={problem.content}
               userId={problem.userId}
               problemId={problem.id}
+              status={problem.status}
             />
           );
         })}

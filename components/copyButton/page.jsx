@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
-
+import { RxCopy } from "react-icons/rx";
 const CopyButton = ({ textToCopy }) => {
   const [isCopied, setIsCopied] = useState(false);
 
@@ -32,8 +31,15 @@ const CopyButton = ({ textToCopy }) => {
   return (
     <div>
       <button className="ml-3" onClick={handleCopyClick}>
-        <img src="/images/copy(1).png" alt="copy" width={10} height={10} />
-        {isCopied ? "Copied!" : "Copy"}
+        {/* <TbCopy /> */}
+
+        {isCopied ? (
+          <span className="inline-flex text-l leading-5 font-semibold rounded-full  text-green-600">
+            copied!
+          </span>
+        ) : (
+          <RxCopy />
+        )}
       </button>
     </div>
   );

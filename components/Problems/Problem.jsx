@@ -5,6 +5,7 @@ import Link from "next/link";
 const Problem = (props) => {
   console.log("props = ", props);
   const title = props.title;
+  const status = props.status;
   const content = props.content;
   const problemId = props.problemId;
   const userId = props.userId;
@@ -29,14 +30,33 @@ const Problem = (props) => {
               <p className="mt-1 truncate text-xs leading-5 text-gray-500">
                 by-{name}
               </p>
+              <p>
+                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  {status}
+                </span>
+              </p>
             </div>
           </div>
-          <Link
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-4  rounded"
-            href={`/allProblems/${problemId}`}
-          >
-            View
-          </Link>
+          <div>
+            <Link
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+              href={`/allProblems/${problemId}`}
+            >
+              View
+            </Link>
+            <Link
+              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+              href={`/allProblems/${problemId}`}
+            >
+              Approve
+            </Link>
+            <Link
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              href={`/allProblems/${problemId}`}
+            >
+              Reject
+            </Link>
+          </div>
         </li>
         <div></div>
       </ul>
