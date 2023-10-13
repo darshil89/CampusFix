@@ -38,6 +38,7 @@ model Problem {
   roomNumber     String
   floorNumber    String
   name           String
+  status         String
   userId         String   @db.ObjectId
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

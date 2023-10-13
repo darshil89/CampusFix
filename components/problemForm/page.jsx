@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 export default function Problems(props) {
   const id = props.id;
   const name = props.name;
+  const status = props.status;
+
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -19,16 +21,17 @@ export default function Problems(props) {
 
     toast.info("on going", { autoClose: 5000 });
 
-    const res = await fetch("/api/problems", {
+    const res = await fetch("http://localhost:3000/api/problems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data, id, name }),
+      body: JSON.stringify({ data, id, name, status }),
     });
 
     const result = await res.json();
-    console.log("result  =  ", result);
+    // console.log("result  =  ", result);
+    console.log(result.error);
     if (result.error) {
       toast.error(result.error);
       return;

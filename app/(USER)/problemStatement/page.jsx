@@ -11,11 +11,12 @@ const Problem = async () => {
   const id = session?.user?.id;
   const checkAdmin = email === "manasa3@gmail.com";
   const name = session?.user?.name;
+  const status = "pending";
 
   if (session && !checkAdmin) {
     return (
       <>
-        <Problems id={id} name={name} />
+        <Problems id={id} name={name} status={status} />
       </>
     );
   }

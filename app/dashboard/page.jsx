@@ -50,13 +50,4 @@ const Dashboard = async () => {
     redirect("/signin");
   }
 };
-
-export async function getServerSideProps(context) {
-  return {
-    props: {
-      session: await getServerSession(context.req, context.res, authOptions),
-    },
-  };
-}
-
 export default Dashboard;

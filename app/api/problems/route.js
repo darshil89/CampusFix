@@ -16,6 +16,7 @@ export const POST = async (request) => {
   try {
     await connectToDb();
     const body = await request.json();
+    console.log("body", body);
     const { title, content, buildingNumber, floorNumber, roomNumber } =
       body.data;
 
@@ -61,14 +62,15 @@ export const POST = async (request) => {
         buildingNumber,
         floorNumber,
         roomNumber,
-        userId: body.id,
         name: body.name,
+        status: body.status,
+        userId: body.id,
       },
     });
 
     // console.log("api problem", problem);
     return NextResponse.json(problem, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ message: error.message }, { status: 500 });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 };
