@@ -11,15 +11,12 @@ const Dashboard = async () => {
   const email = session?.user?.email;
 
   const checkAdmin = email === "manasa3@gmail.com";
-  // console.log("checkAdmin", checkAdmin);
-  // console.log("session dashboard", session);
-  // console.log("id of user in main dashboard", session?.user.id);
 
   if (!checkAdmin && session) {
     return (
       <>
         <h1 className="text-center text-5xl">Hi user {session?.user.name}</h1>
-        {session?.user.problems?.map((item) => (
+        {/* {session?.user.problems?.map((item) => (
           <div key={item.id}>
             <h2>{item.title}</h2>
             <div className="flex flex-row ">
@@ -34,7 +31,7 @@ const Dashboard = async () => {
             <p>Floor Number: {item.floorNumber}</p>
             <p>User ID: {item.userId}</p>
           </div>
-        ))}
+        ))} */}
 
         <UserDashboard />
       </>
