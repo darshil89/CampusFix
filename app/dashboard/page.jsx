@@ -2,7 +2,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import UserDashboard from "@/components/dashboard/userDashboard";
-import AdminDashboard from "@/components/dashboard/adminDashboard";
 import CopyButton from "@/components/copyButton/page";
 const Dashboard = async () => {
   const session = await getServerSession(authOptions);
@@ -18,7 +17,6 @@ const Dashboard = async () => {
         <h1 className="text-center text-5xl">Hi user {session?.user.name}</h1>
        
 
-        <UserDashboard email={session?.user.email}/>
       </>
     );
   } else if (checkAdmin && session) {

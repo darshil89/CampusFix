@@ -39,9 +39,8 @@ function MainHeader() {
         <Link href="/">Home</Link>
         {checkAdmin && (
           <>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/allProblems">Dashboard</Link>
             <Link href="/allUsers">Users</Link>
-            <Link href="/allProblems">Problems</Link>
             <Link href="/AdminFeedback">Feedback</Link>
             <button className={classes.btn} onClick={handleSignOut}>
               Sign Out
