@@ -41,8 +41,7 @@ export default async function UserDashboard(props) {
             <p>Building Number: {item.buildingNumber}</p>
             <p>Room Number: {item.roomNumber}</p>
             <p>Floor Number: {item.floorNumber}</p>
-            <p>User ID: {item.userId}</p>
-            <p>Ststus :{item.status}</p>
+            <p>Status :{item.status}</p>
             <br />
             <br />
           </div>
