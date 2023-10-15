@@ -72,6 +72,7 @@ export default function Problems(props) {
       floorNumber: "",
       roomNumber: "",
     });
+    setFile([]);
   };
   return (
     <form className={classes.form} onSubmit={SubmitHandler}>
