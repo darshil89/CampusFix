@@ -23,7 +23,7 @@ const Dashboard = async () => {
     return (
       <>
         <h1 className="text-center text-5xl">Hi admin {session?.user.name}</h1>
-        <AdminDashboard id={session?.user.id} />
+        
       </>
     );
   } else {
