@@ -8,18 +8,15 @@ export default function Problem({ params: { id } }) {
   const [user, setUser] = useState(null);
   const { data: session, status } = useSession();
   const router = useRouter();
-  console.log("id of particular problem= ", id)
+  console.log("id of particular problem= ", id);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch problem data
-        const problemRes = await fetch(
-          `/api/problem/${id}`,
-          {
-            cache: "no-cache",
-          }
-        );
+        const problemRes = await fetch(`/api/problem/${id}`, {
+          cache: "no-cache",
+        });
 
         if (!problemRes.ok) {
           throw new Error("Problem not found");
@@ -65,11 +62,29 @@ export default function Problem({ params: { id } }) {
 
     const { name, email } = user.user;
 
+    const timestamp = createdAt // Assuming it's a string
+
+    const date = new Date(timestamp);
+
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZoneName: "short",
+    };
+
+    const formattedDate = date.toLocaleDateString("en-US", options);
+
+    
+
     return (
       <>
         <div className="text-xl">Problem</div>
         <div>My Problem id is = {id}</div>
-        <div>Time = {createdAt}</div>
+        <div>Time = {formattedDate}</div>
         <div>My Problem title is = {title}</div>
         <div>My Problem content is = {content}</div>
         <div>My Problem floorNumber is = {floorNumber}</div>
