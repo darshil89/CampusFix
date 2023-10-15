@@ -20,7 +20,7 @@ export const POST = async (request) => {
   try {
     await connectToDb();
     const body = await request.json();
-    console.log("body", body);
+    // console.log("body", body);
     const { title, content, buildingNumber, floorNumber, roomNumber } =
       body.data;
 
@@ -72,7 +72,7 @@ export const POST = async (request) => {
       },
     });
 
-    // console.log("api problem", problem);
+    
     return NextResponse.json(problem, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

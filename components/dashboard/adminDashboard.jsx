@@ -14,7 +14,7 @@ const getallProblems = async () => {
 
 const getSpecificProblem = async (status) => {
   
-  console.log("status = ", status);
+  // console.log("status = ", status);
   const res = await fetch("http://localhost:3000/api/allProblems", {
     method: "POST",
     body: JSON.stringify({
@@ -33,7 +33,7 @@ export default async function AdminDashboard() {
   const problems = await getallProblems();
 
   const spefificProblem = await getSpecificProblem("pending");
-  console.log("spefificProblem = ", spefificProblem);
+  // console.log("spefificProblem = ", spefificProblem);
 
   return (
     <>

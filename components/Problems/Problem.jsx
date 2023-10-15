@@ -10,10 +10,41 @@ const Problem = (props) => {
   const problemId = props.problemId;
   const userId = props.userId;
   const name = props.name;
-  console.log("problemId = ", problemId);
-  console.log("userId = ", userId);
-  console.log("title = ", title);
-  console.log("content = ", content);
+
+  const handlerApprove = async (problemId) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/allProblems", {
+        method: "PUT",
+        body: JSON.stringify({
+          problemId: problemId,
+          status: "approved",
+        }),
+      });
+      if (response.status === 200) {
+        alert("Problem Approved");
+      }
+    } catch (error) {
+      console.log("error in updating = ", error);
+    }
+  };
+
+  const handlerReject = async (problemId) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/allProblems", {
+        method: "PUT",
+        body: JSON.stringify({
+          problemId: problemId,
+          status: "rejected",
+        }),
+      });
+      if (response.status === 200) {
+        alert("Problem Rejected");
+      }
+    } catch (error) {
+      console.log("error in updating = ", error);
+    }
+  };
+
   return (
     <>
       <ul role="list" className="divide-y divide-gray-100 w-1/2 ml-60">
@@ -44,18 +75,18 @@ const Problem = (props) => {
             >
               View
             </Link>
-            <Link
+            <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
-              href={`/allProblems/${problemId}`}
+              onClick={() => handlerApprove(problemId)}
             >
               Approve
-            </Link>
-            <Link
+            </button>
+            <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              href={`/allProblems/${problemId}`}
+              onClick={() => handlerReject(problemId)}
             >
               Reject
-            </Link>
+            </button>
           </div>
         </li>
         <div></div>

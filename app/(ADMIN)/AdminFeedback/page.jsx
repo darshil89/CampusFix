@@ -17,8 +17,7 @@ const getAllFeedback = async () => {
 
 export default async function AdminFeedback() {
   const feedbacks = await getAllFeedback();
-  // console.log("hi");
-  // console.log("feedback = ", feedbacks);
+
 
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;

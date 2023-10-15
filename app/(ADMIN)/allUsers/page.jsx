@@ -31,7 +31,7 @@ const AllUsers = () => {
       return <h1>No data</h1>;
     }
 
-    console.log("data = ", data);
+    // console.log("data = ", data);
     return (
       <>
         <h1 className="text-center">All Users</h1>

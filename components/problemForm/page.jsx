@@ -30,14 +30,14 @@ export default function Problems(props) {
     });
 
     const result = await res.json();
-    // console.log("result  =  ", result);
+    
     console.log(result.error);
     if (result.error) {
       toast.error(result.error);
       return;
     }
     toast.success("Problem Added", { autoClose: 4000 });
-    console.log("result  =  ", result);
+    // console.log("result  =  ", result);
     setData({
       title: "",
       content: "",
