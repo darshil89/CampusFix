@@ -1,6 +1,6 @@
 "use client";
 import { AiOutlineUser } from "react-icons/ai";
-
+import { toast } from "react-toastify";
 import Link from "next/link";
 const Problem = (props) => {
   // console.log("props = ", props);
@@ -20,8 +20,10 @@ const Problem = (props) => {
           status: "approved",
         }),
       });
-      if (response.status === 200) {
-        alert("Problem Approved");
+      if (response.ok) {
+        toast.success("Problem Approved");
+      } else {
+        toast.error("Problem not approved");
       }
     } catch (error) {
       console.log("error in updating = ", error);
@@ -37,8 +39,10 @@ const Problem = (props) => {
           status: "rejected",
         }),
       });
-      if (response.status === 200) {
-        alert("Problem Rejected");
+      if (response.ok) {
+        toast.success("Problem Rejected");
+      } else {
+        toast.error("Problem not rejected");
       }
     } catch (error) {
       console.log("error in updating = ", error);

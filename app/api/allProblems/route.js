@@ -43,8 +43,7 @@ export const PUT = async (request) => {
         status: body.status,
       },
     });
-    console.log("problem = ", problem);
-    return NextResponse.json(problem, { status: 200 });
+    return NextResponse.json(newProblem, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
