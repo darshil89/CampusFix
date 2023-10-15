@@ -16,7 +16,7 @@ const getAllProblem = async (props) => {
 export default async function UserDashboard(props) {
   const email = props.email;
   const problems = await getAllProblem(email);
-  // console.log("problems = ", problems);
+  console.log("problems = ", problems);
   return (
     <>
       <h1 className="text-2xl text-bold">User</h1>
@@ -42,6 +42,7 @@ export default async function UserDashboard(props) {
             <p>Room Number: {item.roomNumber}</p>
             <p>Floor Number: {item.floorNumber}</p>
             <p>Status :{item.status}</p>
+            
             <br />
             <br />
           </div>
