@@ -41,6 +41,7 @@ model Problem {
   status         String
   userId         String   @db.ObjectId
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  image          String[]
 }
 
 model Admin {

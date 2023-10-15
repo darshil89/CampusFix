@@ -6,9 +6,9 @@ export const GET = async () => {
   try {
     await connectToDb();
     const problems = await prisma.problem.findMany({
-      where:{
-        status: "pending"
-      }
+      where: {
+        status: "pending",
+      },
     });
     return NextResponse.json(problems, { status: 200 });
   } catch (error) {
@@ -69,10 +69,10 @@ export const POST = async (request) => {
         name: body.name,
         status: body.status,
         userId: body.id,
+        image: body.uploadedImageUrls,
       },
     });
 
-    
     return NextResponse.json(problem, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
