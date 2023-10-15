@@ -3,7 +3,7 @@ import { AiOutlineUser } from "react-icons/ai";
 
 import Link from "next/link";
 const Problem = (props) => {
-  console.log("props = ", props);
+  // console.log("props = ", props);
   const title = props.title;
   const status = props.status;
   const content = props.content;
