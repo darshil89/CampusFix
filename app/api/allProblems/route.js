@@ -34,7 +34,7 @@ export const PUT = async (request) => {
     await connectToDb();
 
     const body = await request.json();
-    console.log("body = ", body);
+    // console.log("body = ", body);
     const newProblem = await prisma.problem.update({
       where: {
         id: body.problemId,
