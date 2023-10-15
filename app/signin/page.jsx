@@ -32,7 +32,7 @@ const LoginIn = () => {
       toast.success("Login Successful");
     }
 
-    router.push("/dashboard");
+    router.push("/allProblems");
   };
   if (!session) {
     return (
