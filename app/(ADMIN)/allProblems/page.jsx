@@ -33,26 +33,30 @@ const getSpecificProblem = async (status) => {
 };
 
 export default async function AdminDashboard() {
+  const session = await getServerSession(authOptions);
+  if (typeof window !== "undefined") return null;
+  if (!session) redirect("/signin");
   const problems = await getallProblems();
 
   const spefificProblem = await getSpecificProblem("pending");
   // console.log("spefificProblem = ", spefificProblem);
-
-  return (
-    <>
-      {problems.map((problem) => {
-        return (
-          <Problem
-            name={problem.name}
-            key={problem.id}
-            title={problem.title}
-            content={problem.content}
-            userId={problem.userId}
-            problemId={problem.id}
-            status={problem.status}
-          />
-        );
-      })}
-    </>
-  );
+  if (session) {
+    return (
+      <>
+        {problems.map((problem) => {
+          return (
+            <Problem
+              name={problem.name}
+              key={problem.id}
+              title={problem.title}
+              content={problem.content}
+              userId={problem.userId}
+              problemId={problem.id}
+              status={problem.status}
+            />
+          );
+        })}
+      </>
+    );
+  }
 }

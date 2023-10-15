@@ -48,7 +48,7 @@ function MainHeader() {
           </>
         )}
 
-        {/* {!session && <Link href="/admin">Admin</Link>} */}
+        
 
         {!session && (
           <>
