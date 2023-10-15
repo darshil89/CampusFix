@@ -1,5 +1,5 @@
 import CopyButton from "../copyButton/page";
-
+import Time from "../date/Time";
 const getAllProblem = async (props) => {
   // console.log("props = ", props);s
   const res = await fetch("http://localhost:3000/api/userProblem", {
@@ -28,14 +28,20 @@ export default async function UserDashboard(props) {
               <p>ID: {item.id}</p>
               <CopyButton textToCopy={item.id} />
             </div>
-            <p>Created At: {item.createdAt}</p>
-            <p>Updated At: {item.updatedAt}</p>
+            <div className="flex">
+              <div>Created At : </div>
+              <Time createdAt={item.createdAt} />
+            </div>
+            <div className="flex">
+              <div>Updated At : </div>
+              <Time createdAt={item.updatedAt} />
+            </div>
+
             <p>Content: {item.content}</p>
             <p>Building Number: {item.buildingNumber}</p>
             <p>Room Number: {item.roomNumber}</p>
             <p>Floor Number: {item.floorNumber}</p>
-            <p>User ID: {item.userId}</p>
-            <p>Ststus :{item.status}</p>
+            <p>Status :{item.status}</p>
             <br />
             <br />
           </div>

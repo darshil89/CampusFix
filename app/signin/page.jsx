@@ -8,9 +8,10 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 
 const LoginIn = () => {
-  
-
   const { data: session, status } = useSession();
+  const email = session?.user?.email;
+  const checkAdmin = email === "manasa3@gmail.com";
+
   const router = useRouter();
   const [data, setData] = useState({
     email: "",
@@ -19,7 +20,7 @@ const LoginIn = () => {
 
   const LoginUser = async (e) => {
     e.preventDefault();
-    toast.info("Logging in", { autoClose: 7000 });
+    toast.info("Logging in", { autoClose: 4500 });
 
     const res = await signIn("credentials", {
       ...data,
@@ -28,11 +29,13 @@ const LoginIn = () => {
     console.log("res = ", res);
     if (res.error) {
       toast.error("Invalid Credentials");
-    } else {
+    } else if (res.ok) {
       toast.success("Login Successful");
+    } else if (!checkAdmin) {
+      router.push("/dashboard");
+    } else {
+      router.push("/allProblems");
     }
-
-    router.push("/allProblems");
   };
   if (!session) {
     return (
@@ -89,6 +92,12 @@ const LoginIn = () => {
         </div>
       </>
     );
+  } else {
+    if (!checkAdmin) {
+      router.push("/dashboard");
+    } else {
+      router.push("/allProblems");
+    }
   }
 };
 

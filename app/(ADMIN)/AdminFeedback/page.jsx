@@ -18,7 +18,6 @@ const getAllFeedback = async () => {
 export default async function AdminFeedback() {
   const feedbacks = await getAllFeedback();
 
-
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
   const email = session?.user?.email;
@@ -26,22 +25,21 @@ export default async function AdminFeedback() {
   if (!session && email !== "manasa3@gmail.com") redirect("/signin");
   return (
     <>
-      {
-        feedbacks.map((feedback) => {
-          return (
-            <div>
-              <h1>{feedback.id}</h1>
+      {feedbacks.map((feedback) => {
+        return (
+          <div>
+            <div className="flex">
+              <h1>Feedback ID : {feedback.id}</h1>
               <CopyButton textToCopy={feedback.id} />
-              <h2>{feedback.problemId}</h2>
-              <h3>{feedback.description}</h3>
-              <h4>{feedback.userId}</h4>
-              <h3>{feedback.check}</h3>
-              <br />
-            
             </div>
-          );
-        })
-      }
+            <h2>Problem ID : {feedback.problemId}</h2>
+            <h4>User ID : {feedback.userId}</h4>
+            <h3>Description : {feedback.description}</h3>
+            <h3>Status : {feedback.check}</h3>
+            <br />
+          </div>
+        );
+      })}
     </>
   );
 }

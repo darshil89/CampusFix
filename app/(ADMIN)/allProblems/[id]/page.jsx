@@ -3,23 +3,21 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { SyncLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
+import Time from "components/date/Time";
 export default function Problem({ params: { id } }) {
   const [problem, setProblem] = useState(null);
   const [user, setUser] = useState(null);
   const { data: session, status } = useSession();
   const router = useRouter();
-  console.log("id of particular problem= ", id)
+  console.log("id of particular problem= ", id);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetch problem data
-        const problemRes = await fetch(
-          `/api/problem/${id}`,
-          {
-            cache: "no-cache",
-          }
-        );
+        const problemRes = await fetch(`/api/problem/${id}`, {
+          cache: "no-cache",
+        });
 
         if (!problemRes.ok) {
           throw new Error("Problem not found");
@@ -69,7 +67,11 @@ export default function Problem({ params: { id } }) {
       <>
         <div className="text-xl">Problem</div>
         <div>My Problem id is = {id}</div>
-        <div>Time = {createdAt}</div>
+        <div className="flex">
+          <div>Time : </div>
+          <Time createdAt={createdAt} />
+        </div>
+
         <div>My Problem title is = {title}</div>
         <div>My Problem content is = {content}</div>
         <div>My Problem floorNumber is = {floorNumber}</div>

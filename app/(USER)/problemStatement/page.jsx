@@ -11,7 +11,7 @@ const Problem = async () => {
   const id = session?.user?.id;
   const checkAdmin = email === "manasa3@gmail.com";
   const name = session?.user?.name;
-  const status = "approved";
+  const status = "pending";
 
   if (session && !checkAdmin) {
     return (
