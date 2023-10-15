@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { SyncLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
+import Time from "components/date/Time";
 export default function Problem({ params: { id } }) {
   const [problem, setProblem] = useState(null);
   const [user, setUser] = useState(null);
@@ -62,29 +63,15 @@ export default function Problem({ params: { id } }) {
 
     const { name, email } = user.user;
 
-    const timestamp = createdAt // Assuming it's a string
-
-    const date = new Date(timestamp);
-
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      timeZoneName: "short",
-    };
-
-    const formattedDate = date.toLocaleDateString("en-US", options);
-
-    
-
     return (
       <>
         <div className="text-xl">Problem</div>
         <div>My Problem id is = {id}</div>
-        <div>Time = {formattedDate}</div>
+        <div className="flex">
+          <div>Time : </div>
+          <Time createdAt={createdAt} />
+        </div>
+
         <div>My Problem title is = {title}</div>
         <div>My Problem content is = {content}</div>
         <div>My Problem floorNumber is = {floorNumber}</div>
