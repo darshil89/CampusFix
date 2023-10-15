@@ -2,12 +2,21 @@
 import { useState } from "react";
 import classes from "./problem.module.css";
 import { toast } from "react-toastify";
+import { useDropzone } from "react-dropzone";
 import { useSession } from "next-auth/react";
 export default function Problems(props) {
   const id = props.id;
   const name = props.name;
   const status = props.status;
 
+  const [file, setFile] = useState([]);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: "image/*",
+    multiple: true,
+    onDrop: (acceptedFiles) => {
+      setFile([...file, ...acceptedFiles]);
+    },
+  });
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -20,17 +29,35 @@ export default function Problems(props) {
     e.preventDefault();
 
     toast.info("on going", { autoClose: 5000 });
+    const filePaths = [];
+    console.log(file);
+    const uploadedImageUrls = [];
 
+    for (const f of file) {
+      const formData = new FormData();
+      formData.append("file", f);
+      formData.append("upload_preset", "jx3jfkqs");
+      const uploadResponse = await fetch(
+        "https://api.cloudinary.com/v1_1/dptrkbl3o/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const uploadImageData = await uploadResponse.json();
+      uploadedImageUrls.push(uploadImageData.secure_url);
+    }
+    console.log(uploadedImageUrls);
     const res = await fetch("http://localhost:3000/api/problems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ data, id, name, status }),
+      body: JSON.stringify({ data, id, name, status, uploadedImageUrls }),
     });
 
     const result = await res.json();
-    
+
     console.log(result.error);
     if (result.error) {
       toast.error(result.error);
@@ -119,6 +146,21 @@ export default function Problems(props) {
             setData({ ...data, roomNumber: e.target.value });
           }}
         />
+      </div>
+      <div
+        {...getRootProps()}
+        className={`dropzone ${isDragActive ? "active" : ""}`}
+      >
+        <input {...getInputProps()} />
+        {file.length > 0 ? (
+          <div>
+            {file.map((f) => (
+              <p key={f.name}>{f.name}</p>
+            ))}
+          </div>
+        ) : (
+          <p>Drag and drop some files here, or click to select files</p>
+        )}
       </div>
       <button className={classes.submit} type="submit">
         Submit
