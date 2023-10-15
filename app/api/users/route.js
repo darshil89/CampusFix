@@ -17,3 +17,18 @@ export const GET = async () => {
   }
 };
 
+export const DELETE = async (req) => {
+  try {
+    await connectToDb();
+    const { email } = await req.json();
+
+    await prisma.user.delete({
+      where: {
+        email: email,
+      },
+    });
+    return NextResponse.json({ message: "User Deleted" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
+};

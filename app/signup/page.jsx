@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 const SignUp = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -16,6 +17,7 @@ const SignUp = () => {
 
   const registerUser = async (e) => {
     e.preventDefault();
+    toast.info("Registering User");
     const res = await fetch("/api/register", {
       body: JSON.stringify({
         name: data.name,
@@ -27,6 +29,7 @@ const SignUp = () => {
       },
       method: "POST",
     });
+    toast.success("User Registered");
     if (res.ok) {
       router.push("/signin");
     }
@@ -38,7 +41,6 @@ const SignUp = () => {
     return (
       <>
         <div className={classes.container}>
-          
           <div>
             <h2 className={classes.heading}>Register</h2>
             <form onSubmit={registerUser}>
@@ -93,7 +95,7 @@ const SignUp = () => {
 
               <div>
                 <button className={classes.btn} type="submit">
-                  Sign in
+                  Sign Up
                 </button>
               </div>
             </form>
