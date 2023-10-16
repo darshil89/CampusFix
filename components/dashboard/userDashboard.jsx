@@ -17,6 +17,8 @@ export default async function UserDashboard(props) {
   const email = props.email;
   const problems = await getAllProblem(email);
   console.log("problems = ", problems);
+  console.log("image = ", problems[0].image);
+
   return (
     <>
       <h1 className="text-2xl text-bold">User</h1>
@@ -36,13 +38,20 @@ export default async function UserDashboard(props) {
               <div>Updated At : </div>
               <Time createdAt={item.updatedAt} />
             </div>
-
             <p>Content: {item.content}</p>
             <p>Building Number: {item.buildingNumber}</p>
             <p>Room Number: {item.roomNumber}</p>
             <p>Floor Number: {item.floorNumber}</p>
             <p>Status :{item.status}</p>
-            
+            {item.image.map((imageUrls, index) => (
+              <img
+                key={index}
+                src={imageUrls}
+                alt="image"
+                width="200"
+                height="200"
+              />
+            ))}
             <br />
             <br />
           </div>
