@@ -17,7 +17,6 @@ export default async function UserDashboard(props) {
   const email = props.email;
   const problems = await getAllProblem(email);
   console.log("problems = ", problems);
-  console.log("image = ", problems[0].image);
 
   return (
     <>

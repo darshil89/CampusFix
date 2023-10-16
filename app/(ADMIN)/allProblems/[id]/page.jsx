@@ -59,6 +59,7 @@ export default function Problem({ params: { id } }) {
       roomNumber,
       buildingNumber,
       createdAt,
+      image,
     } = problem.problem;
 
     const { name, email } = user.user;
@@ -77,6 +78,15 @@ export default function Problem({ params: { id } }) {
         <div>My Problem floorNumber is = {floorNumber}</div>
         <div>My Problem roomNumber is = {roomNumber}</div>
         <div>My Problem buildingNumber is = {buildingNumber}</div>
+        {image.map((imageUrls, index) => (
+          <img
+            key={index}
+            src={imageUrls}
+            alt="image"
+            width="200"
+            height="200"
+          />
+        ))}
         <div className="text-xl">User</div>
         <div>User Name = {name}</div>
         <div>User Email = {email}</div>
