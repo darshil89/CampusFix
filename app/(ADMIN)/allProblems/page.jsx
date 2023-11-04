@@ -3,17 +3,17 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Problem from "@/components/Problems/Problem";
 
-const getallProblems = async () => {
-  const response = await fetch("http://localhost:3000/api/allProblems", {
-    method: "GET",
-    next: {
-      revalidate: 0,
-    },
-  });
-  const data = await response.json();
-  // console.log("data = ", data);
-  return data;
-};
+// const getallProblems = async () => {
+//   const response = await fetch("http://localhost:3000/api/allProblems", {
+//     method: "GET",
+//     next: {
+//       revalidate: 0,
+//     },
+//   });
+//   const data = await response.json();
+//   // console.log("data = ", data);
+//   return data;
+// };
 
 const getSpecificProblem = async (status) => {
   const res = await fetch("http://localhost:3000/api/allProblems", {
@@ -34,10 +34,12 @@ export default async function AdminDashboard() {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
   if (!session) redirect("/signin");
-  const problems = await getallProblems();
+  // const problems = await getallProblems();
 
-  const spefificProblem = await getSpecificProblem("pending");
-  // console.log("spefificProblem = ", spefificProblem);
+  const pending = await getSpecificProblem("pending");
+  const approved = await getSpecificProblem("approved");
+  const rejected = await getSpecificProblem("rejected");
+  
   if (session) {
     return (
       <>
@@ -49,43 +51,33 @@ export default async function AdminDashboard() {
           <div className="sm:px-1 ml-4 flex flex-col w-100">
             <div className="bg-blue-300 rounded-lg p-5 shadow-2xl w-full relative ">
               <div className="text-gray-50 sm:text-lg text-2xl">
-                Number of Approved Problems
+                Total Problems
               </div>
               <div className="text-gray-50  text-5xl ">
-                11
+                {approved.length + pending.length + rejected.length}
               </div>
+            </div>
+            <div className="bg-blue-300 mt-4 rounded-lg p-5 shadow-2xl w-full relative ">
+              <div className="text-gray-50 sm:text-lg text-2xl">
+                Number of Approved Problems
+              </div>
+              <div className="text-gray-50  text-5xl ">{approved.length}</div>
             </div>
             <div className="bg-blue-300 mt-4 rounded-lg p-5 shadow-2xl w-full relative ">
               <div className="text-gray-50 sm:text-lg text-2xl">
                 Number of Pending Problems
               </div>
-              <div className="text-gray-50  text-5xl ">
-                05
-              </div>
+              <div className="text-gray-50  text-5xl ">{pending.length}</div>
             </div>
             <div className="bg-blue-300  mt-4 rounded-lg p-5 shadow-2xl w-full relative ">
               <div className="text-gray-50 sm:text-lg text-2xl">
                 Number of Rejected Problems
               </div>
-              <div className="text-gray-50  text-5xl ">
-                11
-              </div>
+              <div className="text-gray-50  text-5xl ">{rejected.length}</div>
             </div>
           </div>
           <div className="bg-gray-100 ml-5 rounded-lg">
-            {problems.map((problem) => {
-              return (
-                <Problem
-                  name={problem.name}
-                  key={problem.id}
-                  title={problem.title}
-                  content={problem.content}
-                  userId={problem.userId}
-                  problemId={problem.id}
-                  status={problem.status}
-                />
-              );
-            })}
+            <Problem />
           </div>
         </div>
       </>
