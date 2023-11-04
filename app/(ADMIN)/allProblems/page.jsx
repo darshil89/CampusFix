@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-// import { authOptions } from "../api/auth/[...nextauth]/route";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Problem from "@/components/Problems/Problem";
@@ -17,7 +16,6 @@ const getallProblems = async () => {
 };
 
 const getSpecificProblem = async (status) => {
-  // console.log("status = ", status);
   const res = await fetch("http://localhost:3000/api/allProblems", {
     method: "POST",
     body: JSON.stringify({
