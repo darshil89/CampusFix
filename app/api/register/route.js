@@ -12,6 +12,16 @@ export async function POST(request) {
         { status: 422 }
       );
     }
+
+    //checking if email is valid
+    const pattern = /^1ds\d{2}[a-z]{2}\d{3}@dsce\.edu\.in$/;
+    console.log(pattern.test(email));
+    if (!pattern.test(email)) {
+      return NextResponse.json(
+        { error: "Please enter a valid college email" },
+        { status: 422 }
+      );
+    }
     //connect to db
     await connectToDb();
 

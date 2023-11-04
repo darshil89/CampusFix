@@ -29,12 +29,14 @@ const SignUp = () => {
       },
       method: "POST",
     });
-    toast.success("User Registered");
+    const result = await res.json();
     if (res.ok) {
+      toast.success("User Registered");
       router.push("/signin");
+    } else {
+      toast.error(result.error);
     }
 
-    const result = await res.json();
     console.log(result);
   };
   if (!session) {
