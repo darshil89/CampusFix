@@ -44,7 +44,7 @@ export default async function AdminDashboard() {
     return (
       <>
         <div className="text-4xl mt-8 ml-4 mb-4 text-gray-700 font-semibold">
-          Admin's Dashboard <span className="text-blue-500">Overview</span>
+          Admin&apos;s Dashboard <span className="text-blue-500">Overview</span>
         </div>
         <div className="flex flex-row w-full">
           {/*Stats of the problems's in one line with boxes*/}

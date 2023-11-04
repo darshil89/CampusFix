@@ -1,3 +1,4 @@
+import Image from "next/image";
 import CopyButton from "../copyButton/page";
 import Time from "../date/Time";
 const getAllProblem = async (props) => {
@@ -43,7 +44,7 @@ export default async function UserDashboard(props) {
             <p>Floor Number: {item.floorNumber}</p>
             <p>Status :{item.status}</p>
             {item.image.map((imageUrls, index) => (
-              <img
+              <Image
                 key={index}
                 src={imageUrls}
                 alt="image"

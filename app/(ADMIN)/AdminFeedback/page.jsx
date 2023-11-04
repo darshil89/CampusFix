@@ -25,9 +25,9 @@ export default async function AdminFeedback() {
   if (!session && email !== "manasa3@gmail.com") redirect("/signin");
   return (
     <>
-      {feedbacks.map((feedback) => {
+      {feedbacks.map((feedback , index) => {
         return (
-          <div>
+          <div key={index}>
             <div className="flex">
               <h1>Feedback ID : {feedback.id}</h1>
               <CopyButton textToCopy={feedback.id} />

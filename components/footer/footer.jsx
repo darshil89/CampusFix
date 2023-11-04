@@ -8,6 +8,7 @@ import {
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -18,7 +19,9 @@ const Footer = () => {
             <div className="mb-5 col-span-2 w-4/5">
               <div>
                 <div className="flex items-center ">
-                  <img
+                  <Image
+                    width={50}
+                    height={50}
                     src="/images/logo.svg"
                     alt="logo"
                     className="h-14 mb-5 w-14 mr-2"
