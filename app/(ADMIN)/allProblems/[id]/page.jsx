@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { SyncLoader } from "react-spinners";
-import { useRouter } from "next/navigation";
+
 import Time from "components/date/Time";
 import Carousel from "@/components/HomeComponents/Carousel/page";
 import Card from "@/components/HomeComponents/Card/page";
@@ -11,7 +11,7 @@ export default function Problem({ params: { id } }) {
   const [problem, setProblem] = useState(null);
   const [user, setUser] = useState(null);
   const { data: session, status } = useSession();
-  const router = useRouter();
+
   console.log("id of particular problem= ", id);
 
   useEffect(() => {
@@ -90,6 +90,10 @@ export default function Problem({ params: { id } }) {
       </>
     );
   } else {
-    router.push("/signin");
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-2xl">You are not logged in</div>
+      </div>
+    );
   }
 }
