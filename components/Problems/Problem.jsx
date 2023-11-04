@@ -51,18 +51,18 @@ const Problem = (props) => {
 
   return (
     <>
-      <ul role="list" className="divide-y divide-gray-100 w-1/2 ml-60">
-        <li key={problemId} className="flex justify-between gap-x-6 py-5">
-          <div className="flex min-w-0 gap-x-4">
+      <ul role="list" className=" w-100 ml-10 mr-5">
+        <li key={problemId} className="flex justify-between gap-x-96 py-5">
+          <div className="flex  gap-x-4">
             <AiOutlineUser className="flex-shrink-0 w-10 h-10 rounded-full" />
-            <div className="min-w-0 flex-auto">
+            <div className="">
               <p className="text-sm font-semibold leading-6 text-gray-900">
                 {title}
               </p>
               <p className="mt-1 truncate text-xs leading-5 text-gray-500">
                 {content}
               </p>
-              <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+              <p className=" truncate text-xs leading-5 text-gray-500">
                 by-{name}
               </p>
               <p>
@@ -93,7 +93,7 @@ const Problem = (props) => {
             </button>
           </div>
         </li>
-        <div></div>
+        
       </ul>
     </>
   );
