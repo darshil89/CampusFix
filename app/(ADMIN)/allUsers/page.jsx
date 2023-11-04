@@ -30,7 +30,7 @@ const AllUsers = () => {
   };
   useEffect(() => {
     try {
-      fetch("http://localhost:3000/api/users", {
+      fetch("/api/users", {
         cache: "no-cache",
       })
         .then((res) => res.json())

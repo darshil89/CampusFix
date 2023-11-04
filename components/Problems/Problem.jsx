@@ -1,19 +1,35 @@
 "use client";
+import { useSession } from "next-auth/react";
+import { useState, useEffect } from "react";
+import { SyncLoader } from "react-spinners";
 import { AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
 import Link from "next/link";
-const Problem = (props) => {
-  // console.log("props = ", props);
-  const title = props.title;
-  const status = props.status;
-  const content = props.content;
-  const problemId = props.problemId;
-  const userId = props.userId;
-  const name = props.name;
+const Problem = () => {
+  const { data: session, status } = useSession();
+
+  const [data, setData] = useState([]);
+  
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    try {
+      fetch("/api/allProblems", {
+        cache: "no-cache",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log("error = ", error.message);
+    }
+  }, []);
 
   const handlerApprove = async (problemId) => {
     try {
-      const response = await fetch("http://localhost:3000/api/allProblems", {
+      const response = await fetch("/api/allProblems", {
         method: "PUT",
         body: JSON.stringify({
           problemId: problemId,
@@ -32,13 +48,14 @@ const Problem = (props) => {
 
   const handlerReject = async (problemId) => {
     try {
-      const response = await fetch("http://localhost:3000/api/allProblems", {
+      const response = await fetch("/api/allProblems", {
         method: "PUT",
         body: JSON.stringify({
           problemId: problemId,
           status: "rejected",
         }),
       });
+
       if (response.ok) {
         toast.success("Problem Rejected");
       } else {
@@ -49,54 +66,82 @@ const Problem = (props) => {
     }
   };
 
-  return (
-    <>
-      <ul role="list" className=" w-100 ml-10 mr-5">
-        <li key={problemId} className="flex justify-between gap-x-96 py-5">
-          <div className="flex  gap-x-4">
-            <AiOutlineUser className="flex-shrink-0 w-10 h-10 rounded-full" />
-            <div className="">
-              <p className="text-sm font-semibold leading-6 text-gray-900">
-                {title}
-              </p>
-              <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                {content}
-              </p>
-              <p className=" truncate text-xs leading-5 text-gray-500">
-                by-{name}
-              </p>
-              <p>
-                <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                  {status}
-                </span>
-              </p>
-            </div>
-          </div>
-          <div>
-            <Link
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
-              href={`/allProblems/${problemId}`}
-            >
-              View
-            </Link>
-            <button
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
-              onClick={() => handlerApprove(problemId)}
-            >
-              Approve
-            </button>
-            <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              onClick={() => handlerReject(problemId)}
-            >
-              Reject
-            </button>
-          </div>
-        </li>
-        
-      </ul>
-    </>
-  );
+  if (session) {
+    if (loading) {
+      return (
+        <SyncLoader
+          className="text-center mt-10 lg:ml-96 lg:mr-96"
+          color="#2e3634"
+        />
+      );
+    }
+    if (!data) {
+      return <h1>No data</h1>;
+    }
+
+    return (
+      <>
+        {data.map((problem) => {
+          
+          return (
+            <ul role="list" key={problem.id} className=" w-100 ml-10 mr-5">
+              <li
+                key={problem.id}
+                className="flex justify-between gap-x-96 py-5"
+              >
+                <div className="flex  gap-x-4">
+                  <AiOutlineUser className="flex-shrink-0 w-10 h-10 rounded-full" />
+                  <div className="">
+                    <p className="text-sm font-semibold leading-6 text-gray-900">
+                      {problem.title}
+                    </p>
+                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">
+                      {problem.content}
+                    </p>
+                    <p className=" truncate text-xs leading-5 text-gray-500">
+                      by-{problem.name}
+                    </p>
+                    <p>
+                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        {problem.status}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <Link
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+                    href={`/allProblems/${problem.id}`}
+                  >
+                    View
+                  </Link>
+                  <button
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+                    onClick={() => handlerApprove(problem.id)}
+                  >
+                    Approve
+                  </button>
+                  <button
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => handlerReject(problem.id)}
+                  >
+                    Reject
+                  </button>
+                </div>
+              </li>
+            </ul>
+          );
+        })}
+      </>
+    );
+  } else {
+    return (
+      <SyncLoader
+        className="text-center mt-10 lg:ml-96 lg:mr-96"
+        color="#2e3634"
+      />
+    );
+  }
 };
 
 export default Problem;
