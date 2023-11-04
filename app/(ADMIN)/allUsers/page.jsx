@@ -58,7 +58,7 @@ const AllUsers = () => {
         <br />
         {data.users?.map((user) => {
           return (
-            <div className="flex">
+            <div className="flex" key={user.email}>
               <Users key={user.email} name={user.name} email={user.email} />
               <AiTwotoneDelete onClick={() => handleDeleteUser(user.email)} />
             </div>
