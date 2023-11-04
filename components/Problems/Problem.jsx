@@ -9,7 +9,9 @@ const Problem = () => {
   const { data: session, status } = useSession();
 
   const [data, setData] = useState([]);
-  
+  const [loadingStatus, setLoadingStatus] = useState("");
+
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const Problem = () => {
     } catch (error) {
       console.log("error = ", error.message);
     }
-  }, []);
+  }, [data]);
 
   const handlerApprove = async (problemId) => {
     try {
@@ -37,6 +39,13 @@ const Problem = () => {
         }),
       });
       if (response.ok) {
+        const updatedData = data;
+        
+        const problemToUpdate = updatedData.find((item) => item.id === problemId);
+        if (problemToUpdate) {
+          problemToUpdate.status = "approved";
+        }
+        setData(updatedData);
         toast.success("Problem Approved");
       } else {
         toast.error("Problem not approved");
@@ -57,6 +66,13 @@ const Problem = () => {
       });
 
       if (response.ok) {
+        const updatedData = data;
+        
+        const problemToUpdate = updatedData.find((item) => item.id === problemId);
+        if (problemToUpdate) {
+          problemToUpdate.status = "rejected";
+        }
+        setData(updatedData);
         toast.success("Problem Rejected");
       } else {
         toast.error("Problem not rejected");
@@ -82,7 +98,6 @@ const Problem = () => {
     return (
       <>
         {data.map((problem) => {
-          
           return (
             <ul role="list" key={problem.id} className=" w-100 ml-10 mr-5">
               <li
