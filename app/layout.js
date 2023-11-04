@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import NavBar from "@/components/Navbar/Navbar";
 import Provider from "@/context/Provider";
 import Toster from "@/context/Toster";
+// Import Font Awesome CSS in your component or layout
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
