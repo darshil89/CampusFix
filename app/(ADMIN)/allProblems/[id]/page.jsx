@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { SyncLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
 import Time from "components/date/Time";
+import Carousel from "@/components/HomeComponents/Carousel/page";
+import Card from "@/components/HomeComponents/Card/page";
+
 export default function Problem({ params: { id } }) {
   const [problem, setProblem] = useState(null);
   const [user, setUser] = useState(null);
@@ -66,27 +69,21 @@ export default function Problem({ params: { id } }) {
 
     return (
       <>
-        <div className="text-xl">Problem</div>
-        <div>My Problem id is = {id}</div>
-        <div className="flex">
-          <div>Time : </div>
-          <Time createdAt={createdAt} />
+        <div className="flex justify-around items-center h-screen ">
+          <div className="w-300 ">
+            <Card
+              title={title}
+              content={content}
+              problemId={id}
+              buildingnumber={buildingNumber}
+              floornumber={floorNumber}
+              roomnumber={roomNumber}
+              createdAt={createdAt}
+              image={image}
+            />
+          </div>
         </div>
 
-        <div>My Problem title is = {title}</div>
-        <div>My Problem content is = {content}</div>
-        <div>My Problem floorNumber is = {floorNumber}</div>
-        <div>My Problem roomNumber is = {roomNumber}</div>
-        <div>My Problem buildingNumber is = {buildingNumber}</div>
-        {image.map((imageUrls, index) => (
-          <img
-            key={index}
-            src={imageUrls}
-            alt="image"
-            width="200"
-            height="200"
-          />
-        ))}
         <div className="text-xl">User</div>
         <div>User Name = {name}</div>
         <div>User Email = {email}</div>

@@ -11,7 +11,6 @@ const Problem = () => {
   const [data, setData] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState("");
 
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,6 +28,20 @@ const Problem = () => {
     }
   }, [data]);
 
+  // Define a function to determine the background color class based on the status
+  function getStatusColor(status) {
+    switch (status) {
+      case "approved":
+        return "bg-green-100 text-green-800";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800";
+      case "rejected":
+        return "bg-red-100 text-red-800";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  }
+
   const handlerApprove = async (problemId) => {
     try {
       const response = await fetch("/api/allProblems", {
@@ -40,8 +53,10 @@ const Problem = () => {
       });
       if (response.ok) {
         const updatedData = data;
-        
-        const problemToUpdate = updatedData.find((item) => item.id === problemId);
+
+        const problemToUpdate = updatedData.find(
+          (item) => item.id === problemId
+        );
         if (problemToUpdate) {
           problemToUpdate.status = "approved";
         }
@@ -67,8 +82,10 @@ const Problem = () => {
 
       if (response.ok) {
         const updatedData = data;
-        
-        const problemToUpdate = updatedData.find((item) => item.id === problemId);
+
+        const problemToUpdate = updatedData.find(
+          (item) => item.id === problemId
+        );
         if (problemToUpdate) {
           problemToUpdate.status = "rejected";
         }
@@ -117,7 +134,11 @@ const Problem = () => {
                       by-{problem.name}
                     </p>
                     <p>
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      <span
+                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
+                          problem.status
+                        )}`}
+                      >
                         {problem.status}
                       </span>
                     </p>

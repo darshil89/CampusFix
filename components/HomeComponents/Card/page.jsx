@@ -1,39 +1,50 @@
-const Card = () => {
+import Time from "@/components/date/Time";
+import Carousel from "@/components/HomeComponents/Carousel/page";
+const Card = ({
+  title,
+  content,
+  problemId,
+  floornumber,
+  roomnumber,
+  buildingnumber,
+  createdAt,
+  image,
+}) => {
   return (
     <>
-      {/* Problem and Solution Section */}
-      <section className="bg-primary py-16 px-8">
-        <div className="container mx-auto text-center">
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Left Side: Problem Statement with Image */}
-            <div
-              id="problem"
-              className="flex flex-col justify-center items-start"
-            >
-              <h1 className="text-4xl font-bold mb-8 text-white">
-                The Problem?
-              </h1>
-              <p className="text-lg text-left text-white"></p>
-            </div>
-            <div className="md:flex md:justify-end md:items-center">
-              <img src="" alt="Solution" className="max-w-base md:w-3/4" />
-            </div>
-
-            {/* Right Side: Proposed Solution with Image */}
-
-            <div id="solution" className="md:flex md:items-center">
-              <img src="" alt="Solution" className="max-w-base md:w-3/4" />
-            </div>
-
-            <div className="flex flex-col justify-center items-end">
-              <h2 className="text-4xl font-bold mb-8 text-right text-white">
-                The Solution!
-              </h2>
-              <p className="text-lg text-right text-white"></p>
-            </div>
-          </div>
+      <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
+          <Carousel>
+            {image.map((img) => (
+              <img src={img} alt="Problem Image" />
+            ))}
+          </Carousel>
         </div>
-      </section>
+        <div className="flex flex-col justify-between p-4 leading-normal">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Title: {title}
+          </h5>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Content:{content}
+          </p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            ProblemId:{problemId}
+          </p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Time:
+            <Time createdAt={createdAt} />
+          </p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Floor Number:{floornumber}
+          </p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Room Number:{roomnumber}
+          </p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Building Number:{buildingnumber}
+          </p>
+        </div>
+      </div>
     </>
   );
 };
