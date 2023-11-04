@@ -15,13 +15,13 @@ const Card = ({
       <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
         <div className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
           <Carousel>
-            {image.map((img) => (
-              <img src={img} alt="Problem Image" />
+            {image.map((img, index) => (
+              <img src={img} key={index} alt="Problem Image" />
             ))}
           </Carousel>
         </div>
         <div className="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Title: {title}
           </h5>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -30,10 +30,10 @@ const Card = ({
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             ProblemId:{problemId}
           </p>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             Time:
-            <Time createdAt={createdAt} />
-          </p>
+            <Time createdAt={createdAt}></Time>
+          </div>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             Floor Number:{floornumber}
           </p>
