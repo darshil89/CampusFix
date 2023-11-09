@@ -16,15 +16,20 @@ import Problem from "@/components/Problems/Problem";
 // };
 
 const getSpecificProblem = async (status) => {
-  const res = await fetch("http://localhost:3000/api/allProblems", {
-    method: "POST",
-    body: JSON.stringify({
-      status: status,
-    }),
-    headers: {
-      "Content-Type": "application/json",
+  const res = await fetch(
+    "http://localhost:3000/api/allProblems",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        status: status,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     },
-  });
+    { cache: "no-store" },
+    { revalidate: 0 }
+  );
 
   const data = await res.json();
   return data;
@@ -39,7 +44,7 @@ export default async function AdminDashboard() {
   const pending = await getSpecificProblem("pending");
   const approved = await getSpecificProblem("approved");
   const rejected = await getSpecificProblem("rejected");
-  
+
   if (session) {
     return (
       <>
