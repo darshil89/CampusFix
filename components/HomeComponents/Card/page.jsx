@@ -17,7 +17,7 @@ const Card = ({
         <div className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
           <Carousel>
             {image.map((img, index) => (
-              <img  src={img} key={index} alt="Problem Image" />
+              <Image width={200} height={200}  src={img} key={index} alt="Problem Image" />
             ))}
           </Carousel>
         </div>

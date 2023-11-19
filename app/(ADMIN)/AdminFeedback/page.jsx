@@ -3,16 +3,39 @@ import { authOptions } from "../../api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-const getAllFeedback = async () => {
-  const response = await fetch("http://localhost:3000/api/feedback", {
-    method: "GET",
-    next: {
-      revalidate: 0,
-    },
-  });
+let apiUrl;
 
-  const data = await response.json();
-  return data;
+if (typeof window !== "undefined") {
+  // Determine the current port dynamically in the browser context
+  const currentPort =
+    window.location.port ||
+    (window.location.protocol === "https:" ? "443" : "80");
+
+  // Construct the API URL with the determined port
+  apiUrl = `${window.location.protocol}//${window.location.hostname}:${currentPort}/api/feedback`;
+} else {
+  // Handle the case when running on the server (no window object)
+  // You might want to provide a default API URL or throw an error based on your needs.
+  apiUrl = "http://localhost:3000/api/feedback";
+}
+
+const getAllFeedback = async () => {
+  try {
+    const response = await fetch(apiUrl, {
+      method: "GET",
+      next: {
+        revalidate: 0,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("error from file = ",error);
+  }
 };
 
 export default async function AdminFeedback() {
@@ -25,7 +48,7 @@ export default async function AdminFeedback() {
   if (!session && email !== "manasa3@gmail.com") redirect("/signin");
   return (
     <>
-      {feedbacks.map((feedback , index) => {
+      {feedbacks.map((feedback, index) => {
         return (
           <div key={index}>
             <div className="flex">
