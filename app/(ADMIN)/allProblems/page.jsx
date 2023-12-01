@@ -1,52 +1,50 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-
+import prisma from "@/prisma";
 import Problem from "@/components/Problems/Problem";
 
-// const getallProblems = async () => {
-//   const response = await fetch("http://localhost:3000/api/allProblems", {
-//     method: "GET",
-//     next: {
-//       revalidate: 0,
+
+// const getSpecificProblem = async (status) => {
+//   const res = await fetch(
+//     "http://localhost:3000/api/allProblems",
+//     {
+//       method: "POST",
+//       body: JSON.stringify({
+//         status: status,
+//       }),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
 //     },
-//   });
-//   const data = await response.json();
-//   // console.log("data = ", data);
+    
+    
+//      { revalidate: 0 }
+//   );
+
+//   const data = await res.json();
 //   return data;
 // };
-
-const getSpecificProblem = async (status) => {
-  const res = await fetch(
-    "http://localhost:3000/api/allProblems",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        status: status,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-    
-    // { cache: "no-store" },
-     { revalidate: 0 }
-  );
-
-  const data = await res.json();
-  return data;
-};
 
 export default async function AdminDashboard() {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
   if (!session) redirect("/signin");
-  // const problems = await getallProblems();
-
-  const pending = await getSpecificProblem("pending");
-  const approved = await getSpecificProblem("approved");
-  const rejected = await getSpecificProblem("rejected");
-
+  const pending =  await prisma.problem.findMany({
+    where: {
+      status: "pending",
+    },
+  });
+  const approved = await prisma.problem.findMany({
+    where: {
+      status: "approved",
+    },
+  });
+  const rejected = await prisma.problem.findMany({
+    where: {
+      status: "rejected",
+    },
+  });
   if (session) {
     return (
       <>
