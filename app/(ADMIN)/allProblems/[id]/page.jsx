@@ -2,9 +2,6 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { SyncLoader } from "react-spinners";
-
-import Time from "components/date/Time";
-import Carousel from "@/components/HomeComponents/Carousel/page";
 import Card from "@/components/HomeComponents/Card/page";
 
 export default function Problem({ params: { id } }) {

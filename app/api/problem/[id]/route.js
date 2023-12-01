@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 import { connectToDb } from "@/utils";
 
 export async function GET(req) {
-  
+  console.log("req.url of problem backend = ", req.url);
+  const requ1 = String(req.url);
+  const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app";
 
-  console.log("req.url of problem backend = ", req.nextUrl.pathname);
-  const requ1 = String(req.nextUrl.pathname);
-  const id = requ1.replace("/api/problem/", "");
+  const id = requ1.replace(`${baseUrl}/api/problem/`, "");
 
   try {
     await connectToDb();
