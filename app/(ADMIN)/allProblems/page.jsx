@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+
 import Problem from "@/components/Problems/Problem";
 
 // const getallProblems = async () => {
@@ -27,8 +28,9 @@ const getSpecificProblem = async (status) => {
         "Content-Type": "application/json",
       },
     },
-    { cache: "no-store" },
-    { revalidate: 0 }
+    
+    // { cache: "no-store" },
+     { revalidate: 0 }
   );
 
   const data = await res.json();
