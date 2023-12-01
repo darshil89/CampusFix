@@ -6,10 +6,11 @@ const Problem = async () => {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
 
-  console.log("server page   ", session);
+  // console.log("server page   ", session);
   const email = session?.user?.email;
   const id = session?.user?.id;
-  const checkAdmin = email === "manasa3@gmail.com";
+ 
+  const checkAdmin = email === process.env.ADMIN_EMAIL;
   const name = session?.user?.name;
   const status = "pending";
 

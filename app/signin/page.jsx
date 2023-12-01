@@ -10,7 +10,8 @@ import { toast } from "react-toastify";
 const LoginIn = () => {
   const { data: session, status } = useSession();
   const email = session?.user?.email;
-  const checkAdmin = email === "manasa3@gmail.com";
+  
+  const checkAdmin = email === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
   const router = useRouter();
   const [data, setData] = useState({

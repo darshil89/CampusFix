@@ -12,8 +12,9 @@ export default async function AdminFeedback() {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
   const email = session?.user?.email;
+ 
 
-  if (!session && email !== "manasa3@gmail.com") redirect("/signin");
+  if (!session && email !== process.env.ADMIN_EMAIL) redirect("/signin");
   return (
     <>
       {feedbacks.map((feedback, index) => {

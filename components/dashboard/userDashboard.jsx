@@ -17,7 +17,7 @@ const getAllProblem = async (props) => {
 export default async function UserDashboard(props) {
   const email = props.email;
   const problems = await getAllProblem(email);
-  console.log("problems = ", problems);
+  // console.log("problems = ", problems);
 
   return (
     <>
