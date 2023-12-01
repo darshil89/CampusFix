@@ -9,11 +9,12 @@ const Problem = () => {
   const { data: session, status } = useSession();
 
   const [data, setData] = useState([]);
+  const [update, setUpdate] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState("");
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const getData = async (status) => {
     try {
       fetch("/api/allProblems", {
         cache: "no-cache",
@@ -26,7 +27,11 @@ const Problem = () => {
     } catch (error) {
       console.log("error = ", error.message);
     }
-  }, [data]);
+  };
+
+  useEffect(() => {
+    getData();
+  }, [update]);
 
   // Define a function to determine the background color class based on the status
   function getStatusColor(status) {
@@ -60,6 +65,7 @@ const Problem = () => {
         if (problemToUpdate) {
           problemToUpdate.status = "approved";
         }
+        setUpdate(updatedData);
         setData(updatedData);
         toast.success("Problem Approved");
       } else {
@@ -89,6 +95,7 @@ const Problem = () => {
         if (problemToUpdate) {
           problemToUpdate.status = "rejected";
         }
+        setUpdate(updatedData);
         setData(updatedData);
         toast.success("Problem Rejected");
       } else {
