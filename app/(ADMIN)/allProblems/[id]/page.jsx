@@ -30,7 +30,7 @@ export default function Problem({ params: { id } }) {
         setProblem(problemData);
 
         // Fetch user data
-        const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app/";
+        const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app";
         const userRes = await fetch(
           `${baseUrl}/api/user/${problemData.problem.userId}`,
           {
