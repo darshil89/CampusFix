@@ -10,7 +10,7 @@ function MainHeader() {
   const { data: session, status } = useSession();
   // console.log("nav bar wala session ", session);
   const email = session?.user?.email;
-  const checkAdmin = email === process.env.ADMIN_EMAIL;
+  const checkAdmin = email === "manasa3@gmail.com";
   const handleSignOut = () => {
     toast.info("Logging out", {
       autoClose: 4000,

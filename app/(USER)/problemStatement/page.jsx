@@ -9,7 +9,7 @@ const Problem = async () => {
   console.log("server page   ", session);
   const email = session?.user?.email;
   const id = session?.user?.id;
-  const checkAdmin = email === process.env.ADMIN_EMAIL;
+  const checkAdmin = email === "manasa3@gmail.com";
   const name = session?.user?.name;
   const status = "pending";
 
