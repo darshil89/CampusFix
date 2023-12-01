@@ -9,7 +9,7 @@ const Dashboard = async () => {
 
   const email = session?.user?.email;
 
-  const checkAdmin = email === "manasa3@gmail.com";
+  const checkAdmin = email === process.env.ADMIN_EMAIL;
 
   if (!checkAdmin && session) {
     return (

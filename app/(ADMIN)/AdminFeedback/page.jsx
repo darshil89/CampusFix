@@ -13,24 +13,29 @@ export default async function AdminFeedback() {
   if (typeof window !== "undefined") return null;
   const email = session?.user?.email;
 
-  if (!session && email !== "manasa3@gmail.com") redirect("/signin");
-  return (
-    <>
-      {feedbacks.map((feedback, index) => {
-        return (
-          <div key={index}>
-            <div className="flex">
-              <h1>Feedback ID : {feedback.id}</h1>
-              <CopyButton textToCopy={feedback.id} />
+  if (!session && email !== process.env.ADMIN_EMAIL) redirect("/signin");
+
+  if (!feedbacks) return <h1>No Feedbacks</h1>;
+
+  if (session && email === process.env.ADMIN_EMAIL) {
+    return (
+      <>
+        {feedbacks.map((feedback, index) => {
+          return (
+            <div key={index}>
+              <div className="flex">
+                <h1>Feedback ID : {feedback.id}</h1>
+                <CopyButton textToCopy={feedback.id} />
+              </div>
+              <h2>Problem ID : {feedback.problemId}</h2>
+              <h4>User ID : {feedback.userId}</h4>
+              <h3>Description : {feedback.description}</h3>
+              <h3>Status : {feedback.check}</h3>
+              <br />
             </div>
-            <h2>Problem ID : {feedback.problemId}</h2>
-            <h4>User ID : {feedback.userId}</h4>
-            <h3>Description : {feedback.description}</h3>
-            <h3>Status : {feedback.check}</h3>
-            <br />
-          </div>
-        );
-      })}
-    </>
-  );
+          );
+        })}
+      </>
+    );
+  }
 }
