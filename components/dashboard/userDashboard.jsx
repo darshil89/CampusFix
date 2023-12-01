@@ -3,7 +3,8 @@ import CopyButton from "../copyButton/page";
 import Time from "../date/Time";
 const getAllProblem = async (props) => {
   // console.log("props = ", props);s
-  const res = await fetch("http://localhost:3000/api/userProblem", {
+  const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app";
+  const res = await fetch(`${baseUrl}/api/userProblem`, {
     method: "POST",
     body: JSON.stringify({ props }),
     next: {

@@ -4,17 +4,11 @@ import { connectToDb } from "@/utils";
 
 export async function GET(req) {
   
+
   console.log("req.url of problem backend = ", req.nextUrl.pathname);
   const requ1 = String(req.nextUrl.pathname);
   const id = requ1.replace("/api/problem/", "");
-  // const requ = String(req.url);
-  // const id = requ.replace("http://localhost:3000/api/problem/", "");
 
-  // const {
-  //   query: { ids },
-  // } = req;
-
-  // console.log("backend wala id = ", ids);
   try {
     await connectToDb();
     const problem = await prisma.problem.findUnique({

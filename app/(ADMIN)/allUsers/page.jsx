@@ -14,7 +14,8 @@ const AllUsers = () => {
   const [conform, setConform] = useState(false);
 
   const handleDeleteUser = async (email) => {
-    const res = await fetch("http://localhost:3000/api/users", {
+    const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app";
+    const res = await fetch(`${baseUrl}/api/users`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
