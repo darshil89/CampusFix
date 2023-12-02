@@ -25,7 +25,7 @@ function MainHeader() {
       <div className={classes.logo}>
         <Image
           src="/images/logo.svg"
-          className="ml-32"
+          className="ml-32 h-fit"
           alt="logo"
           width={100}
           height={100}
