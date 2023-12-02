@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { SyncLoader } from "react-spinners";
 import { AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
-import PopUp from "../PopUp/page";
+import PopUp from "../popUp/page";
 import Link from "next/link";
 const Problem = () => {
   const { data: session, status } = useSession();
