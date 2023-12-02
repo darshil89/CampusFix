@@ -4,7 +4,6 @@
   background: url("/images/navimg2.jpeg") no-repeat center center/cover;
 }
 
-
 .header {
   width: 100%;
   z-index: 99;
@@ -14,14 +13,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
+
   height: fit-content;
 
-  
-
   /* background: url("/images/navimg2.jpeg") no-repeat center center/cover; */
-  background: rgb(61,161,237);
-background: linear-gradient(180deg, rgba(61,161,237,1) 0%, rgba(61,161,224,0.8576680672268908) 55%, rgba(0,212,255,0) 100%);
+  background: rgb(61, 161, 237);
+  background: linear-gradient(
+    180deg,
+    rgba(61, 161, 237, 0.8940826330532213) 0%,
+    rgba(61, 161, 224, 0.499124649859944) 55%,
+    rgba(0, 212, 255, 0) 100%
+  );
 }
 .logo {
   margin-top: 10px;
@@ -42,7 +44,7 @@ background: linear-gradient(180deg, rgba(61,161,237,1) 0%, rgba(61,161,224,0.857
   display: flex;
 
   justify-content: flex-end;
-  margin-right: 5REM;
+  margin-right: 5rem;
   margin-top: 32px;
 
   flex-direction: row;
