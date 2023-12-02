@@ -82,7 +82,7 @@ const Problem = () => {
 
   const handlerApprove = async (problemId, userId, formData) => {
     try {
-      handleAddNotification(formData, problemId, userId);
+      await handleAddNotification(formData, problemId, userId);
       console.log("formData = ", formData);
       const response = await fetch("/api/allProblems", {
         method: "PUT",
