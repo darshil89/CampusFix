@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import classes from "./footer.module.css";
+import Link from "next/link";
 import {
   faLinkedin,
   faFacebook,
@@ -27,7 +28,7 @@ const Footer = () => {
                     className="h-14 mb-5 w-14 mr-2"
                   />
                   <h1 className="text-xl pb-4 text-blue-900 font-bold">
-                    Dayananda Sagar Colledge Of Engineering
+                    Dayananda Sagar College Of Engineering
                   </h1>
                 </div>
               </div>
@@ -51,18 +52,21 @@ const Footer = () => {
                     className="text-gray-600"
                     icon={faChevronRight}
                   ></FontAwesomeIcon>
-                  <a href="#" className="hover:text-gray-800 ml-2">
+                  <Link href="/" className="hover:text-gray-800 ml-2">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="pb-5">
                   <FontAwesomeIcon
                     className="text-gray-600"
                     icon={faChevronRight}
                   ></FontAwesomeIcon>
-                  <a href="#" className="hover:text-gray-800 ml-2">
+                  <Link
+                    href="/allProblems"
+                    className="hover:text-gray-800 ml-2"
+                  >
                     Dashboard
-                  </a>
+                  </Link>
                 </li>
                 <li className="pb-5">
                   <FontAwesomeIcon
@@ -83,7 +87,11 @@ const Footer = () => {
                     className="text-gray-600"
                     icon={faChevronRight}
                   ></FontAwesomeIcon>
-                  <a href="#" className="hover:text-gray-800 ml-2">
+                  <a
+                    href="https://www.linkedin.com/in/darshil-mahraur-821216259/"
+                    target="_blank"
+                    className="hover:text-gray-800 ml-2"
+                  >
                     Darshil Mahraur
                   </a>
                 </li>
@@ -92,7 +100,11 @@ const Footer = () => {
                     className="text-gray-600"
                     icon={faChevronRight}
                   ></FontAwesomeIcon>
-                  <a href="#" className="hover:text-gray-800 ml-2">
+                  <a
+                    href="https://www.linkedin.com/in/gautam-shorewala-bb065a25a/"
+                    target="_blank"
+                    className="hover:text-gray-800 ml-2"
+                  >
                     Gautam Shorewala
                   </a>
                 </li>
@@ -101,8 +113,12 @@ const Footer = () => {
                     className="text-gray-600"
                     icon={faChevronRight}
                   ></FontAwesomeIcon>
-                  <a href="#" className="hover:text-gray-800 ml-2">
-                    Niruth Anand
+                  <a
+                    href="https://www.linkedin.com/in/niruth-ananth-19a9961b3/"
+                    target="_blank"
+                    className="hover:text-gray-800 ml-2"
+                  >
+                    Niruth Ananth
                   </a>
                 </li>
               </ul>
@@ -114,10 +130,13 @@ const Footer = () => {
                 below
               </p>
               <div className="flex items-center ">
-                <FontAwesomeIcon
-                  icon={faLinkedin}
-                  className="text-blue-600 text-2xl mr-4 "
-                />
+                <a href="https://www.linkedin.com/school/dayananda-sagar-college-of-engineering-bangalore/" target="_blank">
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    className="text-blue-600 text-2xl mr-4 "
+                  />
+                </a>
+
                 <FontAwesomeIcon
                   icon={faFacebook}
                   className="text-blue-600 text-2xl mr-4"
