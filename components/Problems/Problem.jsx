@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { SyncLoader } from "react-spinners";
 import { AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
+import PopUp from "../PopUp/page";
 import Link from "next/link";
 const Problem = () => {
   const { data: session, status } = useSession();
@@ -11,7 +12,7 @@ const Problem = () => {
   const [data, setData] = useState([]);
   const [update, setUpdate] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState("");
-
+  const [showPopUp, setShowPopUp] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const getData = async (status) => {
@@ -47,8 +48,42 @@ const Problem = () => {
     }
   }
 
-  const handlerApprove = async (problemId) => {
+  const closePopUp = () => {
+    setShowPopUp(null);
+  };
+
+  const openPopUp = (problemId) => {
+    setShowPopUp(problemId);
+  };
+
+  const handleAddNotification = async (formData, problemId, userId) => {
     try {
+      const response = await fetch("/api/notification", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            workerName: formData.workerName,
+            userId: userId,
+            problemId: problemId,
+            phone: formData.phoneNumber,
+            date: formData.date,
+            status: "approved",
+          },
+        }),
+      });
+      console.log("response = ", response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handlerApprove = async (problemId, userId, formData) => {
+    try {
+      handleAddNotification(formData, problemId, userId);
+      console.log("formData = ", formData);
       const response = await fetch("/api/allProblems", {
         method: "PUT",
         body: JSON.stringify({
@@ -160,16 +195,25 @@ const Problem = () => {
                   </Link>
                   <button
                     className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
-                    onClick={() => handlerApprove(problem.id)}
+                    onClick={() => openPopUp(problem.id)}
                   >
                     Approve
                   </button>
+
                   <button
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                     onClick={() => handlerReject(problem.id)}
                   >
                     Reject
                   </button>
+                  {showPopUp === problem.id && (
+                    <PopUp
+                      onClose={closePopUp}
+                      onSave={(formData) =>
+                        handlerApprove(problem.id, problem.userId, formData)
+                      }
+                    />
+                  )}
                 </div>
               </li>
             </ul>

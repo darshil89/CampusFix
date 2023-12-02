@@ -52,10 +52,10 @@ model Admin {
 }
 model Notification{
   id         String @id @default(auto()) @map("_id") @db.ObjectId
-  message    String
+  workerName String?
   userId     String
   problemId  String
   phone      String?
-  date       DateTime 
+  date       String? 
   status     String
 }
