@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import NavBar from "@/components/Navbar/Navbar";
+import Footer from "@/components/footer/footer";
 import Provider from "@/context/Provider";
 import Toster from "@/context/Toster";
 // Import Font Awesome CSS in your component or layout
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <Provider>
         <body className={inter.className}>
-          <NavBar>{children}</NavBar>
+          <NavBar />
+          {children}
+          <Footer />
           <Toster />
         </body>
       </Provider>
