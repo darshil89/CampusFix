@@ -5,7 +5,7 @@ import { connectToDb } from "@/utils";
 export async function GET(req) {
   console.log("req.url of problem backend = ", req.url);
   const requ1 = String(req.url);
-  const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app";
+  const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dayanand.vercel.app";
 
   const id = requ1.replace(`${baseUrl}/api/problem/`, "");
 

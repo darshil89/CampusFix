@@ -15,7 +15,7 @@ export default function Problem({ params: { id } }) {
     const fetchData = async () => {
       try {
         // Fetch problem data
-        const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app";
+        const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dayanand.vercel.app";
         const problemRes = await fetch(`${baseUrl}/api/problem/${id}`, {
           cache: "no-cache",
         });

@@ -53,7 +53,7 @@ export default function Problems(props) {
       uploadedImageUrls.push(uploadImageData.secure_url);
     }
     console.log(uploadedImageUrls);
-    const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dsce-project.vercel.app";
+    const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dayanand.vercel.app";
     const res = await fetch(`${baseUrl}/api/problems`, {
       method: "POST",
       headers: {
