@@ -60,7 +60,7 @@ function MainHeader() {
         {session && !checkAdmin && (
           <>
             <Link href="/dashboard">Dashboard</Link>
-            <Link href="problemStatement"> Problem </Link>
+            <Link href="/problemStatement"> Problem </Link>
             <Link href="/feedback">Feedback</Link>
             <Link href="/notification">Notification</Link>
             <button className={classes.btn} onClick={handleSignOut}>
