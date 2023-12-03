@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import classes from "./login.module.css";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
@@ -47,7 +46,7 @@ const LoginIn = () => {
           <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
             <div className="max-w-md text-center">
               <Image
-                src="/images/signupImg.jpg"
+                src="/images/signImg.jpg"
                 width={600}
                 height={600}
                 alt="img"
@@ -107,7 +106,7 @@ const LoginIn = () => {
                     type="submit"
                     className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
                   >
-                    Sign Up
+                    Sign In
                   </button>
                 </div>
               </form>
