@@ -30,6 +30,7 @@ const ClientUserPage = () => {
     if (res.ok) {
       const data = await res.json();
       toast.success(data.message);
+      setConform(!conform)
     } else {
       toast.error("Something went wrong");
     }
@@ -43,11 +44,14 @@ const ClientUserPage = () => {
         .then((data) => {
           setData(data);
           setLoading(false);
+          
         });
     } catch (error) {
       console.log("error = ", error.message);
     }
-  }, [data]);
+  }, [conform]);
+
+  console.log("data = ", data);
 
   if (session) {
     if (loading) {
