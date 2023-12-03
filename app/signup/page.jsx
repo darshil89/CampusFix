@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import Link from "next/link";
 const SignUp = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -41,30 +42,117 @@ const SignUp = () => {
   };
   if (!session) {
     return (
+      // <>
+      //   <div className={classes.container}>
+      //     <div>
+      //       <h2 className={classes.heading}>Register</h2>
+      //       <form onSubmit={registerUser}>
+      //         <div>
+      //           <div className="mt-2">
+      //             <input
+      //               placeholder="Name"
+      //               className={classes.input}
+      //               id="name"
+      //               name="name"
+      //               type="name"
+      //               value={data.name}
+      //               onChange={(e) => setData({ ...data, name: e.target.value })}
+      //               required
+      //             />
+      //           </div>
+      //         </div>
+      //         <div>
+      //           <div className="mt-2">
+      //             <input
+      //               className={classes.input}
+      //               placeholder="Email"
+      //               id="email"
+      //               name="email"
+      //               type="email"
+      //               value={data.email}
+      //               onChange={(e) =>
+      //                 setData({ ...data, email: e.target.value })
+      //               }
+      //               required
+      //             />
+      //           </div>
+      //         </div>
+
+      //         <div>
+      //           <div></div>
+      //           <div className="mt-2">
+      //             <input
+      //               placeholder="Password"
+      //               className={classes.input}
+      //               id="password"
+      //               name="password"
+      //               type="password"
+      //               value={data.password}
+      //               onChange={(e) =>
+      //                 setData({ ...data, password: e.target.value })
+      //               }
+      //               required
+      //             />
+      //           </div>
+      //         </div>
+
+      //         <div>
+      //           <button className={classes.btn} type="submit">
+      //             Sign Up
+      //           </button>
+      //         </div>
+      //       </form>
+      //     </div>
+      //   </div>
+      // </>
       <>
-        <div className={classes.container}>
-          <div>
-            <h2 className={classes.heading}>Register</h2>
-            <form onSubmit={registerUser}>
+      <div className="flex w-full justify-center">
+        <div className="flex lg:w-3/4  ">
+          <div className="hidden lg:flex items-center justify-center flex-1 bg-white text-black">
+            <div className="max-w-md text-center">
+              <Image
+                src="/images/signupImg.jpg"
+                width={600}
+                height={600}
+                alt="img"
+              ></Image>
+            </div>
+          </div>
+
+          <div className="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
+            <div className="max-w-md w-full p-6">
+              <h1 className="text-3xl font-semibold mb-6 text-black text-center">
+                Register
+              </h1>
+
+              <form onSubmit={registerUser} className="space-y-4">
               <div>
-                <div className="mt-2">
+                  <label
+                    for="name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Name
+                  </label>
                   <input
-                    placeholder="Name"
-                    className={classes.input}
+                  placeholder="Name"
                     id="name"
                     name="name"
                     type="name"
                     value={data.name}
                     onChange={(e) => setData({ ...data, name: e.target.value })}
                     required
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
                   />
                 </div>
-              </div>
-              <div>
-                <div className="mt-2">
+                <div>
+                  <label
+                    for="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email
+                  </label>
                   <input
                     placeholder="Email"
-                    className={classes.input}
                     id="email"
                     name="email"
                     type="email"
@@ -73,16 +161,18 @@ const SignUp = () => {
                       setData({ ...data, email: e.target.value })
                     }
                     required
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
                   />
                 </div>
-              </div>
-
-              <div>
-                <div></div>
-                <div className="mt-2">
+                <div>
+                  <label
+                    for="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Password
+                  </label>
                   <input
                     placeholder="Password"
-                    className={classes.input}
                     id="password"
                     name="password"
                     type="password"
@@ -91,18 +181,28 @@ const SignUp = () => {
                       setData({ ...data, password: e.target.value })
                     }
                     required
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
                   />
                 </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+              <div className="mt-4 text-sm text-gray-600 text-center">
+                <p>
+                  Already have an account?{" "}
+                  <Link href="/signin">Sign In</Link>
+                </p>
               </div>
-
-              <div>
-                <button className={classes.btn} type="submit">
-                  Sign Up
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
+      </div>
       </>
     );
   } else {
