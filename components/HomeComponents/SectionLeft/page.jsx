@@ -1,12 +1,16 @@
+import Image from "next/image";
+
 export default function SectionLeftt({ image }) {
   return (
     <section className="text-blueGray-700 bg-white mt-20">
       <div className="container flex flex-col items-center px-12 mx-auto md:flex-row ">
         <div className="w-full lg:w-5/6 lg:max-w-lg mb-16 md:w-1/2 md:pr-24 xl:mr-20">
-          <img
+          <Image
             className="object-cover object-center rounded-lg"
             alt="hero"
             src={image}
+            width={720}
+            height={600}
           />
         </div>
         <div className="flex flex-col items-start w-full pt-0  text-left lg:flex-grow md:w-1/2   md:mb-0">

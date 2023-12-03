@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function SectionRight() {
   return (
     <section className="text-blueGray-700 bg-white mt-20">
@@ -14,10 +16,12 @@ export default function SectionRight() {
           </p>
         </div>
         <div className="w-full lg:w-5/6 lg:max-w-lg md:w-1/2">
-          <img
+          <Image
             className="object-cover object-center rounded-lg"
             alt="hero"
-            src="https://dummyimage.com/720x600/F3F4F7/8693ac"
+            src="/images/plumber.png"
+            width={720}
+            height={600}
           />
         </div>
       </div>

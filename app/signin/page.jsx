@@ -112,7 +112,7 @@ const LoginIn = () => {
               </form>
               <div className="mt-4 text-sm text-gray-600 text-center">
                 <p>
-                  Don't have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link href="/signup">Register</Link>
                 </p>
               </div>
