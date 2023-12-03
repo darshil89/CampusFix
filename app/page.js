@@ -5,6 +5,7 @@ import Card from "@/components/HomeComponents/Card/page";
 import Footer from "@/components/footer/footer";
 import Map from "./(HOME)/map/page";
 import Details from "./(HOME)/details/page";
+import Faq from "@/components/HomeComponents/Faq/page";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Details />
 
       <Map />
+      <Faq />
     </>
   );
 }
