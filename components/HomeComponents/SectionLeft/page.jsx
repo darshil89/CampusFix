@@ -1,12 +1,12 @@
-export default function SectionLeftt() {
+export default function SectionLeftt({ image }) {
   return (
     <section className="text-blueGray-700 bg-white mt-20">
-      <div className="container flex flex-col items-center mx-auto md:flex-row ">
+      <div className="container flex flex-col items-center px-12 mx-auto md:flex-row ">
         <div className="w-full lg:w-5/6 lg:max-w-lg mb-16 md:w-1/2 md:pr-24 xl:mr-20">
           <img
             className="object-cover object-center rounded-lg"
             alt="hero"
-            src="https://dummyimage.com/720x600/F3F4F7/8693ac"
+            src={image}
           />
         </div>
         <div className="flex flex-col items-start w-full pt-0  text-left lg:flex-grow md:w-1/2   md:mb-0">

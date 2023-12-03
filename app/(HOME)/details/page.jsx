@@ -5,7 +5,7 @@ export default function Details() {
   return (
     <>
       <SectionRight />
-      <SectionLeft />
+      <SectionLeft image="/images/plumber.png" />
       <SectionRight />
     </>
   );

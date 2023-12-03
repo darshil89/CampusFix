@@ -1,7 +1,7 @@
 export default function SectionRight() {
   return (
     <section className="text-blueGray-700 bg-white mt-20">
-      <div className="container flex flex-col items-center  mx-auto  md:flex-row ">
+      <div className="container flex flex-col items-center px-12 mx-auto  md:flex-row ">
         <div className="flex flex-col items-start w-full pt-0 mb-16 text-left  lg:flex-grow md:w-1/2 xl:mr-20 md:pr-24 md:mb-0">
           <h1 className="mb-20 text-2xl font-black tracking-tighter text-black  md:text-5xl title-font">
             {" "}
