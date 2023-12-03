@@ -75,6 +75,7 @@ const Problem = () => {
         }),
       });
       console.log("response = ", response);
+      toast.success("Notification Send");
     } catch (error) {
       console.error(error);
     }
