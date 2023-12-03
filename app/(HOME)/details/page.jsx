@@ -1,3 +1,12 @@
+import SectionRight from "@/components/HomeComponents/SectionRight/page";
+import SectionLeft from "@/components/HomeComponents/SectionLeft/page";
+
 export default function Details() {
-  return <>Project Detail page</>;
+  return (
+    <>
+      <SectionRight />
+      <SectionLeft />
+      <SectionRight />
+    </>
+  );
 }
