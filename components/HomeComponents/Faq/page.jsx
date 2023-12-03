@@ -1,19 +1,19 @@
 export default function Faq() {
   return (
-    <div class="p-8">
-      <div class="bg-white p-4 rounded-lg shadow-xl py-8 mt-12">
-        <h4 class="text-4xl font-bold text-gray-800 tracking-widest uppercase text-center">
+    <div className="p-8">
+      <div className="bg-white p-4 rounded-lg shadow-xl py-8 mt-12">
+        <h4 className="text-4xl font-bold text-gray-800 tracking-widest uppercase text-center">
           FAQ
         </h4>
-        <p class="text-center text-gray-600 text-sm mt-2">
+        <p className="text-center text-gray-600 text-sm mt-2">
           Here are some of the frequently asked questions
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-12 px-2 xl:px-12 mt-4">
-          <div class="flex space-x-8 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-12 px-2 xl:px-12 mt-4">
+          <div className="flex space-x-8 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 text-blue-600"
+                className="h-12 w-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -29,10 +29,10 @@ export default function Faq() {
               </svg>
             </div>
             <div>
-              <h4 class="text-xl font-bold text-gray-700">
+              <h4 className="text-xl font-bold text-gray-700">
                 Lorem ipsum dolor sit amet?
               </h4>
-              <p class="text-gray-600 my-2">
+              <p className="text-gray-600 my-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
                 dignissimos. Neque eos, dignissimos provident reiciendis debitis
                 repudiandae commodi perferendis et itaque, similique fugiat
@@ -40,7 +40,7 @@ export default function Faq() {
               </p>
               <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 hover:underline capitalize"
+                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
@@ -48,11 +48,11 @@ export default function Faq() {
             </div>
           </div>
 
-          <div class="flex space-x-8 mt-8">
+          <div className="flex space-x-8 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 text-blue-600"
+                className="h-12 w-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -66,10 +66,10 @@ export default function Faq() {
               </svg>
             </div>
             <div>
-              <h4 class="text-xl font-bold text-gray-700">
+              <h4 className="text-xl font-bold text-gray-700">
                 Consectetur adipisicing elit?
               </h4>
-              <p class="text-gray-600 my-2">
+              <p className="text-gray-600 my-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
                 dignissimos. Neque eos, dignissimos provident reiciendis debitis
                 repudiandae commodi perferendis et itaque, similique fugiat
@@ -77,7 +77,7 @@ export default function Faq() {
               </p>
               <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 hover:underline capitalize"
+                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
@@ -85,11 +85,11 @@ export default function Faq() {
             </div>
           </div>
 
-          <div class="flex space-x-8 mt-8">
+          <div className="flex space-x-8 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 text-blue-600"
+                className="h-12 w-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -103,10 +103,10 @@ export default function Faq() {
               </svg>
             </div>
             <div>
-              <h4 class="text-xl font-bold text-gray-700">
+              <h4 className="text-xl font-bold text-gray-700">
                 Neque eos, dignissimos provident reiciendis debitis?
               </h4>
-              <p class="text-gray-600 my-2">
+              <p className="text-gray-600 my-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
                 dignissimos. Neque eos, dignissimos provident reiciendis debitis
                 repudiandae commodi perferendis et itaque, similique fugiat
@@ -114,7 +114,7 @@ export default function Faq() {
               </p>
               <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 hover:underline capitalize"
+                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
@@ -122,11 +122,11 @@ export default function Faq() {
             </div>
           </div>
 
-          <div class="flex space-x-8 mt-8">
+          <div className="flex space-x-8 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 text-blue-600"
+                className="h-12 w-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -140,10 +140,10 @@ export default function Faq() {
               </svg>
             </div>
             <div>
-              <h4 class="text-xl font-bold text-gray-700">
+              <h4 className="text-xl font-bold text-gray-700">
                 Repudiandae commodi perferendis et itaque?
               </h4>
-              <p class="text-gray-600 my-2">
+              <p className="text-gray-600 my-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
                 dignissimos. Neque eos, dignissimos provident reiciendis debitis
                 repudiandae commodi perferendis et itaque, similique fugiat
@@ -151,7 +151,7 @@ export default function Faq() {
               </p>
               <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 hover:underline capitalize"
+                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
@@ -159,11 +159,11 @@ export default function Faq() {
             </div>
           </div>
 
-          <div class="flex space-x-8 mt-8">
+          <div className="flex space-x-8 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 text-blue-600"
+                className="h-12 w-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -177,10 +177,10 @@ export default function Faq() {
               </svg>
             </div>
             <div>
-              <h4 class="text-xl font-bold text-gray-700">
+              <h4 className="text-xl font-bold text-gray-700">
                 Similique fugiat cumque?
               </h4>
-              <p class="text-gray-600 my-2">
+              <p className="text-gray-600 my-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
                 dignissimos. Neque eos, dignissimos provident reiciendis debitis
                 repudiandae commodi perferendis et itaque, similique fugiat
@@ -188,7 +188,7 @@ export default function Faq() {
               </p>
               <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 hover:underline capitalize"
+                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
@@ -196,11 +196,11 @@ export default function Faq() {
             </div>
           </div>
 
-          <div class="flex space-x-8 mt-8">
+          <div className="flex space-x-8 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-12 w-12 text-blue-600"
+                className="h-12 w-12 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -214,10 +214,10 @@ export default function Faq() {
               </svg>
             </div>
             <div>
-              <h4 class="text-xl font-bold text-gray-700">
+              <h4 className="text-xl font-bold text-gray-700">
                 Impedit iusto vitae dolorum, nostrum fugit?
               </h4>
-              <p class="text-gray-600 my-2">
+              <p className="text-gray-600 my-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
                 dignissimos. Neque eos, dignissimos provident reiciendis debitis
                 repudiandae commodi perferendis et itaque, similique fugiat
@@ -225,7 +225,7 @@ export default function Faq() {
               </p>
               <a
                 href="#"
-                class="text-blue-600 hover:text-blue-800 hover:underline capitalize"
+                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
