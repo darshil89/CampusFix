@@ -13,8 +13,8 @@ export default function Home() {
       <h1>Home Page</h1>
       <Details />
 
-      <Map />
       <Faq />
+      <Map />
     </>
   );
 }
