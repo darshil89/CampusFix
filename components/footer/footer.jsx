@@ -61,18 +61,6 @@ const Footer = () => {
                     className="text-gray-600"
                     icon={faChevronRight}
                   ></FontAwesomeIcon>
-                  <Link
-                    href="/allProblems"
-                    className="hover:text-gray-800 ml-2"
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-                <li className="pb-5">
-                  <FontAwesomeIcon
-                    className="text-gray-600"
-                    icon={faChevronRight}
-                  ></FontAwesomeIcon>
                   <a href="#" className="hover:text-gray-800 ml-2">
                     Principal Message
                   </a>
