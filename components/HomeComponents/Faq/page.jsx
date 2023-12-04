@@ -9,227 +9,163 @@ export default function Faq() {
           Here are some of the frequently asked questions
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-12 px-2 xl:px-12 mt-4">
-          <div className="flex space-x-8 mt-8">
+          <div className="flex space-x-2 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 text-blue-600"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
               >
-                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                <path
-                  strokeLinecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                ></path>
+                <path d="M10.296 7.71 14.621 12l-4.325 4.29 1.408 1.42L17.461 12l-5.757-5.71z"></path>
+                <path d="M6.704 6.29 5.296 7.71 9.621 12l-4.325 4.29 1.408 1.42L12.461 12z"></path>
               </svg>
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-700">
-                Lorem ipsum dolor sit amet?
+                What types of issues can I report through the ticketing system?
               </h4>
-              <p className="text-gray-600 my-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-                dignissimos. Neque eos, dignissimos provident reiciendis debitis
-                repudiandae commodi perferendis et itaque, similique fugiat
-                cumque impedit iusto vitae dolorum. Nostrum, fugit!
+              <p className="text-gray-600 my-2 p-2">
+                Our comprehensive app addresses campus infrastructure
+                seamlessly, encompassing carpentry, plumbing, electrical, and
+                logistical concerns. Streamline requests, track progress, and
+                optimize operations with our integrated system designed for
+                efficient issue resolution and facility management within the
+                college environment.
               </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
-                title="Read More"
-              >
-                Read More
-              </a>
             </div>
           </div>
 
-          <div className="flex space-x-8 mt-8">
+          <div className="flex space-x-2 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 text-blue-600"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
+                <path d="M10.296 7.71 14.621 12l-4.325 4.29 1.408 1.42L17.461 12l-5.757-5.71z"></path>
+                <path d="M6.704 6.29 5.296 7.71 9.621 12l-4.325 4.29 1.408 1.42L12.461 12z"></path>
               </svg>
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-700">
-                Consectetur adipisicing elit?
+                What information should I include when submitting a ticket?
               </h4>
-              <p className="text-gray-600 my-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-                dignissimos. Neque eos, dignissimos provident reiciendis debitis
-                repudiandae commodi perferendis et itaque, similique fugiat
-                cumque impedit iusto vitae dolorum. Nostrum, fugit!
+              <p className="text-gray-600 my-2 p-2">
+                When submitting issues, provide detailed information including
+                problem type, room, building, and floor numbers. Enhance clarity
+                by attaching images related to the issue. This ensures prompt
+                and accurate resolution from our maintenance team.
               </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
-                title="Read More"
-              >
-                Read More
-              </a>
             </div>
           </div>
 
-          <div className="flex space-x-8 mt-8">
+          <div className="flex space-x-2 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 text-blue-600"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                ></path>
+                <path d="M10.296 7.71 14.621 12l-4.325 4.29 1.408 1.42L17.461 12l-5.757-5.71z"></path>
+                <path d="M6.704 6.29 5.296 7.71 9.621 12l-4.325 4.29 1.408 1.42L12.461 12z"></path>
               </svg>
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-700">
-                Neque eos, dignissimos provident reiciendis debitis?
+                Can I cancel or modify a maintenance request once it's
+                submitted?
               </h4>
-              <p className="text-gray-600 my-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-                dignissimos. Neque eos, dignissimos provident reiciendis debitis
-                repudiandae commodi perferendis et itaque, similique fugiat
-                cumque impedit iusto vitae dolorum. Nostrum, fugit!
+              <p className="text-gray-600 my-2 p-2">
+                Once a maintenance request is submitted, it cannot be modified
+                or canceled to maintain efficiency and streamline our response
+                process. Please review all details carefully before submission,
+                and if needed, contact our support team for further assistance.
+                We appreciate your understanding in optimizing our service
+                workflow.
               </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
-                title="Read More"
-              >
-                Read More
-              </a>
             </div>
           </div>
 
-          <div className="flex space-x-8 mt-8">
+          <div className="flex space-x-2 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 text-blue-600"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                ></path>
+                <path d="M10.296 7.71 14.621 12l-4.325 4.29 1.408 1.42L17.461 12l-5.757-5.71z"></path>
+                <path d="M6.704 6.29 5.296 7.71 9.621 12l-4.325 4.29 1.408 1.42L12.461 12z"></path>
               </svg>
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-700">
-                Repudiandae commodi perferendis et itaque?
+                How long does it typically take to resolve a maintenance
+                request?
               </h4>
-              <p className="text-gray-600 my-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-                dignissimos. Neque eos, dignissimos provident reiciendis debitis
-                repudiandae commodi perferendis et itaque, similique fugiat
-                cumque impedit iusto vitae dolorum. Nostrum, fugit!
+              <p className="text-gray-600 my-2 p-2">
+                The resolution time for maintenance requests varies based on
+                factors such as problem complexity, staff availability, and
+                workload. While we strive for efficiency, please allow up to 10
+                days for completion. Urgent matters receive immediate attention.
+                We urge your patience as we prioritize thorough and effective
+                solutions.
               </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
-                title="Read More"
-              >
-                Read More
-              </a>
             </div>
           </div>
 
-          <div className="flex space-x-8 mt-8">
+          <div className="flex space-x-2 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 text-blue-600"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
-                ></path>
+                <path d="M10.296 7.71 14.621 12l-4.325 4.29 1.408 1.42L17.461 12l-5.757-5.71z"></path>
+                <path d="M6.704 6.29 5.296 7.71 9.621 12l-4.325 4.29 1.408 1.42L12.461 12z"></path>
               </svg>
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-700">
-                Similique fugiat cumque?
+                How can I track the status of my maintenance request?
               </h4>
-              <p className="text-gray-600 my-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-                dignissimos. Neque eos, dignissimos provident reiciendis debitis
-                repudiandae commodi perferendis et itaque, similique fugiat
-                cumque impedit iusto vitae dolorum. Nostrum, fugit!
+              <p className="text-gray-600 my-2 p-2">
+                To track your maintenance request, please visit the website's
+                notification section. All updates and information regarding your
+                ticket status will be promptly communicated there. Stay informed
+                effortlessly for a seamless experience in monitoring your
+                request progress.
               </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
-                title="Read More"
-              >
-                Read More
-              </a>
             </div>
           </div>
 
-          <div className="flex space-x-8 mt-8">
+          <div className="flex space-x-2 mt-8">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 text-blue-600"
-                fill="none"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
-                ></path>
+                <path d="M10.296 7.71 14.621 12l-4.325 4.29 1.408 1.42L17.461 12l-5.757-5.71z"></path>
+                <path d="M6.704 6.29 5.296 7.71 9.621 12l-4.325 4.29 1.408 1.42L12.461 12z"></path>
               </svg>
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-700">
-                Impedit iusto vitae dolorum, nostrum fugit?
+                Are there any charges associated with maintenance services?
               </h4>
-              <p className="text-gray-600 my-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-                dignissimos. Neque eos, dignissimos provident reiciendis debitis
-                repudiandae commodi perferendis et itaque, similique fugiat
-                cumque impedit iusto vitae dolorum. Nostrum, fugit!
+              <p className="text-gray-600 my-2 p-2">
+                Charges for maintenance depend on the issue. Intentional damage
+                incurs a penalty; however, no charges apply for naturally
+                occurring problems. Logistics requirements are provided free of
+                cost. We stress responsible facility use for a well-maintained
+                campus. Thank you for your cooperation.
               </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:text-blue-800 hover:underline capitalize"
-                title="Read More"
-              >
-                Read More
-              </a>
             </div>
           </div>
         </div>
