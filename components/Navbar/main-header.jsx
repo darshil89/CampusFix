@@ -72,7 +72,7 @@ function MainHeader() {
             <Link className={classes.option} href="/">
               Home
             </Link>
-            {checkAdmin && (
+            {session &&checkAdmin && (
               <>
                 <Link className={classes.option} href="/allProblems">
                   Dashboard
