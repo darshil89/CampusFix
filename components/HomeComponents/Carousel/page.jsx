@@ -1,17 +1,16 @@
 "use client";
 
 import React from "react";
-
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 export default function Carousel({
-  children: slides,
+  slides,
   autoSlide = false,
   autoSlideInterval = 3000,
 }) {
   const [curr, setCurr] = useState(0);
-
   const prev = () =>
     setCurr((curr) => (curr === 0 ? slides.length - 1 : curr - 1));
   const next = () =>
@@ -21,14 +20,27 @@ export default function Carousel({
     if (!autoSlide) return;
     const slideInterval = setInterval(next, autoSlideInterval);
     return () => clearInterval(slideInterval);
-  } );
+  });
   return (
-    <div className="overflow-hidden relative">
+    <div className=" relative">
       <div
         className="flex transition-transform ease-out duration-500"
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
-        {slides}
+        {slides.map((slide, i) => (
+          <div
+            key={i}
+            className="w-full flex-shrink-0 flex items-center justify-center flex-col"
+          >
+            <Image
+              className=" w-50 h-40"
+              src={slide}
+              alt="carousel"
+              height={600}
+              width={250}
+            />
+          </div>
+        ))}
       </div>
       <div className="absolute inset-0 flex items-center justify-between p-4">
         <button
