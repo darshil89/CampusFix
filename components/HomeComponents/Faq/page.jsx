@@ -75,7 +75,7 @@ export default function Faq() {
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-700">
-                Can I cancel or modify a maintenance request once it's
+                Can I cancel or modify a maintenance request once it&apos;s
                 submitted?
               </h4>
               <p className="text-gray-600 my-2 p-2">
@@ -134,7 +134,7 @@ export default function Faq() {
                 How can I track the status of my maintenance request?
               </h4>
               <p className="text-gray-600 my-2 p-2">
-                To track your maintenance request, please visit the website's
+                To track your maintenance request, please visit the website&apos;s
                 notification section. All updates and information regarding your
                 ticket status will be promptly communicated there. Stay informed
                 effortlessly for a seamless experience in monitoring your
