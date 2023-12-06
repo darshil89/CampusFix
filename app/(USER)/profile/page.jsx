@@ -11,7 +11,7 @@ const Profile = async () => {
 
   const email = session?.user?.email;
 
-  console.log("sessions", session);
+  // console.log("sessions", session);
 
   const checkAdmin = email === process.env.ADMIN_EMAIL;
 
@@ -23,7 +23,7 @@ const Profile = async () => {
 
   if (!checkAdmin && session) {
     return (
-      <div className="flex justify-center flex-row  w-full">
+      <div className="flex justify-center flex-row   w-full">
         <div className="w-1/3 bg-white rounded-md overflow-hidden shadow-md mr-2">
           <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
             <Image
@@ -56,7 +56,7 @@ const Profile = async () => {
         </div>
         <div className="w-1/3 bg-white rounded-md overflow-hidden shadow-md">
         <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
-        <h1 className="text-2xl font-bold">Notification</h1>
+        <h1 className="text-2xl font-bold">Notifications</h1>
       </div>
           <Notification userId={session?.user?.id}/>
         </div>
