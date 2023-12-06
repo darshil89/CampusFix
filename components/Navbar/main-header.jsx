@@ -105,15 +105,15 @@ function MainHeader() {
                 <Link className={classes.option} href="/dashboard">
                   Dashboard
                 </Link>
+                <Link className={classes.option} href="/profile">
+                  Profile
+                </Link>
                 <Link className={classes.option} href="/problemStatement">
                   {" "}
                   Problem{" "}
                 </Link>
                 <Link className={classes.option} href="/feedback">
                   Feedback
-                </Link>
-                <Link className={classes.option} href="/notification">
-                  Notification
                 </Link>
                 <button className={classes.btn} onClick={handleSignOut}>
                   Sign Out

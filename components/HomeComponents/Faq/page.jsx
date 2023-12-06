@@ -135,7 +135,7 @@ export default function Faq() {
               </h4>
               <p className="text-gray-600 my-2 p-2">
                 To track your maintenance request, please visit the website&apos;s
-                notification section. All updates and information regarding your
+                profile section. All updates and information regarding your
                 ticket status will be promptly communicated there. Stay informed
                 effortlessly for a seamless experience in monitoring your
                 request progress.

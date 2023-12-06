@@ -14,7 +14,10 @@ const Dashboard = async () => {
   if (!checkAdmin && session) {
     return (
       <>
-        <h1 className="text-center text-5xl">Welcome {session?.user.name}</h1>
+      <div className="text-4xl mt-8 ml-4 mb-2 text-gray-700 font-semibold">
+          User&apos;s Dashboard <span className="text-blue-500">Overview</span>
+        </div>
+        <h1 className=" text-2xl ml-4 mb-2 text-gray-900 font-semibold">Welcome {session?.user.name}</h1>
         <UserDashboard email={email}/>
       </>
     );

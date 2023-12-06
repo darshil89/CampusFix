@@ -25,7 +25,7 @@ export default async function UserDashboard(props) {
 
   return (
     <>
-      <h1 className="text-2xl text-bold">User</h1>
+
       <div className="flex flex-wrap">
         {problems.map((item, key) => {
           return (

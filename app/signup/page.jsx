@@ -42,69 +42,7 @@ const SignUp = () => {
   };
   if (!session) {
     return (
-      // <>
-      //   <div className={classes.container}>
-      //     <div>
-      //       <h2 className={classes.heading}>Register</h2>
-      //       <form onSubmit={registerUser}>
-      //         <div>
-      //           <div className="mt-2">
-      //             <input
-      //               placeholder="Name"
-      //               className={classes.input}
-      //               id="name"
-      //               name="name"
-      //               type="name"
-      //               value={data.name}
-      //               onChange={(e) => setData({ ...data, name: e.target.value })}
-      //               required
-      //             />
-      //           </div>
-      //         </div>
-      //         <div>
-      //           <div className="mt-2">
-      //             <input
-      //               className={classes.input}
-      //               placeholder="Email"
-      //               id="email"
-      //               name="email"
-      //               type="email"
-      //               value={data.email}
-      //               onChange={(e) =>
-      //                 setData({ ...data, email: e.target.value })
-      //               }
-      //               required
-      //             />
-      //           </div>
-      //         </div>
-
-      //         <div>
-      //           <div></div>
-      //           <div className="mt-2">
-      //             <input
-      //               placeholder="Password"
-      //               className={classes.input}
-      //               id="password"
-      //               name="password"
-      //               type="password"
-      //               value={data.password}
-      //               onChange={(e) =>
-      //                 setData({ ...data, password: e.target.value })
-      //               }
-      //               required
-      //             />
-      //           </div>
-      //         </div>
-
-      //         <div>
-      //           <button className={classes.btn} type="submit">
-      //             Sign Up
-      //           </button>
-      //         </div>
-      //       </form>
-      //     </div>
-      //   </div>
-      // </>
+     
       <>
       <div className="flex w-full justify-center">
         <div className="flex lg:w-3/4  ">

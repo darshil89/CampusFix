@@ -1,11 +1,13 @@
 "use client";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import classes from "./problem.module.css";
 import { toast } from "react-toastify";
 import { useDropzone } from "react-dropzone";
-import { useSession } from "next-auth/react";
+
 
 export default function Problems(props) {
+  const { data: session , update } = useSession();
   const id = props.id;
   const name = props.name;
   const status = props.status;
@@ -39,7 +41,7 @@ export default function Problems(props) {
       formData.append("file", f);
       formData.append(
         "upload_preset",
-        process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+        "jx3jfkqs"
       );
       const uploadResponse = await fetch(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_NAME}/image/upload`,
@@ -69,6 +71,13 @@ export default function Problems(props) {
       toast.error(result.error);
       return;
     }
+    // update({
+    //   ...session,
+    //   user: {
+    //     ...session.user,
+    //     problems: [...session.user.problems, result],
+    //   },
+    // })
     toast.success("Problem Added", { autoClose: 4000 });
     // console.log("result  =  ", result);
     setData({
@@ -80,6 +89,13 @@ export default function Problems(props) {
     });
     setFile([]);
   };
+  if (!session) {
+    return (
+      <div className="text-center">
+        <h1 className="text-2xl font-bold">Please Signin</h1>
+      </div>
+    );
+  } 
   return (
     <form className={classes.form} onSubmit={SubmitHandler}>
       <div className={classes.box1}>

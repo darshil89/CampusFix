@@ -56,21 +56,28 @@ export const authOptions = {
   ],
 
   callbacks: {
-    async jwt({ token, user }) {
-      
+    async jwt({ token, user, session, trigger }) {
+      if (trigger === "update") {
+        return { ...token, picture: session.user.image };
+      }
+
       if (user) {
-        console.log(user);
+        console.log("user from jwt token", user);
         return {
           ...token,
           id: user.id,
           problems: user.problems,
+          picture: user.image,
         };
       }
+      // console.log("-------------------------------------------");
+
+      // console.log("token", token);
+      // console.log("-------------------------------------------");
 
       return token;
     },
     async session({ session, token }) {
-     
       if (token) {
         return {
           ...session,
@@ -79,9 +86,14 @@ export const authOptions = {
             id: token.id,
             name: token.name,
             problems: token.problems,
+            image: token.picture,
           },
         };
       }
+      // console.log("-------------------------------------------");
+      // console.log("session", session);
+      // console.log("-------------------------------------------");
+
       return session;
     },
   },
