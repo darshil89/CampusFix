@@ -2,7 +2,7 @@ import Image from "next/image";
 import CopyButton from "../copyButton/page";
 import Time from "../date/Time";
 import Carousel1 from "../HomeComponents/Carousel/page";
-import Nodata from "../svg/nodata";
+
 const getAllProblem = async (props) => {
   const baseUrl =
     process.env.NODE_ENV === "development"
