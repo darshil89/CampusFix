@@ -20,10 +20,6 @@ const Notification = ({ userId }) => {
     getNotification();
   }, []);
 
-  // console.log("data = ", data);
-
-  // console.log("userId = ", userId);
-
   if (data.length > 0) {
     return (
       <div className="overflow-scroll">
