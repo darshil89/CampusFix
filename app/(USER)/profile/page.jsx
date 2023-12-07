@@ -11,15 +11,10 @@ const Profile = async () => {
 
   const email = session?.user?.email;
 
-  // console.log("sessions", session);
-
   const checkAdmin = email === process.env.ADMIN_EMAIL;
 
   const problems = session?.user?.problems.length;
 
-  // console.log("problem = ", problems);
-
-  // const onSubmit = async (e) => {};
 
   if (!checkAdmin && session) {
     return (

@@ -2,6 +2,7 @@ import Image from "next/image";
 import CopyButton from "../copyButton/page";
 import Time from "../date/Time";
 import Carousel1 from "../HomeComponents/Carousel/page";
+import Nodata from "../svg/nodata";
 const getAllProblem = async (props) => {
   const baseUrl =
     process.env.NODE_ENV === "development"
@@ -22,7 +23,15 @@ export default async function UserDashboard(props) {
   const email = props.email;
   const problems = await getAllProblem(email);
   // console.log("problems = ", problems);
-
+  if (problems.length === 0) {
+    return (
+      <>
+        <div className="flex justify-center items-center">
+         <Image src="/images/no-data.png" alt="No Data" width={600} height={600}></Image>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div className="flex flex-wrap">
