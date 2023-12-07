@@ -63,9 +63,9 @@ export default function Form() {
       toast.success("Profile Updated Successfully");
     }
 
-    // profilePhotoRef.current.value = "";
-    // passwordRef.current.value = "";
-    // confirmPasswordRef.current.value = "";
+     profilePhotoRef.current.value = "";
+     passwordRef.current.value = "";
+     confirmPasswordRef.current.value = "";
   };
   return (
     <>

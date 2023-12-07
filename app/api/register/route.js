@@ -4,11 +4,18 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 export async function POST(request) {
   try {
-    const { email, password, name } = await request.json();
+    const { email, password, name , confrimPassword } = await request.json();
     //validate
     if (!email || !password || !name) {
       return NextResponse.json(
         { error: "Please fill all fields" },
+        { status: 422 }
+      );
+    }
+
+    if(password !== confrimPassword){
+      return NextResponse.json(
+        { error: "Passwords do not match" },
         { status: 422 }
       );
     }

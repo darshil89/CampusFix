@@ -34,7 +34,7 @@ const LoginIn = () => {
     } else if (res.ok) {
       toast.success("Login Successful");
     } else if (!checkAdmin) {
-      router.push("/dashboard");
+      router.push("/profile");
     } else {
       router.push("/allProblems");
     }
@@ -123,7 +123,7 @@ const LoginIn = () => {
     );
   } else {
     if (!checkAdmin) {
-      router.push("/dashboard");
+      router.push("/profile");
     } else {
       router.push("/allProblems");
     }

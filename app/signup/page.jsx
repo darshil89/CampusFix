@@ -14,6 +14,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
+    confrimPassword: "",
   });
 
   const registerUser = async (e) => {
@@ -24,6 +25,7 @@ const SignUp = () => {
         name: data.name,
         email: data.email,
         password: data.password,
+        confrimPassword: data.confrimPassword,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -117,6 +119,26 @@ const SignUp = () => {
                     value={data.password}
                     onChange={(e) =>
                       setData({ ...data, password: e.target.value })
+                    }
+                    required
+                    className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    placeholder="Confirm Password"
+                    id="confirm password"
+                    name="confirm password"
+                    type="password"
+                    value={data.confrimPassword}
+                    onChange={(e) =>
+                      setData({ ...data, confrimPassword: e.target.value })
                     }
                     required
                     className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
