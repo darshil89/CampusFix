@@ -122,3 +122,23 @@
 .submit:hover {
   background-color: #0095ffc1;
 }
+
+.form {
+  /* Other styles */
+  width: 90%; /* Make the form take up 90% of the screen width on small screens */
+  margin: 2rem auto;
+}
+
+@media (min-width: 768px) {
+  .form {
+    width: 70%; /* Make the form take up 70% of the screen width on medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .form {
+    width: 40%; /* Make the form take up 40% of the screen width on large screens */
+  }
+}
+
+/* Other styles */
