@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import CopyButton from "../copyButton/page";
 import { useEffect, useState } from "react";
 const Notification = ({ userId }) => {
@@ -69,9 +70,9 @@ const Notification = ({ userId }) => {
     );
   } else {
     return (
-      <h1 className="text-center text-xl font-bold text-slate-500">
-        No Notifications
-      </h1>
+      <div className="flex justify-center items-center">
+         <Image src="/images/no-notification.png" alt="No Data" width={600} height={600}></Image>
+        </div>
     );
   }
 };
