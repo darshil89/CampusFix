@@ -47,7 +47,7 @@ export const authOptions = {
           if (!match) {
             return null;
           }
-          console.log("auth user log ", user);
+          // console.log("auth user log ", user);
           return user;
         }
         return null;
@@ -62,7 +62,7 @@ export const authOptions = {
       }
 
       if (user) {
-        console.log("user from jwt token", user);
+        // console.log("user from jwt token", user);
         return {
           ...token,
           id: user.id,
