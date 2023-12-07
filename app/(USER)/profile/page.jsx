@@ -23,11 +23,15 @@ const Profile = async () => {
 
   if (!checkAdmin && session) {
     return (
-      <div className="flex justify-center flex-row   w-full">
+      <div className="flex  justify-center flex-row w-full">
         <div className="w-1/3 bg-white rounded-md overflow-hidden shadow-md mr-2">
           <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
             <Image
-              src={session?.user?.image ? session?.user?.image : "/images/profile.png"}
+              src={
+                session?.user?.image
+                  ? session?.user?.image
+                  : "/images/profile.png"
+              }
               width={500}
               height={500}
               alt="Profile"
@@ -54,11 +58,13 @@ const Profile = async () => {
             <Form />
           </div>
         </div>
-        <div className="w-1/3 bg-white rounded-md overflow-hidden shadow-md">
-        <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
-        <h1 className="text-2xl font-bold">Notifications</h1>
-      </div>
-          <Notification userId={session?.user?.id}/>
+        <div className="w-1/3 bg-white rounded-md overflow-hidden h-screen shadow-md">
+          <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
+            <h1 className="text-2xl font-bold">Notifications</h1>
+          </div>
+          <div className="overflow-auto h-[calc(100%-4rem)]">
+            <Notification userId={session?.user?.id} />
+          </div>
         </div>
       </div>
     );
