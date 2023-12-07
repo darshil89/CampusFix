@@ -19,9 +19,9 @@ const Notification = ({ userId }) => {
     getNotification();
   }, []);
 
-  console.log("data = ", data);
+  // console.log("data = ", data);
 
-  console.log("userId = ", userId);
+  // console.log("userId = ", userId);
 
   if (data.length > 0) {
     return (

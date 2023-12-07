@@ -1,13 +1,13 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Form() {
   const { data: session, update } = useSession();
   const passwordRef = useRef("");
   const confirmPasswordRef = useRef("");
   const profilePhotoRef = useRef("");
-  const [image, setImage] = useState("");
 
   console.log("session = ", session);
 
@@ -26,7 +26,6 @@ export default function Form() {
     );
 
     const uploadImageData = await uploadResponse.json();
-    setImage(uploadImageData.secure_url);
 
     await update({
       ...session,
@@ -34,14 +33,39 @@ export default function Form() {
         ...session?.user,
         image: uploadImageData.secure_url,
       },
-    })
+    });
 
-    profilePhotoRef.current.value = "";
+   
 
-    // const updatedSession = { ...session, user: { ...session.user, image: image } };
-    // update(updatedSession);
+    const data = {
+      password: passwordRef.current.value,
+      confirmPassword: confirmPasswordRef.current.value,
+      userId: session.user.id,
+      image: uploadImageData.secure_url,
+    };
 
-    
+    try {
+      toast.info("Updating Profile");
+      const res = await fetch("/api/userUpdate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data }),
+      });
+
+      const result = await res.json();
+      console.log("data = ", result);
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log("error = ", error);
+    } finally {
+      toast.success("Profile Updated Successfully");
+    }
+
+    // profilePhotoRef.current.value = "";
+    // passwordRef.current.value = "";
+    // confirmPasswordRef.current.value = "";
   };
   return (
     <>

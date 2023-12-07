@@ -66,7 +66,7 @@ const SignUp = () => {
               <form onSubmit={registerUser} className="space-y-4">
               <div>
                   <label
-                    for="name"
+                    htmlFor="name"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Name
@@ -84,7 +84,7 @@ const SignUp = () => {
                 </div>
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Email
@@ -104,7 +104,7 @@ const SignUp = () => {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Password

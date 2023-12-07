@@ -23,7 +23,7 @@ export const GET = async (req) => {
       },
     });
 
-    console.log("api notifications", notifications);
+    // console.log("api notifications", notifications);
 
     return NextResponse.json(notifications, { status: 200 });
   } catch (error) {
