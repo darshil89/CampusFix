@@ -56,8 +56,15 @@ const Problem = () => {
     setShowPopUp(problemId);
   };
 
-  const handleAddNotification = async (formData, problemId, userId) => {
+  const handleAddNotification = async (formData, problemId, userId, status) => {
     try {
+      if (!formData) {
+        formData = {
+          workerName: "",
+          phoneNumber: "",
+          date: "",
+        };
+      }
       const response = await fetch("/api/notification", {
         method: "POST",
         headers: {
@@ -70,7 +77,7 @@ const Problem = () => {
             problemId: problemId,
             phone: formData.phoneNumber,
             date: formData.date,
-            status: "approved",
+            status: status,
           },
         }),
       });
@@ -83,7 +90,7 @@ const Problem = () => {
 
   const handlerApprove = async (problemId, userId, formData) => {
     try {
-      await handleAddNotification(formData, problemId, userId);
+      await handleAddNotification(formData, problemId, userId, "approved");
       console.log("formData = ", formData);
       const response = await fetch("/api/allProblems", {
         method: "PUT",
@@ -112,8 +119,9 @@ const Problem = () => {
     }
   };
 
-  const handlerReject = async (problemId) => {
+  const handlerReject = async (problemId, userId) => {
     try {
+      await handleAddNotification(null, problemId, userId, "rejeacted");
       const response = await fetch("/api/allProblems", {
         method: "PUT",
         body: JSON.stringify({
@@ -203,7 +211,7 @@ const Problem = () => {
 
                   <button
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handlerReject(problem.id)}
+                    onClick={() => handlerReject(problem.id, problem.userId)}
                   >
                     Reject
                   </button>

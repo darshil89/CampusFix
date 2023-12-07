@@ -25,7 +25,6 @@ export default async function UserDashboard(props) {
 
   return (
     <>
-
       <div className="flex flex-wrap">
         {problems.map((item, key) => {
           return (
@@ -58,7 +57,7 @@ export default async function UserDashboard(props) {
                   <div className="flex justify-center items-center mt-2 text-gray-500">
                     <div className="flex items-center justify-center space-x-2">
                       <p>ID: {item.id}</p>
-                      <CopyButton text={item.id} />
+                      <CopyButton textToCopy={item.id} />
                     </div>
                   </div>
                   <div className="flex justify-around mt-4">

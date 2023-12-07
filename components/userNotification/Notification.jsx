@@ -1,4 +1,5 @@
 "use client";
+import CopyButton from "../copyButton/page";
 import { useEffect, useState } from "react";
 const Notification = ({ userId }) => {
   const [data, setData] = useState([]);
@@ -25,26 +26,53 @@ const Notification = ({ userId }) => {
   if (data.length > 0) {
     return (
       <div className="overflow-scroll">
-        {data.map((item) => {
+        {[...data].reverse().map((item) => {
           return (
             <div
               key={item?.id}
-              className="mt-2 mx-2 mb-2  bg-opacity-75 bg-green-500 text-white rounded-md shadow-md p-2"
+              className={`mt-2 mx-2 mb-2 bg-opacity-75 ${
+                item.status === "approved" ? "bg-green-500" : "bg-red-500"
+              } text-white rounded-md shadow-md p-2`}
             >
-              <h1 className="text-xl font-bold mb-4">Congratulations!</h1>
+              <h1 className="text-xl font-bold mb-4">
+                {item.status === "approved" ? "Congratulations!" : "Sorry!"}
+              </h1>
               <p className="text-lg mb-2">
-                Your request has been accepted, and the workmen{" "}
-                <span className="font-bold "> {item?.workerName} </span> will
-                bring their expertise to your doorstep on:
+                {item.status === "approved" ? (
+                  <>
+                    Your request has been{" "}
+                    <span className="font-bold">approved</span>, and the workmen{" "}
+                    <span className="font-bold">{item?.workerName}</span> will
+                    bring their expertise to your doorstep on:
+                  </>
+                ) : (
+                  <>
+                    Your request has been{" "}
+                    <span className="font-bold">rejected</span>. Please contact
+                    admin for further details.
+                  </>
+                )}
               </p>
-              <p className="text-lg font-bold mb-4">{item?.date}</p>
+              {item.status === "approved" && (
+                <>
+                  <p className="text-lg font-bold mb-4">{item?.date}</p>
+                  <div className="flex font-bold items-center text-lg">
+                    <span>Contact Info: {item?.phone}</span>
+                    <CopyButton textToCopy={item?.phone} />
+                  </div>
+                </>
+              )}
             </div>
           );
         })}
       </div>
     );
   } else {
-    return <h1 className="text-center text-xl font-bold text-slate-500">No Notifications</h1>;
+    return (
+      <h1 className="text-center text-xl font-bold text-slate-500">
+        No Notifications
+      </h1>
+    );
   }
 };
 
