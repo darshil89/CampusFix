@@ -18,7 +18,7 @@ const Profile = async () => {
 
   if (!checkAdmin && session) {
     return (
-      <div className="flex  justify-center flex-row w-full">
+      <div className="flex mt-2  justify-center flex-row w-full">
         <div className="w-1/3 bg-white rounded-md overflow-hidden shadow-md mr-2">
           <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
             <Image
