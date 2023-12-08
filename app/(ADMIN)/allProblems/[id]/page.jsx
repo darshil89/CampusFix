@@ -15,7 +15,10 @@ export default function Problem({ params: { id } }) {
     const fetchData = async () => {
       try {
         // Fetch problem data
-        const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dayanand.vercel.app";
+        const baseUrl =
+          process.env.NODE_ENV === "development"
+            ? "http://localhost:3000"
+            : "https://dayanand.vercel.app";
         const problemRes = await fetch(`${baseUrl}/api/problem/${id}`, {
           cache: "no-cache",
         });
@@ -28,7 +31,7 @@ export default function Problem({ params: { id } }) {
         setProblem(problemData);
 
         // Fetch user data
-       
+
         const userRes = await fetch(
           `${baseUrl}/api/user/${problemData.problem.userId}`,
           {
@@ -68,24 +71,20 @@ export default function Problem({ params: { id } }) {
 
     return (
       <>
-        <div className="flex justify-around items-center h-screen ">
-          <div className="w-300 ">
-            <Card
-              title={title}
-              content={content}
-              problemId={id}
-              buildingnumber={buildingNumber}
-              floornumber={floorNumber}
-              roomnumber={roomNumber}
-              createdAt={createdAt}
-              image={image}
-            />
-          </div>
+        <div className="flex justify-around items-center h-screen md:w-4/4 md:mx-auto ">
+          <Card
+            title={title}
+            email={email}
+            userName={name}
+            content={content}
+            problemId={id}
+            buildingnumber={buildingNumber}
+            floornumber={floorNumber}
+            roomnumber={roomNumber}
+            createdAt={createdAt}
+            image={image}
+          />
         </div>
-
-        <div className="text-xl">User</div>
-        <div>User Name = {name}</div>
-        <div>User Email = {email}</div>
       </>
     );
   } else {
