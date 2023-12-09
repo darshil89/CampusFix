@@ -15,12 +15,11 @@ const Profile = async () => {
 
   const problems = session?.user?.problems.length;
 
-
   if (!checkAdmin && session) {
     return (
-      <div className="flex mt-2  justify-center flex-row w-full">
-        <div className="w-1/3 bg-white rounded-md overflow-hidden shadow-md mr-2">
-          <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
+      <div className="flex flex-col mt-2 justify-center w-full md:flex-row md:items-start">
+        <div className="w-full bg-white rounded-md overflow-hidden shadow-md mr-2 md:w-1/3 md:mr-2">
+          <div className="flex flex-col justify-center items-center bg-opacity-75 bg-blue-500 text-white text-center p-4">
             <Image
               src={
                 session?.user?.image
@@ -53,11 +52,11 @@ const Profile = async () => {
             <Form />
           </div>
         </div>
-        <div className="w-1/3 bg-white rounded-md overflow-hidden h-screen shadow-md">
+        <div className="w-full bg-white rounded-md overflow-hidden h-screen shadow-md md:w-1/3">
           <div className="bg-opacity-75 bg-blue-500 text-white text-center p-4">
             <h1 className="text-2xl font-bold">Notifications</h1>
           </div>
-          <div className="overflow-auto h-[calc(100%-4rem)]">
+          <div className="w-full overflow-auto h-[calc(100%-4rem)]">
             <Notification userId={session?.user?.id} />
           </div>
         </div>

@@ -1,8 +1,10 @@
 import Time from "@/components/date/Time";
-import Carousel from "@/components/HomeComponents/Carousel/page";
-import Image from "next/image";
+import Carousel1 from "@/components/HomeComponents/Carousel/page";
+import CopyButton from "@/components/copyButton/page";
 const Card = ({
   title,
+  email,
+  userName,
   content,
   problemId,
   floornumber,
@@ -13,37 +15,54 @@ const Card = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <div className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
-          <Carousel>
-            {image.map((img, index) => (
-              <Image width={200} height={200}  src={img} key={index} alt="Problem Image" />
-            ))}
-          </Carousel>
-        </div>
-        <div className="flex flex-col justify-between p-4 leading-normal">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Title: {title}
-          </h5>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Content:{content}
-          </p>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            ProblemId:{problemId}
-          </p>
-          <div className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Time:
-            <Time createdAt={createdAt}></Time>
+      <div className="w-full sm:w-1 md:w-1/2 lg:w-1/3 xl:w-1/3 p-2">
+        <div className="flex flex-col max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-3">
+          <div className="p-2 text-right">
+            <span
+              className={
+                "inline-block text-blue-800 bg-blue-200 text-sm px-4 py-2 rounded-full  font-semibold tracking-wide"
+              }
+            >
+              By {userName}
+            </span>
           </div>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Floor Number:{floornumber}
-          </p>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Room Number:{roomnumber}
-          </p>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Building Number:{buildingnumber}
-          </p>
+          <Carousel1 slides={image}></Carousel1>
+          <div className="p-8 text-center">
+            <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+              {title}
+            </div>
+            <div className="block mt-2 text-base leading-tight font-medium text-black">
+              {content}
+            </div>
+            <div className="mt-2">
+              Email:
+              {email}
+            </div>
+            <div className="flex justify-center items-center mt-2 text-gray-500">
+              <div className="flex items-center justify-center space-x-2">
+                <p>ID: {problemId}</p>
+                <CopyButton textToCopy={problemId} />
+              </div>
+            </div>
+            <div className="flex justify-around mt-4">
+              <div>
+                <p className="text-xs">Building Number</p>
+                <p className="text-sm">{buildingnumber}</p>
+              </div>
+              <div>
+                <p className="text-xs">Room Number</p>
+                <p className="text-sm">{roomnumber}</p>
+              </div>
+              <div>
+                <p className="text-xs">Floor Number</p>
+                <p className="text-sm">{floornumber}</p>
+              </div>
+            </div>
+            <div className="flex flex-col mt-4">
+              <div className="text-gray-500 text-xs">Created At</div>
+              <Time className="text-black text-sm" createdAt={createdAt} />
+            </div>
+          </div>
         </div>
       </div>
     </>
