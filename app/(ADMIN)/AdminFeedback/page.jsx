@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { connectToDb } from "@/utils";
 import prisma from "@/prisma";
+import Search from "../allUsers/search";
 
 export default async function AdminFeedback() {
   await connectToDb();
@@ -12,11 +13,16 @@ export default async function AdminFeedback() {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
   const email = session?.user?.email;
- 
 
   if (!session && email !== process.env.ADMIN_EMAIL) redirect("/signin");
   return (
     <>
+      <div className="flex justify-between mt-8 ml-4 mb-4 flex-row">
+        <div className="text-4xl  text-gray-700 font-semibold">
+          All User&apos;s <span className="text-blue-500">Feedback</span>
+        </div>
+        <Search />
+      </div>
       {feedbacks.map((feedback, index) => {
         return (
           <div key={index}>

@@ -6,6 +6,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { toast } from "react-toastify";
 import PopUp from "../popUp/page";
 import Link from "next/link";
+import Image from "next/image";
 const Problem = () => {
   const { data: session, status } = useSession();
 
@@ -159,8 +160,8 @@ const Problem = () => {
         />
       );
     }
-    if (!data) {
-      return <h1>No data</h1>;
+    if (data.length === 0) {
+      return <Image src="/images/no-data.png" alt="No data" height={600} width={600}></Image>
     }
 
     return (
