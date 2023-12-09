@@ -8,6 +8,7 @@ import { SyncLoader } from "react-spinners";
 import { AiTwotoneDelete } from "react-icons/ai";
 
 import CopyButton from "@/components/copyButton/page";
+import Image from "next/image";
 const ClientUserPage = () => {
   const { data: session, status } = useSession();
 
