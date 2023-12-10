@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import prisma from "@/prisma";
 import Problem from "@/components/Problems/Problem";
 
-
 // const getSpecificProblem = async (status) => {
 //   const res = await fetch(
 //     "http://localhost:3000/api/allProblems",
@@ -17,8 +16,7 @@ import Problem from "@/components/Problems/Problem";
 //         "Content-Type": "application/json",
 //       },
 //     },
-    
-    
+
 //      { revalidate: 0 }
 //   );
 
@@ -30,7 +28,7 @@ export default async function AdminDashboard() {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
   if (!session) redirect("/signin");
-  const pending =  await prisma.problem.findMany({
+  const pending = await prisma.problem.findMany({
     where: {
       status: "pending",
     },

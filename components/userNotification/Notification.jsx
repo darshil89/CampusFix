@@ -32,13 +32,14 @@ const Notification = ({ userId }) => {
               } text-white rounded-md shadow-md p-2`}
             >
               <h1 className="text-xl font-bold mb-4">
-                {item.status === "approved" ? "Congratulations!" : "Sorry!"}
+                {item.status === "approved"
+                  ? "Your request has been Approved"
+                  : "Sorry!"}
               </h1>
               <p className="text-lg mb-2">
                 {item.status === "approved" ? (
                   <>
-                    Your request has been{" "}
-                    <span className="font-bold">approved</span>, and the workmen{" "}
+                    The workmen{" "}
                     <span className="font-bold">{item?.workerName}</span> will
                     bring their expertise to your doorstep on:
                   </>
@@ -67,8 +68,13 @@ const Notification = ({ userId }) => {
   } else {
     return (
       <div className="flex justify-center items-center">
-         <Image src="/images/no-notification.png" alt="No Data" width={600} height={600}></Image>
-        </div>
+        <Image
+          src="/images/no-notification.png"
+          alt="No Data"
+          width={600}
+          height={600}
+        ></Image>
+      </div>
     );
   }
 };
