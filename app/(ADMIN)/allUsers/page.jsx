@@ -9,12 +9,9 @@ export default function AllUsers() {
         </div>
 
         <Search />
-
-        
       </div>
-      
+
       <ClientUserPage />
-      
     </>
   );
 }
