@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { connectToDb } from "@/utils";
 import prisma from "@/prisma";
-import Search from "../allUsers/search";
+// import Search from "../../../components/SearchCoins";
 
 export default async function AdminFeedback() {
   await connectToDb();
@@ -21,7 +21,7 @@ export default async function AdminFeedback() {
         <div className="text-4xl  text-gray-700 font-semibold">
           All User&apos;s <span className="text-blue-500">Feedback</span>
         </div>
-        <Search />
+        {/* <Search page={"feedback"} placeholder/> */}
       </div>
       {feedbacks.map((feedback, index) => {
         return (

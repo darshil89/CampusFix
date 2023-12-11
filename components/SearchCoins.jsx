@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const Search = () => {
+const Search = (props) => {
   const [query, setQuery] = useState("");
   const [user, setUser] = useState([]);
+
+  const { page } = props;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ const Search = () => {
         ? "http://localhost:3000"
         : "https://dayanand.vercel.app";
 
-    const url = `${baseUrl}/api/users/search?query=${query}`;
+    const url = `${baseUrl}/api/${page}/search?query=${query}`;
 
     const response = await fetch(url);
 
