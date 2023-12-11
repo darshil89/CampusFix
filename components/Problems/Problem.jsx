@@ -179,9 +179,6 @@ const Problem = () => {
                     <p className="text-sm font-semibold leading-6 text-gray-900">
                       {problem.title}
                     </p>
-                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                      {problem.content}
-                    </p>
                     <p className=" truncate text-xs leading-5 text-gray-500">
                       by-{problem.name}
                     </p>
@@ -191,31 +188,35 @@ const Problem = () => {
                           problem.status
                         )}`}
                       >
-                        {problem.status}
+                        {problem.status.charAt(0).toUpperCase() +
+                          problem.status.slice(1)}
                       </span>
                     </p>
                   </div>
                 </div>
                 <div>
-                  <Link
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
-                    href={`/allProblems/${problem.id}`}
-                  >
-                    View
-                  </Link>
-                  <button
-                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
-                    onClick={() => openPopUp(problem.id)}
-                  >
-                    Approve
-                  </button>
+                  <div className="flex justify-between">
+                    <Link
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+                      href={`/allProblems/${problem.id}`}
+                    >
+                      View
+                    </Link>
+                    <button
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+                      onClick={() => openPopUp(problem.id)}
+                    >
+                      Approve
+                    </button>
 
-                  <button
-                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handlerReject(problem.id, problem.userId)}
-                  >
-                    Reject
-                  </button>
+                    <button
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                      onClick={() => handlerReject(problem.id, problem.userId)}
+                    >
+                      Reject
+                    </button>
+                  </div>
+
                   {showPopUp === problem.id && (
                     <PopUp
                       onClose={closePopUp}
