@@ -1,5 +1,5 @@
 import ClientUserPage from "./user";
-import Search from "./search";
+import Search from "../../../components/SearchCoins";
 export default function AllUsers() {
   return (
     <>
@@ -7,10 +7,8 @@ export default function AllUsers() {
         <div className="text-4xl  text-gray-700 font-semibold">
           All User&apos;s <span className="text-blue-500">Page</span>
         </div>
-
         <Search />
       </div>
-
       <ClientUserPage />
     </>
   );
