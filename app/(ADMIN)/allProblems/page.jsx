@@ -27,7 +27,8 @@ import Problem from "@/components/Problems/Problem";
 export default async function AdminDashboard() {
   const session = await getServerSession(authOptions);
   if (typeof window !== "undefined") return null;
-  if (!session) redirect("/signin");
+  const email = session?.user?.email;
+  if (!session || email !== process.env.ADMIN_EMAIL) redirect("/signin");
   const pending = await prisma.problem.findMany({
     where: {
       status: "pending",

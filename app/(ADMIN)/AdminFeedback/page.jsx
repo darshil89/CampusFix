@@ -14,7 +14,7 @@ export default async function AdminFeedback() {
   if (typeof window !== "undefined") return null;
   const email = session?.user?.email;
 
-  if (!session && email !== process.env.ADMIN_EMAIL) redirect("/signin");
+  if (!session || email !== process.env.ADMIN_EMAIL) redirect("/signin");
   return (
     <>
       <div className="flex justify-between mt-8 ml-4 mb-4 flex-row">
