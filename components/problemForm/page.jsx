@@ -5,9 +5,8 @@ import classes from "./problem.module.css";
 import { toast } from "react-toastify";
 import { useDropzone } from "react-dropzone";
 
-
 export default function Problems(props) {
-  const { data: session , update } = useSession();
+  const { data: session, update } = useSession();
   const id = props.id;
   const name = props.name;
   const status = props.status;
@@ -39,10 +38,7 @@ export default function Problems(props) {
     for (const f of file) {
       const formData = new FormData();
       formData.append("file", f);
-      formData.append(
-        "upload_preset",
-        "jx3jfkqs"
-      );
+      formData.append("upload_preset", "jx3jfkqs");
       const uploadResponse = await fetch(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_NAME}/image/upload`,
         {
@@ -55,7 +51,10 @@ export default function Problems(props) {
       uploadedImageUrls.push(uploadImageData.secure_url);
     }
     console.log(uploadedImageUrls);
-    const baseUrl = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://dayanand.vercel.app";
+    const baseUrl =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://dayanand.vercel.app";
     const res = await fetch(`${baseUrl}/api/problems`, {
       method: "POST",
       headers: {
@@ -95,7 +94,7 @@ export default function Problems(props) {
         <h1 className="text-2xl font-bold">Please Signin</h1>
       </div>
     );
-  } 
+  }
   return (
     <form className={classes.form} onSubmit={SubmitHandler}>
       <div className={classes.box1}>
@@ -170,15 +169,24 @@ export default function Problems(props) {
           }}
         />
       </div>
-      <div
-        {...getRootProps()}
-        className={`dropzone ${isDragActive ? "active" : ""}`}
-      >
+      <div className={classes.dropzone} {...getRootProps()}>
         <input {...getInputProps()} />
         {file.length > 0 ? (
           <div>
-            {file.map((f) => (
-              <p key={f.name}>{f.name}</p>
+            {file.map((f, index) => (
+              <div key={f.name} className={classes.file_container}>
+                <p style={{ marginRight: "10px" }}>{f.name}</p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent file input from being clicked
+                    const newFiles = file.filter((_, i) => i !== index);
+                    setFile(newFiles); // Assume setFile is your state setter function
+                  }}
+                  style={{ color: "#000000" }} // Add this line
+                >
+                  &#x2715;
+                </button>
+              </div>
             ))}
           </div>
         ) : (
