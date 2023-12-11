@@ -18,7 +18,7 @@ const Notification = ({ userId }) => {
       } catch (error) {}
     };
     getNotification();
-  }, []);
+  }, [userId]);
 
   if (data.length > 0) {
     return (
