@@ -1,7 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signOut } from "next-auth/react";
 import classes from "./main-header.module.css";
 import Image from "next/image";
@@ -9,7 +9,27 @@ import { toast } from "react-toastify";
 
 function MainHeader() {
   const { data: session, status } = useSession();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShow(window.innerWidth > 1000);
+    };
+
+    // Check if window is defined
+    if (typeof window !== "undefined") {
+      // Set initial state based on current window width
+      setShow(window.innerWidth > 1000);
+
+      // Add event listener for window resize
+      window.addEventListener("resize", handleResize);
+
+      // Cleanup function
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
 
   // console.log("nav bar wala session ", session);
   const email = session?.user?.email;
@@ -25,9 +45,7 @@ function MainHeader() {
 
   const handler = () => {
     setShow(!show);
-  }
-  ;
-
+  };
   return (
     <div className={classes.box}>
       <header className={classes.header}>
@@ -72,7 +90,7 @@ function MainHeader() {
             <Link className={classes.option} href="/">
               Home
             </Link>
-            {session &&checkAdmin && (
+            {session && checkAdmin && (
               <>
                 <Link className={classes.option} href="/allProblems">
                   Dashboard

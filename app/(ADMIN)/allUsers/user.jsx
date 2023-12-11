@@ -102,7 +102,14 @@ const ClientUserPage = () => {
                     </td>
                     <td className="py-3 px-4 text-center">
                       <AiTwotoneDelete
-                        onClick={() => handleDeleteUser(user.email)}
+                        onClick={() => {
+                          const confirmDelete = window.confirm(
+                            "Are you sure you want to delete this user?"
+                          );
+                          if (confirmDelete) {
+                            handleDeleteUser(user.email);
+                          }
+                        }}
                       />
                     </td>
                   </tr>
