@@ -1,6 +1,5 @@
 "use client";
 import { useSession } from "next-auth/react";
-import Users from "@/components/Users/Users";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { SyncLoader } from "react-spinners";
@@ -15,6 +14,8 @@ const ClientUserPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [confirm, setConfirm] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   const handleDeleteUser = async (email) => {
     const baseUrl =
@@ -103,14 +104,37 @@ const ClientUserPage = () => {
                     <td className="py-3 px-4 text-center">
                       <AiTwotoneDelete
                         onClick={() => {
-                          const confirmDelete = window.confirm(
-                            "Are you sure you want to delete this user?"
-                          );
-                          if (confirmDelete) {
-                            handleDeleteUser(user.email);
-                          }
+                          setUserToDelete(user.email);
+                          setShowPopup(true);
                         }}
                       />
+                      {showPopup && (
+                        <div className="fixed inset-0 flex items-center justify-center z-50">
+                          <div className="bg-white p-6 rounded shadow-lg w-1/3">
+                            <h2 className="text-2xl mb-4">
+                              Are you sure you want to delete this user?
+                            </h2>
+                            <div className="flex justify-end">
+                              <button
+                                onClick={() => {
+                                  handleDeleteUser(userToDelete);
+                                  setShowPopup(false);
+                                }}
+                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+                              >
+                                Yes
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => setShowPopup(false)}
+                                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                              >
+                                No
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </td>
                   </tr>
                 </tbody>
