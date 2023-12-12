@@ -16,7 +16,7 @@ export default async function AllUsers() {
         <div className="text-4xl  text-gray-700 font-semibold">
           All User&apos;s <span className="text-blue-500">Page</span>
         </div>
-        <Search page={"users"}/>
+        <Search page={"users"} placeholder={"Search by user id"}/>
       </div>
       <ClientUserPage />
     </>

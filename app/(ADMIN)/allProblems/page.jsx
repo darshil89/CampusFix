@@ -3,6 +3,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import prisma from "@/prisma";
 import Problem from "@/components/Problems/Problem";
+import Search from "@/components/SearchCoins";
 
 // const getSpecificProblem = async (status) => {
 //   const res = await fetch(
@@ -49,6 +50,7 @@ export default async function AdminDashboard() {
       <>
         <div className="text-4xl mt-8 ml-4 mb-4 text-gray-700 font-semibold">
           Admin&apos;s Dashboard <span className="text-blue-500">Overview</span>
+          <Search page={"users"} placeholder={"Search by problem id"}/>
         </div>
         <div className="flex flex-row w-full">
           {/*Stats of the problems's in one line with boxes*/}
