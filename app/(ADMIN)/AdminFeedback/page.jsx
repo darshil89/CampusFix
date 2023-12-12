@@ -39,7 +39,7 @@ export default async function AdminFeedback() {
                       <div className="text-sm font-medium text-gray-900">
                         Problem ID : {feedback.problemId}
                       </div>
-                      <CopyButton text={feedback.problemId} />
+                      <CopyButton textToCopy={feedback.problemId} />
                     </div>
                   </div>
                 </div>
@@ -74,7 +74,7 @@ export default async function AdminFeedback() {
                       <div className="text-sm font-medium text-gray-900">
                         Problem ID : {feedback.problemId}
                       </div>
-                      <CopyButton text={feedback.problemId} />
+                      <CopyButton textToCopy={feedback.problemId} />
                     </div>
                   </div>
                 </div>
