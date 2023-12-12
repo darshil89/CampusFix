@@ -70,13 +70,13 @@ export default function Problems(props) {
       toast.error(result.error);
       return;
     }
-    // update({
-    //   ...session,
-    //   user: {
-    //     ...session.user,
-    //     problems: [...session.user.problems, result],
-    //   },
-    // })
+    update({
+      ...session,
+      user: {
+        ...session?.user,
+        problems: [...session.user.problems, result],
+      },
+    })
     toast.success("Problem Added", { autoClose: 4000 });
     // console.log("result  =  ", result);
     setData({
