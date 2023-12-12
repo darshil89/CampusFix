@@ -3,6 +3,7 @@ import { authOptions } from "../../api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { connectToDb } from "@/utils";
+import Image from "next/image";
 import prisma from "@/prisma";
 // import Search from "../../../components/SearchCoins";
 
@@ -16,29 +17,102 @@ export default async function AdminFeedback() {
 
   if (!session || email !== process.env.ADMIN_EMAIL) redirect("/");
   return (
-    <>
-      <div className="flex justify-between mt-8 ml-4 mb-4 ">
-        <div className="text-4xl  text-gray-700 font-semibold">
+    <div className="container mx-auto px-4">
+      <div className="flex justify-between mt-8 mb-4">
+        <h1 className="text-4xl text-gray-700 font-semibold">
           All User&apos;s <span className="text-blue-500">Feedback</span>
-        </div>
-        {/* <Search page={"feedback"} placeholder/> */}
+        </h1>
       </div>
-        {feedbacks.map((feedback, index) => {
-          return (
-            <div key={index}>
-              <div className="flex">
-                <h1>Feedback ID : {feedback.id}</h1>
-                <CopyButton textToCopy={feedback.id} />
+      <div className="flex flex-wrap -mx-2">
+        <div className="w-full md:w-1/2 px-2 mb-4">
+          <h2 className="text-2xl font-bold mb-4">Not Completed</h2>
+          {feedbacks
+            .filter((feedback) => feedback.check !== "Completed")
+            .map((feedback, index) => (
+              <div
+                key={index}
+                className="p-4 border rounded shadow mb-4 bg-red-100"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="flex-shrink-0 h-12 w-12 relative">
+                    <Image
+                      src={`https://robohash.org/${feedback.problemId}`}
+                      alt=""
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </div>
+                  <div className="ml-4">
+                    <div className="flex items-center">
+                      <div className="text-sm font-medium text-gray-900">
+                        Problem ID : {feedback.problemId}
+                      </div>
+                      <CopyButton text={feedback.problemId} />
+                    </div>
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <h2 className="text-lg leading-6 font-medium text-gray-900">
+                    Description
+                  </h2>
+                  <p className="mt-2 text-base text-gray-700">
+                    {feedback.description}
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <div className="text-sm text-red-600">
+                    Status : {feedback.check}
+                  </div>
+                </div>
               </div>
-              <h2>Problem ID : {feedback.problemId}</h2>
-              <h4>User ID : {feedback.userId}</h4>
-              <h3>Description : {feedback.description}</h3>
-              <h3>Status : {feedback.check}</h3>
-              <br />
-            </div>
-          );
-        })}
-      
-    </>
+            ))}
+        </div>
+        <div className="w-full md:w-1/2 px-2">
+          <h2 className="text-2xl font-bold mb-4">Completed</h2>
+          {feedbacks
+            .filter((feedback) => feedback.check === "Completed")
+            .map((feedback, index) => (
+              <div
+                key={index}
+                className="p-4 border rounded shadow mb-4 bg-green-100"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="flex-shrink-0 h-12 w-12 relative">
+                    <Image
+                      src={`https://robohash.org/${feedback.problemId}`}
+                      alt=""
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </div>
+                  <div className="ml-4">
+                    <div className="flex items-center">
+                      <div className="text-sm font-medium text-gray-900">
+                        Problem ID : {feedback.problemId}
+                      </div>
+                      <CopyButton text={feedback.problemId} />
+                    </div>
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <h2 className="text-lg leading-6 font-medium text-gray-900">
+                    Description
+                  </h2>
+                  <p className="mt-2 text-base text-gray-700">
+                    {feedback.description}
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <div className="text-sm text-green-600">
+                    Status : {feedback.check}
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
   );
 }
