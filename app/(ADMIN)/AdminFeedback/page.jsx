@@ -34,16 +34,7 @@ export default async function AdminFeedback() {
                 className="p-4 border rounded shadow mb-4 bg-red-100"
               >
                 <div className="flex items-center mb-4">
-                  <div className="flex-shrink-0 h-12 w-12 relative">
-                    <Image
-                      src={`https://robohash.org/${feedback.problemId}`}
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full"
-                    />
-                  </div>
-                  <div className="ml-4">
+                  <div className="">
                     <div className="flex items-center">
                       <div className="text-sm font-medium text-gray-900">
                         Problem ID : {feedback.problemId}
@@ -78,17 +69,8 @@ export default async function AdminFeedback() {
                 className="p-4 border rounded shadow mb-4 bg-green-100"
               >
                 <div className="flex items-center mb-4">
-                  <div className="flex-shrink-0 h-12 w-12 relative">
-                    <Image
-                      src={`https://robohash.org/${feedback.problemId}`}
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full"
-                    />
-                  </div>
-                  <div className="ml-4">
-                    <div className="flex items-center">
+                  <div className="">
+                    <div className="flex ">
                       <div className="text-sm font-medium text-gray-900">
                         Problem ID : {feedback.problemId}
                       </div>
