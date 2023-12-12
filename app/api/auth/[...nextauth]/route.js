@@ -58,7 +58,11 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, user, session, trigger }) {
       if (trigger === "update") {
-        return { ...token, picture: session.user.image , problems: session.user.problems };
+        return {
+          ...token,
+          picture: session.user.image,
+          problems: [...token.problems, session.user.problems],
+        };
       }
 
       if (user) {
@@ -70,10 +74,6 @@ export const authOptions = {
           picture: user.image,
         };
       }
-       console.log("-------------------------------------------");
-
-       console.log("token", token);
-       console.log("-------------------------------------------");
 
       return token;
     },

@@ -9,7 +9,7 @@ export default function Form() {
   const confirmPasswordRef = useRef("");
   const profilePhotoRef = useRef("");
 
-  console.log("session = ", session);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
