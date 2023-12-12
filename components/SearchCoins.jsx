@@ -8,7 +8,7 @@ const Search = (props) => {
   const [user, setUser] = useState([]);
 
   const { page } = props;
-  const { placeholder } = props;  
+  const { placeholder } = props;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
