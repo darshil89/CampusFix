@@ -7,33 +7,44 @@ import { toast } from "react-toastify";
 import PopUp from "../popUp/page";
 import Link from "next/link";
 import Image from "next/image";
+import CallButton from "../callbutton/CallButton";
 const Problem = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
+  const [state, setState] = useState("pending");
   const [data, setData] = useState([]);
   const [update, setUpdate] = useState([]);
-  const [loadingStatus, setLoadingStatus] = useState("");
   const [showPopUp, setShowPopUp] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const getData = async (status) => {
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://dayanand.vercel.app";
+
+  const getData = async () => {
     try {
-      fetch("/api/allProblems", {
-        cache: "no-cache",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-          setLoading(false);
-        });
+      setLoading(true);
+      const res = await fetch(`${baseUrl}/api/allProblems`, {
+        method: "POST",
+        body: JSON.stringify({
+          status: state,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      setData(data);
+      setLoading(false);
     } catch (error) {
-      console.log("error = ", error.message);
+      console.log("error = ", error);
     }
   };
 
   useEffect(() => {
     getData();
-  }, [update]);
+  }, [update, state]);
 
   // Define a function to determine the background color class based on the status
   function getStatusColor(status) {
@@ -161,77 +172,91 @@ const Problem = () => {
       );
     }
     if (data.length === 0) {
-      return <Image src="/images/no-data.png" alt="No data" height={600} width={600}></Image>
+      return (
+        <Image
+          src="/images/no-data.png"
+          alt="No data"
+          height={600}
+          width={600}
+        ></Image>
+      );
     }
 
     return (
-      <>
-        {data.map((problem) => {
-          return (
-            <ul role="list" key={problem.id} className=" w-100 ml-10 mr-5">
-              <li
-                key={problem.id}
-                className="flex justify-between gap-x-96 py-5"
-              >
-                <div className="flex  gap-x-4">
-                  <AiOutlineUser className="flex-shrink-0 w-10 h-10 rounded-full" />
-                  <div className="">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">
-                      {problem.title}
-                    </p>
-                    <p className=" truncate text-xs leading-5 text-gray-500">
-                      by-{problem.name}
-                    </p>
-                    <p>
-                      <span
-                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
-                          problem.status
-                        )}`}
+      <div className="flex flex-row">
+        <div>
+          {data.map((problem) => {
+            return (
+              <ul role="list" key={problem.id} className=" w-100 ml-10 mr-5">
+                <li
+                  key={problem.id}
+                  className="flex justify-between gap-x-96 py-5"
+                >
+                  <div className="flex  gap-x-4">
+                    <AiOutlineUser className="flex-shrink-0 w-10 h-10 rounded-full" />
+                    <div className="">
+                      <p className="text-sm font-semibold leading-6 text-gray-900">
+                        {problem.title}
+                      </p>
+                      <p className=" truncate text-xs leading-5 text-gray-500">
+                        by-{problem.name}
+                      </p>
+                      <p>
+                        <span
+                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
+                            problem.status
+                          )}`}
+                        >
+                          {problem.status.charAt(0).toUpperCase() +
+                            problem.status.slice(1)}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between">
+                      <Link
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+                        href={`/allProblems/${problem.id}`}
                       >
-                        {problem.status.charAt(0).toUpperCase() +
-                          problem.status.slice(1)}
-                      </span>
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between">
-                    <Link
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
-                      href={`/allProblems/${problem.id}`}
-                    >
-                      View
-                    </Link>
-                    <button
-                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
-                      onClick={() => openPopUp(problem.id)}
-                    >
-                      Approve
-                    </button>
+                        View
+                      </Link>
+                      <button
+                        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-4"
+                        onClick={() => openPopUp(problem.id)}
+                      >
+                        Approve
+                      </button>
 
-                    <button
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                      onClick={() => handlerReject(problem.id, problem.userId)}
-                    >
-                      Reject
-                    </button>
-                  </div>
+                      <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={() =>
+                          handlerReject(problem.id, problem.userId)
+                        }
+                      >
+                        Reject
+                      </button>
+                    </div>
 
-                  {showPopUp === problem.id && (
-                    <PopUp
-                      onClose={closePopUp}
-                      onSave={(formData) =>
-                        handlerApprove(problem.id, problem.userId, formData)
-                      }
-                    />
-                  )}
-                </div>
-              </li>
-            </ul>
-          );
-        })}
-      </>
-    );
+                    {showPopUp === problem.id && (
+                      <PopUp
+                        onClose={closePopUp}
+                        onSave={(formData) =>
+                          handlerApprove(problem.id, problem.userId, formData)
+                        }
+                      />
+                    )}
+                  </div>
+                </li>
+              </ul>
+            );
+          })}
+        </div>
+        <CallButton state={state} setState={setState} />
+      </div>
+    ); 
+
+    
   } else {
     return (
       <SyncLoader
