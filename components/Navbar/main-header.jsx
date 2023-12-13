@@ -98,6 +98,9 @@ function MainHeader() {
                 <Link className={classes.option} href="/allUsers">
                   Users
                 </Link>
+                <Link className={classes.option} href="/Report">
+                  Report
+                </Link>
                 <Link className={classes.option} href="/AdminFeedback">
                   Feedback
                 </Link>
