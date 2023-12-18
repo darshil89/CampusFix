@@ -13,6 +13,7 @@ export default async function Report() {
       <div className="text-4xl mt-8 ml-4 mb-4 text-gray-700 font-semibold">
         Report <span className="text-blue-500">Page</span>
       </div>
+
       <AdminReport />
     </>
   );
