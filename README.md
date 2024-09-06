@@ -4,7 +4,7 @@
 ![Ticket](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOW1namo3NHczY2RqZXVqMGU1cjc2YnBtM3pjNXZiNHc2NGh5YnB5YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5LBxKy4LrJOGP8n79X/giphy.gif)
 ---
 
-![GitHub repo size](https://img.shields.io/github/repo-size/username/repo) ![GitHub contributors](https://img.shields.io/github/contributors/username/repo) ![GitHub forks](https://img.shields.io/github/forks/username/repo?style=social) ![GitHub stars](https://img.shields.io/github/stars/username/repo?style=social)
+ ![GitHub contributors](https://api.github.com/repos/%7Bdarshil89%7D/%7BcampusTix%7D/contributors) ![GitHub forks](https://img.shields.io/github/forks/username/repo?style=social) ![GitHub stars](https://img.shields.io/github/stars/username/repo?style=social)
 
 ## **Overview**
 
@@ -15,8 +15,6 @@ To promote collaboration and continuous improvement, we introduced a feedback me
 ---
 
 ### **Demo**
-
-![Project Demo](https://path/to/demo.gif)
 
 [Live Demo](https://dayanand.vercel.app/)
 
