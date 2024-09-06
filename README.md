@@ -88,14 +88,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## **Acknowledgements** 🙌
-
-- 📚 Libraries or tools used
-- 🎨 Design inspiration or assets
-- 🤝 Shoutouts to collaborators
-
----
-
 ## **Support** 💬
 
 For any inquiries, feel free to reach out:
