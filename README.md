@@ -14,6 +14,13 @@ To promote collaboration and continuous improvement, we introduced a feedback me
 
 ### **Demo**
 
+**Video Demo** 🎥
+
+<video width="640" height="360" controls>
+  <source src="https://res.cloudinary.com/dmvelqjem/video/upload/v1694078440/96d0c74e823200084644abe4e48c0051.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 [Live Demo](https://dayanand.vercel.app/)
 
 ---
